@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Untitled Document</title>
+		<title>Predefined Variables</title>
 	</head>
 
 	<body>
     	<?php # Script 1.5 - predefined.php
 		
 		// Create a shorthand version of the variable names:
-		$file = $_SERVER['SCRIPT_FLIENAME'];
+		$file = $_SERVER['SCRIPT_FILENAME'];
 		$user = $_SERVER['HTTP_USER_AGENT'];
 		$server = $_SERVER['SERVER_SOFTWARE'];
 		
