@@ -60,7 +60,34 @@
 
 		?>
        </tr>
-     	 <tr>
+      <tr>    	
+	  	<?php
+			$x=false;
+			$Y=true;
+			// If/Else Statement Syntax eg: ('variable'?"Value if True":"Value if False")
+			echo "<td>".($x?"T":"F")."</td>";
+			echo "<td>".($y?"T":"F")."</td>";
+			echo "<td>".(!$x?"T":"F")."</td>";
+			echo "<td>".(!$y?"T":"F")."</td>";
+			echo "<td>".(($x)&&($y)?"T":"F")."</td>";
+			echo "<td>".(($y)||($y)?"T":"F")."</td>";
+
+		?>
+       </tr>
+       <tr>    	
+	  	<?php
+			$Y=false;
+			// If/Else Statement Syntax eg: ('variable'?"Value if True":"Value if False")
+			echo "<td>".($x?"T":"F")."</td>";
+			echo "<td>".($y?"T":"F")."</td>";
+			echo "<td>".(!$x?"T":"F")."</td>";
+			echo "<td>".(!$y?"T":"F")."</td>";
+			echo "<td>".(($x)&&($y)?"T":"F")."</td>";
+			echo "<td>".(($y)||($y)?"T":"F")."</td>";
+
+		?>
+       </tr>
+    	 <tr>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
