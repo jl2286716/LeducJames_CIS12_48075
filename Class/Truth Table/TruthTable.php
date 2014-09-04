@@ -49,7 +49,7 @@
 			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
 	  	<?php // Echo out the T,F row.
-			// $x is still true from former initialization.
+		 // $x is still true from former initialization.
 			$y=false;
 			
 			echo "<tr><td>".($x?"T":"F")."</td>";
@@ -85,7 +85,7 @@
 			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
 	  	<?php // Echo out the F,F row.
-			// $x is still false from former initialization.
+		 // $x is still false from former initialization.
 			$y=false;
 			
 			echo "<tr><td>".($x?"T":"F")."</td>";
