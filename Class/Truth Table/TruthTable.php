@@ -15,7 +15,7 @@
     <body>
     	<?php
 			//Echo out a heading
-			echo "<h1>Truth Table</h1>"
+			echo "<h1>Boolean Truth Table</h1>"
 		?>
     <table width="200" border="1">
       <tr>
@@ -37,14 +37,20 @@
 	  	<?php
 			$X=true;
 			$y=true;
-			// If/Else Statement Syntax eg: ('variable'?"Value if True":"Value if False")
+			// If/Else Statement Syntax eg: ('condition'?"value if true":"value if false")
 			echo "<td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
 			echo "<td>".(!$y?"T":"F")."</td>";
-			echo "<td>".(($x)&&($y)?"T":"F")."</td>";
-			echo "<td>".(($y)||($y)?"T":"F")."</td>";
-
+			echo "<td>".($x&&$y?"T":"F")."</td>";
+			echo "<td>".($x||$y?"T":"F")."</td>";
+			echo "<td>".($x^$y?"T":"F")."</td>";
+			echo "<td>".($x^$y^$y?"T":"F")."</td>";
+			echo "<td>".($x^$y^$x?"T":"F")."</td>";
+			echo "<td>".(!($x&&$y)?"T":"F")."</td>";
+			echo "<td>".(!$x||!$y?"T":"F")."</td>";
+			echo "<td>".(!($x||$y)?"T":"F")."</td>";
+			echo "<td>".(!$x&&!$y?"T":"F")."</td>";
 		?>
        </tr>
       <tr>    	
