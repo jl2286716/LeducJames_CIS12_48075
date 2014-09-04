@@ -18,27 +18,26 @@
 			echo "<h1>Boolean Truth Table</h1>"
 		?>
     <table width="200" border="1">
-      <tr>
-        <th>X</th>
-        <th>Y</th>
-        <th>!X</th>
-        <th>!Y</th>
-        <th>X&&Y</th>
-        <th>X||Y</th>
-        <th>X^Y</th>
-        <th>X^Y^Y</th>
-        <th>X^Y^X</th>
-        <th>!(X&&Y)</th>
-        <th>!X||!Y</th>
-        <th>!(X||Y)</th>
-        <th>!X&&!Y</th>
-      </tr>  
-      <tr>    	
+		<tr>
+			<th>X</th>
+			<th>Y</th>
+			<th>!X</th>
+			<th>!Y</th>
+			<th>X&&Y</th>
+			<th>X||Y</th>
+			<th>X^Y</th>
+			<th>X^Y^Y</th>
+			<th>X^Y^X</th>
+			<th>!(X&&Y)</th>
+			<th>!X||!Y</th>
+			<th>!(X||Y)</th>
+			<th>!X&&!Y</th>
+		</tr>  
 	  	<?php
-			$X=true;
+			$x=true;
 			$y=true;
 			// If/Else Statement Syntax eg: ('condition'?"value if true":"value if false")
-			echo "<td>".($x?"T":"F")."</td>";
+			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
 			echo "<td>".(!$y?"T":"F")."</td>";
@@ -50,79 +49,57 @@
 			echo "<td>".(!($x&&$y)?"T":"F")."</td>";
 			echo "<td>".(!$x||!$y?"T":"F")."</td>";
 			echo "<td>".(!($x||$y)?"T":"F")."</td>";
-			echo "<td>".(!$x&&!$y?"T":"F")."</td>";
+			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-       </tr>
-      <tr>    	
 	  	<?php
-			$Y=false;
-			// If/Else Statement Syntax eg: ('variable'?"Value if True":"Value if False")
-			echo "<td>".($x?"T":"F")."</td>";
+			$y=false;
+			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
 			echo "<td>".(!$y?"T":"F")."</td>";
-			echo "<td>".(($x)&&($y)?"T":"F")."</td>";
-			echo "<td>".(($y)||($y)?"T":"F")."</td>";
-
+			echo "<td>".($x&&$y?"T":"F")."</td>";
+			echo "<td>".($x||$y?"T":"F")."</td>";
+			echo "<td>".($x^$y?"T":"F")."</td>";
+			echo "<td>".($x^$y^$y?"T":"F")."</td>";
+			echo "<td>".($x^$y^$x?"T":"F")."</td>";
+			echo "<td>".(!($x&&$y)?"T":"F")."</td>";
+			echo "<td>".(!$x||!$y?"T":"F")."</td>";
+			echo "<td>".(!($x||$y)?"T":"F")."</td>";
+			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-       </tr>
-      <tr>    	
 	  	<?php
 			$x=false;
-			$Y=true;
-			// If/Else Statement Syntax eg: ('variable'?"Value if True":"Value if False")
-			echo "<td>".($x?"T":"F")."</td>";
+			$y=true;
+			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
 			echo "<td>".(!$y?"T":"F")."</td>";
-			echo "<td>".(($x)&&($y)?"T":"F")."</td>";
-			echo "<td>".(($y)||($y)?"T":"F")."</td>";
-
+			echo "<td>".($x&&$y?"T":"F")."</td>";
+			echo "<td>".($x||$y?"T":"F")."</td>";
+			echo "<td>".($x^$y?"T":"F")."</td>";
+			echo "<td>".($x^$y^$y?"T":"F")."</td>";
+			echo "<td>".($x^$y^$x?"T":"F")."</td>";
+			echo "<td>".(!($x&&$y)?"T":"F")."</td>";
+			echo "<td>".(!$x||!$y?"T":"F")."</td>";
+			echo "<td>".(!($x||$y)?"T":"F")."</td>";
+			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-       </tr>
-       <tr>    	
 	  	<?php
-			$Y=false;
-			// If/Else Statement Syntax eg: ('variable'?"Value if True":"Value if False")
-			echo "<td>".($x?"T":"F")."</td>";
+			$y=false;
+			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
 			echo "<td>".(!$y?"T":"F")."</td>";
-			echo "<td>".(($x)&&($y)?"T":"F")."</td>";
-			echo "<td>".(($y)||($y)?"T":"F")."</td>";
-
+			echo "<td>".($x&&$y?"T":"F")."</td>";
+			echo "<td>".($x||$y?"T":"F")."</td>";
+			echo "<td>".($x^$y?"T":"F")."</td>";
+			echo "<td>".($x^$y^$y?"T":"F")."</td>";
+			echo "<td>".($x^$y^$x?"T":"F")."</td>";
+			echo "<td>".(!($x&&$y)?"T":"F")."</td>";
+			echo "<td>".(!$x||!$y?"T":"F")."</td>";
+			echo "<td>".(!($x||$y)?"T":"F")."</td>";
+			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-       </tr>
-    	 <tr>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		  </tr>
-		  <tr>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		  </tr>
     </table>
 
     </body>
