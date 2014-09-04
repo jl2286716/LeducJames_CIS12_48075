@@ -9,31 +9,20 @@
 			*/
 		?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Truth Table</title>
+        <title>Boolean Truth Table</title>
     </head>
     
     <body>
-    	<?php
-			//Echo out a heading
-			echo "<h1>Boolean Truth Table</h1>"
+    	<?php // Echo out a heading.
+			echo "<h1>Boolean Truth Table</h1>";
 		?>
-    <table width="200" border="1">
-		<tr>
-			<th>X</th>
-			<th>Y</th>
-			<th>!X</th>
-			<th>!Y</th>
-			<th>X&&Y</th>
-			<th>X||Y</th>
-			<th>X^Y</th>
-			<th>X^Y^Y</th>
-			<th>X^Y^X</th>
-			<th>!(X&&Y)</th>
-			<th>!X||!Y</th>
-			<th>!(X||Y)</th>
-			<th>!X&&!Y</th>
-		</tr>  
-	  	<?php
+		<?php // Echo out the table opener and headers.
+			echo "<table width='200' border='1'>";
+			echo "<tr><th>X</th><th>Y</th><th>!X</th><th>!Y</th><th>X&&Y</th><th>X||Y</th>";
+			echo "<th>X^Y</th><th>X^Y^Y</th><th>X^Y^X</th>"; // Exclusive ORs
+			echo "<th>!(X&&Y)</th><th>!X||!Y</th><th>!(X||Y)</th><th>!X&&!Y</th></tr>"; // De Morgan's Laws
+		?>
+	  	<?php // Row 1: T,T
 			$x=true;
 			$y=true;
 			// If/Else Statement Syntax eg: ('condition'?"value if true":"value if false")
@@ -51,7 +40,7 @@
 			echo "<td>".(!($x||$y)?"T":"F")."</td>";
 			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-	  	<?php
+	  	<?php // Row 2: T,F
 			$y=false;
 			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
@@ -67,7 +56,7 @@
 			echo "<td>".(!($x||$y)?"T":"F")."</td>";
 			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-	  	<?php
+	  	<?php // Row 3: F,T
 			$x=false;
 			$y=true;
 			echo "<tr><td>".($x?"T":"F")."</td>";
@@ -84,7 +73,7 @@
 			echo "<td>".(!($x||$y)?"T":"F")."</td>";
 			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-	  	<?php
+	  	<?php // Row 4: F,F
 			$y=false;
 			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
@@ -98,9 +87,7 @@
 			echo "<td>".(!($x&&$y)?"T":"F")."</td>";
 			echo "<td>".(!$x||!$y?"T":"F")."</td>";
 			echo "<td>".(!($x||$y)?"T":"F")."</td>";
-			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
+			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr></table>"; // Close the table.
 		?>
-    </table>
-
     </body>
 </html>
