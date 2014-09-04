@@ -16,11 +16,15 @@
     	<?php // Echo out a heading.
 			echo "<h1>Boolean Truth Table</h1>";
 		?>
-		<?php // Echo out the table opener and headers.
+		<?php // Echo out the open table tag and headers.
 			echo "<table width='200' border='1'>";
+			echo "<tr><th colspan='2'>BOOLEAN</th><th colspan='2'><center>NOT</center></th>";
+			echo "<th><center>AND</center></th><th><center>OR</center></th>";
+			echo "<th colspan='3'><center>EXCLUSIVELY OR</center></th>";
+			echo "<th colspan='4'><center>DE MORGAN'S LAWS</center></th></tr>";
 			echo "<tr><th>X</th><th>Y</th><th>!X</th><th>!Y</th><th>X&&Y</th><th>X||Y</th>";
-			echo "<th>X^Y</th><th>X^Y^Y</th><th>X^Y^X</th>"; // Exclusive ORs
-			echo "<th>!(X&&Y)</th><th>!X||!Y</th><th>!(X||Y)</th><th>!X&&!Y</th></tr>"; // De Morgan's Laws
+			echo "<th>X^Y</th><th>X^Y^Y</th><th>X^Y^X</th>";
+			echo "<th>!(X&&Y)</th><th>!X||!Y</th><th>!(X||Y)</th><th>!X&&!Y</th></tr>";
 		?>
 	  	<?php // Row 1: T,T
 			$x=true;
