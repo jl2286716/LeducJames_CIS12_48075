@@ -3,18 +3,18 @@
     <head>
     	<?php
 			/*
-				James Leduc
-				9/3/14
-				Purpose: Duplicate Truth Table
+				Programmer: James Leduc
+				Date: Sep 03, 2014
+				Purpose: Create Truth Table
 			*/
 		?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Boolean Truth Table</title>
+        <title>Truth Table</title>
     </head>
     
     <body>
     	<?php // Echo out a page heading.
-			echo "<center><h1>Boolean Truth Table</h1></center>";
+			echo "<center><h1>Truth Table</h1></center>";
 		?>
 		<?php // Echo out the open table tag and table headers.
 			echo "<center><table width='200' border='1'>";
@@ -28,11 +28,12 @@
 			echo "<th>X^Y</th><th>X^Y^Y</th><th>X^Y^X</th>";
 			echo "<th>!(X&&Y)</th><th>!X||!Y</th><th>!(X||Y)</th><th>!X&&!Y</th></tr>";
 		?>
-	  	<?php // Echo out row 1: T,T
+	  	<?php // Echo out the T,T row.
 			$x=true;
 			$y=true;
+			
 			// If/Then/Else Statement Syntax:
-				// ('condition'?'value if true':'value if false')
+				// ('IF_condition'?'THEN_value_if_TRUE':'ELSE_value_if_FALSE')
 			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
@@ -47,8 +48,10 @@
 			echo "<td>".(!($x||$y)?"T":"F")."</td>";
 			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-	  	<?php // Echo out row 2: T,F
+	  	<?php // Echo out the T,F row.
+			// $x is still true from former initialization.
 			$y=false;
+			
 			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
@@ -63,9 +66,10 @@
 			echo "<td>".(!($x||$y)?"T":"F")."</td>";
 			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-	  	<?php // Echo out row 3: F,T
+	  	<?php // Echo out the F,T row.
 			$x=false;
 			$y=true;
+			
 			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
@@ -80,8 +84,10 @@
 			echo "<td>".(!($x||$y)?"T":"F")."</td>";
 			echo "<td>".(!$x&&!$y?"T":"F")."</td></tr>";
 		?>
-	  	<?php // Echo out row 4: F,F
+	  	<?php // Echo out the F,F row.
+			// $x is still false from former initialization.
 			$y=false;
+			
 			echo "<tr><td>".($x?"T":"F")."</td>";
 			echo "<td>".($y?"T":"F")."</td>";
 			echo "<td>".(!$x?"T":"F")."</td>";
@@ -100,7 +106,7 @@
 			echo "</table></center>";
 		?>
 		<?php // Echo out notes.
-			// Exclusively OR
+			// Exclusively OR notes.
 			echo "<enter><p><i>Note: <b>Exclusively OR</b></i></p></center>";
 			echo "<enter><p><i>X^Y = true if different, false if same.</i></p></center>";
 			echo "<enter><p><i>X^Y^Y = the 'Y's cancel each other out.</i></p></center>";
