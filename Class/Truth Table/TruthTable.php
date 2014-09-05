@@ -109,13 +109,13 @@
 		?>
 		<?php // Echo out notes.
 			// Exclusively OR notes.
-			echo "<center><p><i>Notes:</p><p><b>Exclusively OR: </b></p>";
+			echo "<center><p><i><h3>Notes:</h3></p><p><b><u>Exclusively OR:</u></b></p>";
 			echo "<p><b>X^Y</b> >> <b>true</b> if different, <b>false</b> if same</p>";
 			echo "<p><b>X^Y^Y</b> >> the '<b>Y</b>'s cancel out</p>";
 			echo "<p><b>X^Y^X</b> >> the '<b>X</b>'s cancel out</i></p></center>";
 			
 			// De Morgan's Laws notes.
-			echo "<center><p><i><b>De Morgan's Laws: </b></p>";
+			echo "<center><p><i><b><u>De Morgan's Laws:</u></b></p>";
 			echo "<p><b>!(X&&Y)</b> >> distribute the <b>!</b>, changing <b>&&</b> to <b>||</b> >> <b>!X||!Y</b></p>";
 			echo "<p><b>!(X||Y)</b> >> distribute the <b>!</b>, changing <b>||</b> to <b>&&</b> >> <b>!X&&!Y</b></i></p>";
 
