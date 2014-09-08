@@ -14,19 +14,15 @@
     
     <body>
     	<?php
-			// Initialize variables.
-			$perGrade = rand(50,100); // Grade percentage.
-			$letGrade; // Letter grade.
-			
-			//echo "<p>Please, enter a grade percentage: ";
-			
+			// Generates a random grade percentage.
+			$perGrade = rand(50,100);
 			// Determine grade
 			$letGrade = ($perGrade >= 90)?'A':(
 						($perGrade >= 80)?'B':(
 						($perGrade >= 70)?'C':(
 						($perGrade >= 60)?'D':'F')));
 			
-			echo "<p>A score of $perGrade = $letGrade.</p>";
+			echo "<h1>A score of $perGrade = $letGrade.</h1>";
 		?>
     </body>
 </html>
