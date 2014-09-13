@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Script 2.1</title>
+        <title>Simple HTML Form</title>
 		<style type="text/css" title="text/css" media="all">
 			label {
 				font-weight: bold;
@@ -12,7 +12,7 @@
     </head>
     
     <body>
-		<!-- Script 2.1 - form.html -->
+		<!-- Script 2.1 (pg37) - form.html -->
 		<form action="handle_form.php" method="post">
 			<fieldset><legend>Enter your information in the form below: </legend>
 				<p>
