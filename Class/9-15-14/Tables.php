@@ -11,22 +11,26 @@
         
     <body>
     	<h1>Trig Table</h1>
+		<?php
+			echo "<i>My PHP is working!</i>";
+		?>
         <?php
 			echo "<table width='200' border='1'>";
 			echo "	<tr>
-						<th>Radians;</th>
-						<th>Degrees;</th>
-						<th>Sine;</th>
-						<th>Cosine;</th>
-						<th>Tangent;</th>
+						<th>Radians</th>
+						<th>Degrees</th>
+						<th>Sine</th>
+						<th>Cosine</th>
+						<th>Tangent</th>
 					</tr>";
+					
 			// $_GET input data from InputTables.php form - name/value pairs
 			$angStart=$_GET['angStart'];
 			$angEnd=$_GET['angEnd'];
-			$angInc=$_GET['andInc'];
+			$angInc=$_GET['angInc'];
 			
 			// For Loop
-			for($angle=$angStart;$angle<=$angEnd;$angle+=$angInc){
+			for(($angle=$angStart);($angle<=$angEnd);($angle+=$angInc)){
 				echo "<tr><td>$angle</td>";
 					// Calculate
 					$rad=number_format($angle*atan(1)/45,4);
@@ -34,23 +38,10 @@
 					$cosine=number_format(cos($rad),4);
 					$tangent=number_format(tan($rad),4);
 				echo "<td>$rad</td>
-						<td>$sine</td>
-						<td>$cosine</td>
-						<td>$tangent</td></tr>";
-			  }
-/*			  <tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			  </tr>
-			  <tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			  </tr>
-			  */
+					<td>$sine</td>
+					<td>$cosine</td>
+					<td>$tangent</td></tr>";
+			}
 			echo "</table>"
 		?>
     </body>

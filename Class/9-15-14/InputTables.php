@@ -10,12 +10,15 @@
     </head>
         
     <body>
+		<?php
+			echo "<i>My PHP is working!</i>";
+		?>
     	<h1>Trig Table</h1>
         <form action="Tables.php" method="get">
-            <input name="angStart" type="text" />Starting Angle; <!-- Get starting angle from user -->
-            <input name="angEnd" type="text" />Endinging Angle; <!-- Get starting angle from user -->
-            <input name="angInc" type="text" />Starting Angle; <!-- Get starting angle from user -->
-            <input name="Calculate and Display" type="submit" /> <!-- Submit data to Tables.php-->
+            <input name="angStart" type="text" />Starting Angle<br /> <!-- Get starting angle from user -->
+            <input name="angEnd" type="text" />Ending Angle<br /> <!-- Get starting angle from user -->
+            <input name="angInc" type="text" />Starting Angle<br /> <!-- Get starting angle from user -->
+            <input name="Calculate&Display" type="submit" /> <!-- Submit data to Tables.php-->
         </form>
     </body>
 </html>
