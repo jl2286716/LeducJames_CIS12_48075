@@ -18,12 +18,12 @@
         <?php
 			$meters=$_GET['meters'];	// $_GET input data from "InputWave.html" form
 			
-			$radioMin = pow(10,-1);		// Radio > 10^-1
-			$microMin = pow(10,-3));	// 10^-1 > Microwaves > 10^-3
-			$infraMin = 7*(pow(10,-7));	// 10^-3 > Infrared > 7*10^-7
-			$visiMin = 4*(pow(10,-7));	// 7*10^-7 > Visible Light >4*10^-7
-			$ultraMin = pow(10,-8);		// 4*10^-7 > Ultraviolet > 10^-8
-			$xrayMin = pow(10,-11);		// 10^-8 > X-Ray > 10^-11 > Gamma
+			$radioMin = pow(10,-1);		// Radio >= 10^-1
+			$microMin = pow(10,-3));	// 10^-1 > Microwaves >= 10^-3
+			$infraMin = 7*(pow(10,-7));	// 10^-3 > Infrared >= 7*10^-7
+			$visiMin = 4*(pow(10,-7));	// 7*10^-7 > Visible Light >= 4*10^-7
+			$ultraMin = pow(10,-8);		// 4*10^-7 > Ultraviolet >= 10^-8
+			$xrayMin = pow(10,-11);		// 10^-8 > X-Ray >= 10^-11 > Gamma
 
 			// Start table
 			echo "<table width='200' border='1'>";
@@ -44,6 +44,7 @@
 			// Close table
 			echo "</table>";
 			
+			// Output which spectrum the user's input places them
 			if($meters >= $radioMin){								// Radio Wavelength
 				echo "<p>A ".$meters." meter wavelength places you in the <b>Radio Spectrum</b>.</p>";
 			}elseif($meters < $radioMin && $meters >= $microMin){	// Microwave Wavelength
@@ -59,6 +60,9 @@
 			}elseif($meters < $xrayMin){							// Gamma-Ray Wavelength
 				echo "<p>A ".$meters." meter wavelength places you in the <b>Gamma-Ray Spectrum</b>.</p>";
 			}
+			
+			// Output the ElectroMagnetic Spectrum image "eMagSpec.PNG"
+			echo "<center><img src='eMagSpec.PNG' alt='eMagSpec'></center>";
 		?>
     </body>
 </html>
