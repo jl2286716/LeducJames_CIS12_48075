@@ -11,7 +11,7 @@
     </head>
         
     <body>
-    	<h1>Electro Magnetic Spectrum</h1>
+    	<h1>ElectroMagnetic Spectrum</h1>
 		<?php
 			echo "<i>My PHP is working!</i>";
 		?>
