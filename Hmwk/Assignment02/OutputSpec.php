@@ -11,10 +11,7 @@
     </head>
         
     <body>
-    	<h1>ElectroMagnetic Spectrum</h1>
-		<?php
-			echo "<i>My PHP is working!</i>";
-		?>
+    	<h1><center>ElectroMagnetic Spectrum</center></h1>
         <?php
 			$meters=$_GET['meters'];	// $_GET input data from "InputWave.html" form
 			
