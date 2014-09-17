@@ -11,20 +11,17 @@
     </head>
         
     <body>
-    	<h1>ElectroMagnetic Spectrum</h1>
-		<?php
-			echo "<i>My PHP is working!</i>";
-		?>
+    	<h1><center>ElectroMagnetic Spectrum</center></h1>
         <?php
 			$meters=$_GET['meters'];	// $_GET input data from "InputWave.html" form
 			
 			// Calculation variables
-			$radioMin = (pow(10,-1));		// Radio >= 10^-1
-			$microMin = (pow(10,-3));		// 10^-1 > Microwaves >= 10^-3
-			$infraMin = (7*(pow(10,-7)));	// 10^-3 > Infrared >= 7*10^-7
-			$visiMin = (4*(pow(10,-7)));	// 7*10^-7 > Visible Light >= 4*10^-7
-			$ultraMin = (pow(10,-8));		// 4*10^-7 > Ultraviolet >= 10^-8
-			$xrayMin = (pow(10,-11));		// 10^-8 > X-Ray >= 10^-11 > Gamma
+			$radioMin = (10e-1);		// Radio >= 10^-1
+			$microMin = (10e-3);		// 10^-1 > Microwaves >= 10^-3
+			$infraMin = (7*(10e-7));	// 10^-3 > Infrared >= 7*10^-7
+			$visiMin = (4*(10e-7));		// 7*10^-7 > Visible Light >= 4*10^-7
+			$ultraMin = (10e-8);		// 4*10^-7 > Ultraviolet >= 10^-8
+			$xrayMin = (10e-11);		// 10^-8 > X-Ray >= 10^-11 > Gamma
 			
 			// Calculation Labels
 			$radioLbl = "Radio Waves are >= 10^-1";
