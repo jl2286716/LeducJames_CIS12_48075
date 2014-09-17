@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+            <script>
+                // Programmer: James Leduc
+                // Date Created: 9/16/2014
+				// Purpose: TEST: Output electromagnetic spectrum based upon user input from "InputWave.html"
+            </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <title>E-Mag Spec</title>
+    </head>
+        
+    <body>
+    	<h1>ElectroMagnetic Spectrum</h1>
+        <script>
+			var $meters=prompt("enter meters");	// $_GET input data from "InputWave.html" form
+			
+			// Calculation variables
+			var $radioMin = Math.pow(10,-1);		// Radio >= 10^-1
+			var $microMin = Math.pow(10,-3);		// 10^-1 > Microwaves >= 10^-3
+			var $infraMin = 7*(Math.pow(10,-7));	// 10^-3 > Infrared >= 7*10^-7
+			var $visiMin = 4*(Math.pow(10,-7));	// 7*10^-7 > Visible Light >= 4*10^-7
+			var $ultraMin = Math.pow(10,-8);		// 4*10^-7 > Ultraviolet >= 10^-8
+			var $xrayMin = Math.pow(10,-11);		// 10^-8 > X-Ray >= 10^-11 > Gamma
+			
+			// Calculation Labels
+			var $radioLbl = "Radio Waves are >= 10^-1";
+			var $microLbl = "10^-1 > Microwaves >= 10^-3";
+			var $infraLbl = "10^-3 > Infrared >= 7*10^-7";
+			var $visiLbl = "7*10^-7 > Visible Light >= 4*10^-7";
+			var $ultraLbl = "4*10^-7 > Ultraviolet >= 10^-8";
+			var $xrayLbl = "10^-8 > X-Ray >= 10^-11";
+			var $gammaLbl = "Gamma-Rays are < 10^-11";
+
+			// Start table
+			document.write("<table width='auto' border='1'>");
+			
+			// Output column headers
+			document.write("<tr><th>Spectrum</th>");
+			document.write("<th>Wavelength Range</th></tr>");
+			
+			// Output rows w/ headers
+			document.write("<tr><th>Radio</th><td>"+$radioLbl+"</td></tr>");
+			document.write("<tr><th>Microwave</th><td>"+$microLbl+"</td></tr>");
+			document.write("<tr><th>Infrared</th><td>"+$infraLbl+"</td></tr>");
+			document.write("<tr><th>Visible Light</th><td>"+$visiLbl+"</td></tr>");
+			document.write("<tr><th>Ultraviolet</th><td>"+$ultraLbl+"</td></tr>");
+			document.write("<tr><th>X-Ray</th><td>"+$xrayLbl+"</td></tr>");
+			document.write("<tr><th>Gamma-Ray</th><td>"+$gammaLbl+"</td></tr>");
+
+			// Close table
+			document.write("</table>");
+			
+			// Output which spectrum the user's input places them
+			if($meters >= $radioMin){								// Radio Wavelength
+				document.write("<p>A "+$meters+" meter wavelength places you in the <b>Radio Spectrum</b>.</p>");
+			}else if($meters < $radioMin && $meters >= $microMin){	// Microwave Wavelength
+				document.write("<p>A "+$meters+" meter wavelength places you in the <b>Microwave Spectrum</b>.</p>");
+			}else if($meters < $microMin && $meters >= $infraMin){	// Infrared Wavelength
+				document.write("<p>A "+$meters+" meter wavelength places you in the <b>Infrared Spectrum</b>.</p>");
+			}else if($meters < $infraMin && $meters >= $visiMin){	// Visible Light Wavelength
+				document.write("<p>A "+$meters+" meter wavelength places you in the <b>Visible Light Spectrum</b>.</p>");
+			}else if($meters < $visiMin && $meters >= $ultraMin){	// Ultraviolet Wavelength
+				document.write("<p>A "+$meters+" meter wavelength places you in the <b>Ultraviolet Spectrum</b>.</p>");
+			}else if($meters < $ultraMin && $meters >= $xrayMin){	// X-Ray Wavelength
+				document.write("<p>A "+$meters+" meter wavelength places you in the <b>X-Ray Spectrum</b>.</p>");
+			}else if($meters < $xrayMin){							// Gamma-Ray Wavelength
+				document.write("<p>A "+$meters+" meter wavelength places you in the <b>Gamma-Ray Spectrum</b>.</p>");
+			}
+			
+			// Output the ElectroMagnetic Spectrum image "eMagSpec.PNG"
+			document.write("<center><img src='eMagSpec.PNG' alt='eMagSpec'></center>");
+		</script>
+    </body>
+</html>
