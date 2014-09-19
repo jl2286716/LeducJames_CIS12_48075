@@ -15,7 +15,7 @@
 		<?php # Script 2.5 (pg56) - handle_form.php #4
 		
 			// Print the submitted information:
-			if ( !empty($_POST['name']) && !empty($_POST['comments']) && !empty($_POST['email'])) {
+			if ( !empty($_POST['name']) && !empty($_POST['comments']) && !empty($_POST['email']) ) {
 				echo "<p>Thank you, <b>{$_POST['name']}</b>, for the following comments:<br />
 					<tt>{$_POST['comments']}</tt></p>
 					<p>We will reply to you at <i>{$_POST['email']}</i>.</p>\n";
