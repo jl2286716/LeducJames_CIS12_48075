@@ -38,8 +38,8 @@
 		?>
 		<table width='auto' border='1'>
 			<tr>
-				<th>Radians</th>
 				<th>Degrees</th>
+				<th>Radians</th>
 				<th>Sine</th>
 				<th>Cosine</th>
 				<th>Tangent</th>
@@ -51,7 +51,7 @@
 				for($cols=1;$cols<=5;$cols++){
 					"<td>".$TrigTab[$cols][$angle]."</td>";
 				}
-			echo "</tr>";
+				echo "</tr>";
 			}
 		?>
 		</table>
