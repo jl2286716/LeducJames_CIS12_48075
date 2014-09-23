@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+            <!--
+                # Programmer: James Leduc
+                # Date Created: 9/22/2014
+				# Purpose: Output electromagnetic spectrum based upon user input from "InputWave.html"
+            -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <title>E-Mag Spec</title>
+    </head>
+        
+    <body>
+    	<h1><center>ElectroMagnetic Spectrum</center></h1>
+		<h2><center>Using 1D Array</center></h2>
+		<!--
+		<form>
+			<input name="meters" type="text" />Wavelength (Meters)<br />
+			<input name="getWaves" type="submit" />
+        </form>
+		-->
+  
+        <script>		
+			// Calculation variables
+			var $radioMax = (10e4);			// Radio <= 10^4
+			var $radioMin = (10e-1);		// Radio >= 10^-1
+			var $microMin = (10e-3);		// 10^-1 > Microwaves >= 10^-3
+			var $infraMin = (7*(10e-7));	// 10^-3 > Infrared >= 7*10^-7
+			var $visiMin = (4*(10e-7));		// 7*10^-7 > Visible Light >= 4*10^-7
+			var $ultraMin = (10e-8);		// 4*10^-7 > Ultraviolet >= 10^-8
+			var $xrayMin = (10e-11);		// 10^-8 > X-Ray >= 10^-11
+			var $gammaMin = (10e-13);		// 10^-11 > Gamma >= 3^-13
+			
+			// Fill waveArr array
+			var $waveArr = [];
+			for(var $i=-12;$i<=5;$i++){
+				$waveArr[$i+12] = Math.pow(10,$i);
+			}
+			
+			// Start table
+			document.write("<center><table width='auto' border='1'>");
+			
+			// Output column headers
+			document.write("<tr><th>Row #</th>");
+			document.write("<th>Wavelength</th>");
+			document.write("<th>Band</th></tr>");
+			
+			// Fill the table
+			for(var $j=1;$j<=18;$j++){
+				document.write( "<tr>");
+				document.write( "<td>"+$j+"</td>"); 		// Output 'Row #'
+				document.write( "<td>10^"+($j-14)+"</td>");	// Output 'Wavelength'
+				
+				if($waveArr[$j-1] <= $radioMax && $waveArr[$j-1] >= $radioMin){		// Radio Wavelength
+					document.write( "<th>Radio</th>");
+				}else if($waveArr[$j-1] < $radioMin && $waveArr[$j-1] >= $microMin){	// Microwave Wavelength
+					document.write( "<th>Microwave</th>");
+				}else if($waveArr[$j-1] < $microMin && $waveArr[$j-1] >= $infraMin){	// Infrared Wavelength
+					document.write( "<th>Infrared</th>");
+				}else if($waveArr[$j-1] < $infraMin && $waveArr[$j-1] >= $visiMin){	// Visible Light Wavelength
+					document.write( "<th>Visible Light</th>");
+				}else if($waveArr[$j-1] < $visiMin && $waveArr[$j-1] >= $ultraMin){	// Ultraviolet Wavelength
+					document.write( "<th>Ultraviolet</th>");
+				}else if($waveArr[$j-1] < $ultraMin && $waveArr[$j-1] >= $xrayMin){	// X-Ray Wavelength
+					document.write( "<th>X-ray</th>");
+				}else if($waveArr[$j-1] < $xrayMin && $waveArr[$j-1] >= $gammaMin){	// Gamma-Ray Wavelength
+					document.write( "<th>Gamma-Ray</th>");
+				}else document.write("WRONG!");
+
+				document.write( "</tr>");
+			}
+			
+			
+			// Close table
+			document.write("</table></center>");
+						
+			// Output the ElectroMagnetic Spectrum image "eMagSpec.PNG"
+			document.write("<center><img src='eMagSpec.PNG' alt='eMagSpec'></center>");
+		</script>
+    </body>
+</html>
