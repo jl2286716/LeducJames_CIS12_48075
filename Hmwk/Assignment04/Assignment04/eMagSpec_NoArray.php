@@ -4,7 +4,7 @@
             <?php
                 # Programmer: James Leduc
                 # Date Created: 9/22/2014
-				# Purpose: Output electromagnetic spectrum using a 1-D array to test values
+				# Purpose: Output electromagnetic spectrum
             ?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <title>E-Mag Spec</title>
@@ -12,17 +12,10 @@
         
     <body>
     	<h1><center>ElectroMagnetic Spectrum</center></h1>
-		<h2><center>Using 1D Array</center></h2>
-		<!--
-		<form>
-			<input name="meters" type="text" />Wavelength (Meters)<br />
-			<input name="getWaves" type="submit" />
-        </form>
-		-->
   
         <?php
 			// Calculation variables
-			$radioMax 	= (10e4);		// Radio <= 10^4
+			$radioMax	= (10e4);		// Radio <= 10^4
 			$radioMin 	= (10e-1);		// Radio >= 10^-1
 			$microMin 	= (10e-3);		// 10^-1 > Microwaves >= 10^-3
 			$infraMin 	= (7*(10e-7));	// 10^-3 > Infrared >= 7*10^-7
@@ -30,12 +23,6 @@
 			$ultraMin 	= (10e-8);		// 4*10^-7 > Ultraviolet >= 10^-8
 			$xrayMin 	= (10e-11);		// 10^-8 > X-Ray >= 10^-11
 			$gammaMin 	= (10e-13);		// 10^-11 > Gamma >= 3^-13
-			
-			// Fill Wavelength array with test values
-			$waveArr = array();
-			for($i=-12;$i<=5;$i++){
-				$waveArr[$i+12] = pow(10,$i);
-			}
 			
 			// Start table
 			echo "<center><table width='auto' border='1'>";
@@ -51,19 +38,19 @@
 				echo "<td align='right'>".$j."</td>";
 				echo "<td>10^".($j-14)."</td>";
 				
-				if($waveArr[$j-1] <= $radioMax && $waveArr[$j-1] >= $radioMin){		// Radio Wavelength
+				if(pow(10,$j-13) <= $radioMax && pow(10,$j-13) >= $radioMin){		// Radio Wavelength
 					echo "<th>Radio</th>";
-				}elseif($waveArr[$j-1] < $radioMin && $waveArr[$j-1] >= $microMin){	// Microwave Wavelength
+				}elseif(pow(10,$j-13) < $radioMin && pow(10,$j-13) >= $microMin){	// Microwave Wavelength
 					echo "<th>Microwave</th>";
-				}elseif($waveArr[$j-1] < $microMin && $waveArr[$j-1] >= $infraMin){	// Infrared Wavelength
+				}elseif(pow(10,$j-13) < $microMin && pow(10,$j-13) >= $infraMin){	// Infrared Wavelength
 					echo "<th>Infrared</th>";
-				}elseif($waveArr[$j-1] < $infraMin && $waveArr[$j-1] >= $visiMin){	// Visible Light Wavelength
+				}elseif(pow(10,$j-13) < $infraMin && pow(10,$j-13) >= $visiMin){	// Visible Light Wavelength
 					echo "<th>Visible Light</th>";
-				}elseif($waveArr[$j-1] < $visiMin && $waveArr[$j-1] >= $ultraMin){	// Ultraviolet Wavelength
+				}elseif(pow(10,$j-13) < $visiMin && pow(10,$j-13) >= $ultraMin){	// Ultraviolet Wavelength
 					echo "<th>Ultraviolet</th>";
-				}elseif($waveArr[$j-1] < $ultraMin && $waveArr[$j-1] >= $xrayMin){	// X-Ray Wavelength
+				}elseif(pow(10,$j-13) < $ultraMin && pow(10,$j-13) >= $xrayMin){	// X-Ray Wavelength
 					echo "<th>X-ray</th>";
-				}elseif($waveArr[$j-1] < $xrayMin && $waveArr[$j-1] >= $gammaMin){	// Gamma-Ray Wavelength
+				}elseif(pow(10,$j-13) < $xrayMin && pow(10,$j-13) >= $gammaMin){	// Gamma-Ray Wavelength
 					echo "<th>Gamma-Ray</th>";
 				}
 
