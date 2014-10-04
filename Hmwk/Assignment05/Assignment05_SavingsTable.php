@@ -11,25 +11,25 @@
     </head>
 		<?php
 			//	Define functions
-			function fillArr($save,$depo){
+			function fillArr($year,$range,$save,$depo,$beg){
 				$fill=[];
-				for($i=0;$i<$years;$i++){
+				for($i=0;$i<$year;$i++){
 					$fill[$i]=[];
-					for($j=0;$j<$rateRange+2;$j++){	//	+2 for year column & to include the $endRate
+					for($j=0;$j<$range+2;$j++){	//	+2 for year column & to include the $endRate
 						if($j===0){
 							$fill[$i][0]=$i+1;	//	Fill the first column with year values.
 						}else{
-							$save+=$save*($begRate/100);
+							$save+=$save*($beg/100);
 							$fill[$i][$j]=$save;
 						}
 					}
-					$begRate++;
+					$beg++;
 					$save=$depo;
 				}
 				return $fill;
 			}
-			function dispArr(){
-			
+			function dispArr($vals){
+				$vals = new array();
 			}
 			
 			//	Write code
@@ -45,8 +45,19 @@
 			document.write("<h2>Interest Rate Range: ".$begRate."% to ".$endRate."%</h2>");
 			document.write("<h2>Years: ".$years."</h2>");
 			
+			//	Begin the table
+			document.write("<table>");
+			
+			//	Output table headers
+			document.write("<tr>");
+			document.write("<th>Year</th>");
+			for($c=$begRate;$c<$rateRange;$c++){
+				document.write("<th>".$c."%</th>");
+			}
+			document.write("</tr>");
+			
 			//	Call functions
-			$filled=fillArr($begAmt,$inDep);
+			$filled=fillArr($years,$rateRange,$begAmt,$inDep,$begRate);
 			$table=dispArr($filled);
 			
 			
