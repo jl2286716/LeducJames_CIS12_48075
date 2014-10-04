@@ -10,7 +10,8 @@
             <title>Savings Table</title>
     </head>
 		<?php
-			//	Define functions
+			/*		Define functions		*/
+			//	Fill Array with Calculated Values
 			function fillArr($year,$range,$save,$depo,$beg){
 				$fill=[];
 				for($i=0;$i<$year;$i++){
@@ -28,8 +29,15 @@
 				}
 				return $fill;
 			}
-			function dispArr($vals){
-				$vals = new array();
+			//	Read from the filled array and display into a table.
+			function dispArr($vals,$yr,$rates){
+				for($idx=0;$idx<$yr;$idx++){
+					document.write("<tr>");
+					for($jdx=0;$jdx<$rates+2;$jdx++){
+						document.write("<td>".$vals[$idx][$jdx]."</td>");
+					}
+					document.write("</tr>");
+				}
 			}
 			
 			//	Write code
@@ -58,8 +66,10 @@
 			
 			//	Call functions
 			$filled=fillArr($years,$rateRange,$begAmt,$inDep,$begRate);
-			$table=dispArr($filled);
+			dispArr($filled,$years,$rateRange);
 			
+			//	Close the table
+			document.write("</table>");
 			
 			
 			
