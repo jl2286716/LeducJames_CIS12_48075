@@ -32,11 +32,15 @@
 			//	Read from the filled array and display into a table.
 			function dispArr($vals,$yr,$rates){
 				for($idx=0;$idx<$yr;$idx++){
-					document.write("<tr>");
+					echo("<tr>");
 					for($jdx=0;$jdx<$rates+2;$jdx++){
-						document.write("<td>".$vals[$idx][$jdx]."</td>");
+						if($jdx===0){
+							echo("<td align='right'>".$vals[$idx][$jdx]."</td>");
+						}else{
+							echo("<td align='right'>$".(number_format($vals[$idx][$jdx],2))."</td>");
+						}
 					}
-					document.write("</tr>");
+					echo("</tr>");
 				}
 			}
 			
@@ -48,28 +52,28 @@
 			$endRate=10;
 			$rateRange=$endRate-$begRate;
 			
-			document.write("<h1>Savings Table</h1>");
-			document.write("<h2>Initial Deposit: $".$inDep."</h2>");
-			document.write("<h2>Interest Rate Range: ".$begRate."% to ".$endRate."%</h2>");
-			document.write("<h2>Years: ".$years."</h2>");
+			echo("<h1>Savings Table</h1>");
+			echo("<h2>Initial Deposit: $".$inDep."</h2>");
+			echo("<h2>Interest Rate Range: ".$begRate."% to ".$endRate."%</h2>");
+			echo("<h2>Years: ".$years."</h2>");
 			
 			//	Begin the table
-			document.write("<table>");
+			echo("<table width='auto' border='1'>");
 			
 			//	Output table headers
-			document.write("<tr>");
-			document.write("<th>Year</th>");
-			for($c=$begRate;$c<$rateRange;$c++){
-				document.write("<th>".$c."%</th>");
+			echo("<tr>");
+			echo("<th>Year</th>");
+			for($c=$begRate;$c<($rateRange+6);$c++){
+				echo("<th>".$c."%</th>");
 			}
-			document.write("</tr>");
+			echo("</tr>");
 			
 			//	Call functions
 			$filled=fillArr($years,$rateRange,$begAmt,$inDep,$begRate);
 			dispArr($filled,$years,$rateRange);
 			
 			//	Close the table
-			document.write("</table>");
+			echo("</table>");
 			
 			
 			
