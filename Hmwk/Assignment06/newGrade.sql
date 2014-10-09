@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `test` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `test`;
--- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: test
+-- Host: 127.0.0.1    Database: test
 -- ------------------------------------------------------
--- Server version	5.6.11
+-- Server version	5.6.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -42,6 +42,7 @@ CREATE TABLE `entity_assignments` (
 
 LOCK TABLES `entity_assignments` WRITE;
 /*!40000 ALTER TABLE `entity_assignments` DISABLE KEYS */;
+INSERT INTO `entity_assignments` VALUES (1,'HW1',NULL,NULL,'Homework 1',NULL,NULL),(2,'Q1',NULL,NULL,'Quiz 1',NULL,NULL),(3,'HW2',NULL,NULL,'Homework 2',NULL,NULL),(4,'Q2',NULL,NULL,'Quiz 2',NULL,NULL),(5,'HW3',NULL,NULL,'Homework 3',NULL,NULL),(6,'E1',NULL,NULL,'Exam 1: Midterm',NULL,NULL),(7,'HW4',NULL,NULL,'Homework 4',NULL,NULL),(8,'Q3',NULL,NULL,'Quiz 3',NULL,NULL),(9,'HW5',NULL,NULL,'Homework 5',NULL,NULL),(10,'Q4',NULL,NULL,'Quiz 4',NULL,NULL),(11,'HW6',NULL,NULL,'Homework 6',NULL,NULL),(12,'E2',NULL,NULL,'Exam 2: Final',NULL,NULL);
 /*!40000 ALTER TABLE `entity_assignments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,10 +116,10 @@ CREATE TABLE `entity_instructor` (
   `email_address` varchar(30) DEFAULT NULL,
   `area_code` smallint(5) DEFAULT NULL,
   `phone_number` int(10) DEFAULT NULL,
-  `office_bldg` tinyint(3) DEFAULT NULL,
+  `office_bldg_id` tinyint(3) DEFAULT NULL,
   `office_number` smallint(5) DEFAULT NULL,
-  `department` tinyint(3) DEFAULT NULL,
-  `discipline` tinyint(3) DEFAULT NULL,
+  `department_id` tinyint(3) DEFAULT NULL,
+  `discipline_id` tinyint(3) DEFAULT NULL,
   PRIMARY KEY (`instructor_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -129,7 +130,7 @@ CREATE TABLE `entity_instructor` (
 
 LOCK TABLES `entity_instructor` WRITE;
 /*!40000 ALTER TABLE `entity_instructor` DISABLE KEYS */;
-INSERT INTO `entity_instructor` VALUES (1150258,'Mark','E','Lehr','mark.lehr@rcc.edu',951,2228260,NULL,222,NULL,NULL),(2286716,'James','A','Leduc','jleduc@student.rcc.edu',909,5551234,NULL,123,NULL,NULL),(2656485,'Jane','D','Somebody','yaddayadda@blah.com',714,5554568,NULL,456,NULL,NULL);
+INSERT INTO `entity_instructor` VALUES (1150258,'Mark','E','Lehr','mark.lehr@rcc.edu',951,2228260,NULL,222,NULL,NULL),(1346852,'Scott','A','Blair','scott.blair@rcc.edu',951,5555679,NULL,208,NULL,NULL),(1649875,'Gabrielle','P','Mendoza','gabrielle.mendoza@rcc.edu',951,5559632,NULL,345,NULL,NULL),(2656485,'Jane','D','Somebody','yaddayadda@blah.com',714,5554568,NULL,156,NULL,NULL),(5686452,'Billy','S','Batson','bbat@shazam.com',909,5550562,NULL,325,NULL,NULL);
 /*!40000 ALTER TABLE `entity_instructor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,6 +160,7 @@ CREATE TABLE `entity_student` (
 
 LOCK TABLES `entity_student` WRITE;
 /*!40000 ALTER TABLE `entity_student` DISABLE KEYS */;
+INSERT INTO `entity_student` VALUES (2286716,'James','A','Leduc','jleduc@student.rcc.edu',909,3635025,NULL),(2356897,'Joe','E','Student','jstu@student.rcc.edu',951,5556137,NULL);
 /*!40000 ALTER TABLE `entity_student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +185,7 @@ CREATE TABLE `enum_bldg` (
 
 LOCK TABLES `enum_bldg` WRITE;
 /*!40000 ALTER TABLE `enum_bldg` DISABLE KEYS */;
-INSERT INTO `enum_bldg` VALUES (4,'Business Education','BE'),(12,'Math and Science','MAT/SCI');
+INSERT INTO `enum_bldg` VALUES (3,'Quadrangle','QD'),(4,'Business Education','BE'),(10,'Planetarium','PL'),(12,'Math and Science','MTSC');
 /*!40000 ALTER TABLE `enum_bldg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +209,7 @@ CREATE TABLE `enum_department` (
 
 LOCK TABLES `enum_department` WRITE;
 /*!40000 ALTER TABLE `enum_department` DISABLE KEYS */;
-INSERT INTO `enum_department` VALUES (1,'Business Info Systems'),(2,'English');
+INSERT INTO `enum_department` VALUES (1,'Computer Info Systems'),(2,'English'),(3,'Math'),(4,'Science'),(5,'Humanities');
 /*!40000 ALTER TABLE `enum_department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +222,7 @@ DROP TABLE IF EXISTS `enum_discipline`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `enum_discipline` (
   `disc_id` tinyint(3) NOT NULL,
-  `discipline` varchar(15) DEFAULT NULL,
+  `discipline` varchar(40) DEFAULT NULL,
   `menumonic` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`disc_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -232,6 +234,7 @@ CREATE TABLE `enum_discipline` (
 
 LOCK TABLES `enum_discipline` WRITE;
 /*!40000 ALTER TABLE `enum_discipline` DISABLE KEYS */;
+INSERT INTO `enum_discipline` VALUES (100,'Computer Information Systems','CIS'),(101,'Computer Application and Technology','CAT'),(102,'Math','MAT'),(103,'English','ENG'),(104,'English as a Second Language','ESL');
 /*!40000 ALTER TABLE `enum_discipline` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,4 +347,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-08  9:02:18
+-- Dump completed on 2014-10-08 21:00:33
