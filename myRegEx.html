@@ -63,3 +63,82 @@
 		return true;
 	}
 </script>
+
+<!-- Example on how to use these Regular expressions -->
+<div id="rightMain">
+	<h2>Member Registration Form</h2>
+	<p>
+		<span>*</span>Required information. <span>**</span>Information required for login.
+	</p>
+
+	<form name="memberInfo" id="memberInfo" action="regInfo.html" onsubmit="return validateForm()" method="get">
+
+		<fieldset id="member">
+			<legend>Member Information</legend>
+
+			<label class="blockLabel">
+				First Name<span>*</span>
+				<input type="text" id="firstName" name="firstName" size="39" />
+			</label><br>
+
+			<label class="blockLabel">
+				Last Name<span>*</span>
+				<input type="text" id="lastName" name="lastName" size="39" />
+			</label><br>
+
+			<label class="blockLabel">
+				Username<span>**</span>
+				<input type="text" id="username" name="username" size="40" />
+			</label><br>
+			
+			<label class="blockLabel">
+				Password<span>**</span>
+				<input type="password" id="userPass" name="userPass" size="40" />
+			</label><br>
+			
+			<fieldset id="interests">
+				<legend>Main Interest</legend>
+
+				<label for="comicType">Comic Books</label>
+				<input type="radio" id="comicType" name="interestType" value="comics" />
+
+				<label for="figureType">Action Figures</label>
+				<input type="radio" id="figureType" name="interestType" value="figures" />
+
+				<label for="clixType">HeroClix</label>
+				<input type="radio" id="clixType" name="interestType" value="clix" />
+
+				<label for="otherType">Other</label>
+				<input type="radio" id="otherType" name="interestType" value="other" />
+
+			</fieldset>
+
+		</fieldset>
+		
+		<fieldset id="contact">
+			<legend>Contact Information</legend>
+
+			<label class="blockLabel">
+				Email<span>*</span>
+				<input type="text" id="Email" name="Email" />
+			</label>
+
+			<p>
+				Please include <b>area code</b> for phone numbers.
+			</p>
+
+			<label class="blockLabel">
+				Phone Number
+				<input type="text" id="phone" name="phone" />
+			</label>
+
+		</fieldset>
+
+		<div>
+			<input type="submit" value="Register" />
+			<input type="reset" value="Cancel" />
+		</div>
+
+	</form>
+
+</div>
