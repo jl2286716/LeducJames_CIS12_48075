@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+    
+		<!--
+        	Programmer: James Leduc
+        	Date Created: Nov. 26, 2013
+            Last Modified: Nov. 26, 2013
+		-->
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Please, Login</title>
+		
+		<style type="text/css">
+		</style>
+		
+		<link href="main.css" rel="stylesheet" type="text/css" title="survey_styles" />
+		
+		<script><!--Cookie Functions: SET and GET-->
+			function setCookie(name, value, secondsToLive) {
+				var cookie = name + "=" + encodeURIComponent(value);
+				if (typeof daysToLive === "number") 
+					cookie += "; max-age=" + (daysToLive);
+				document.cookie = cookie;
+			}
+			function getCookies() {
+				var cookies = {};
+				var all = document.cookie;
+				if (all === "")
+					return cookies;
+				var list = all.split("; ");
+				for(var i = 0; i < list.length; i++) {
+					var cookie = list[i];
+					var p = cookie.indexOf("=");
+					var name = cookie.substring(0,p);
+					var value = cookie.substring(p+1);
+					value = decodeURIComponent(value);
+					cookies[name] = value;
+				}
+				return cookies;
+			}
+		</script>
+		
+	</head>
+	
+	<body id="mainBack">
+		<center>
+			<form id="loginForm" name="loginForm" action="home.htm" method="get"><br>
+				<h2 style="color:red">Please, Login!</h2><br><br>
+				<b>username:</b><input type="text" name="username"><br><br>
+				<b>password:</b><input type="password" name="password"><br><br>
+				<input type="submit" name="submit" value="Login" /><br/><br/><br/>
+			</form>
+		</center>
+	
+	</body>
+	
+</html>

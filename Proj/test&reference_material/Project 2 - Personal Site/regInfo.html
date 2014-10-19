@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+    
+		<!--
+        	Programmer: James Leduc
+        	Date Created: Nov. 27, 2013
+            Last Modified: Nov. 29, 2013
+		-->
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Registration Completed</title>
+		
+		<style type="text/css">
+		</style>
+		
+		<link href="main.css" rel="stylesheet" type="text/css" title="survey_styles" />
+		
+		<script><!--Function to Get Form Info from URL-->
+			function getFormInfo(url){
+				var info=url.split("?");
+				var nameValuePairs=info[1].split("&");
+				var obj=new Object();
+				for(var i=0;i<nameValuePairs.length-1;i++){
+					var map=nameValuePairs[i].split("=");
+					var name=map[0];
+					var value=map[1];
+					obj[name]=value;
+				}
+				return obj;
+			}
+		</script>
+		
+		<script><!--Cookie Functions: SET and GET-->
+			function setCookie(name, value, secondsToLive) {
+				var cookie = name + "=" + encodeURIComponent(value);
+				if (typeof daysToLive === "number") 
+					cookie += "; max-age=" + (daysToLive);
+				document.cookie = cookie;
+			}
+			function getCookies() {
+				var cookies = {};
+				var all = document.cookie;
+				if (all === "")
+					return cookies;
+				var list = all.split("; ");
+				for(var i = 0; i < list.length; i++) {
+					var cookie = list[i];
+					var p = cookie.indexOf("=");
+					var name = cookie.substring(0,p);
+					var value = cookie.substring(p+1);
+					value = decodeURIComponent(value);
+					cookies[name] = value;
+				}
+				return cookies;
+			}
+		</script>
+		
+		<script><!--Function to Return to the Home Page-->
+			function backHome(){
+				window.location.assign("home.htm");
+			}
+		</script>
+		
+	</head>
+	
+	<body id="mainBack">
+
+		<script>
+			var $_GET = getFormInfo(location.href);
+			var str = JSON.stringify($_GET);
+			var ttl = 150; //Time To Live in Seconds
+			setCookie("Reg_Info",str,ttl);
+			var cookiesObj=getCookies();
+			
+			document.write("<br><h1>Your registration is complete! Thank you!<h1><br><div style='color:white;font-weight:bold'>");
+			for(var cookie in cookiesObj){
+				var object=JSON.parse(cookiesObj[cookie]);
+
+				for(var property in object){
+					document.write(property+"="+object[property]+"<br>");
+				}
+			}
+			document.write("</div>");
+		</script>
+		
+		<input type="submit" name="submit" value="Return Home" onclick="return backHome()" /><br/><br/><br/>
+	
+	</body>
+	
+</html>

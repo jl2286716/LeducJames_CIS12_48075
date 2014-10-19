@@ -12,7 +12,6 @@ function getFormInfo(url){
 	return obj;
 }
 
-		
 //	Cookie Functions: SET and GET
 function setCookie(name, value, secondsToLive) {
 	var cookie = name + "=" + encodeURIComponent(value);

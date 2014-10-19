@@ -1,0 +1,178 @@
+<html>
+
+	<head>
+		<!--
+			Programmer: James Leduc
+			Date Created: Feb. 7, 2011
+			Last Modified: Nov. 27, 2013
+
+			Filename:           comics.htm
+			Supporting files:	marvel_logo_resize.jpg
+								dc_logo_resize.jpg
+								dark_horse_logo_resize.jpg
+								idw_logo_resize.jpg
+								image_logo_resize.jpg
+								top_cow_logo_resize.jpg
+
+		-->
+
+		<title>Comic Corner</title>
+		<link href="main.css" rel="stylesheet" type="text/css" />
+		
+		<script><!--Spoiler Functions-->
+			function spoilerView(){
+				var tagID = document.getElementById("spoiler");
+					tagID.style.display='block';
+					tagID = document.getElementById("spoilIt");
+					tagID.style.display='none';
+					tagID = document.getElementById("noSpoil");
+					tagID.style.display='block';
+			}
+			function spoilerHide(){
+				var tagID = document.getElementById("spoiler");
+					tagID.style.display='none';
+					tagID = document.getElementById("noSpoil");
+					tagID.style.display='none';
+					tagID = document.getElementById("spoilIt");
+					tagID.style.display='block';
+			}
+			function forumPost(){
+				var post = document.forms["spoilerForm"]["spoilerComments"].value;
+				var from = document.forms["spoilerForm"]["postFrom"].value;
+				var forumID = document.getElementById("contents");
+				var today = new Date();
+				var str1 = forumID.innerHTML;
+				var str2 = ("<br><p><b>"+post+"</b></p><p>By: <b>"+from+"</b></p><p><b><span style='color:red'>"+today+"</span></b></p><br>");
+				var pst = str1.concat(str2);
+				forumID.innerHTML = pst;
+			}
+		</script>
+
+	</head>
+
+	<body id="mainBack">
+		<h1>The Comic Corner</h1>
+		<hr />
+
+		<div id="links">
+			<ul>
+				<li><a href="home.htm">Home</a></li>
+				<li><a href="comics.htm">Comic Corner</a></li>
+				<li><a href="figures.htm">Action Figure Corner</a></li>
+				<li><a href="clix.htm">Heroclix<sup>TM</sup> Corner</a></li>
+			</ul>
+			<hr />
+		</div>
+
+		<div id="forum">
+			<h2>Spoiler's Forum</h2>
+			<h2>Discuss your favorite and the latest comic book stories and arcs, here!</h2>
+
+			<span><i><input id="spoilIt" style="display:block" type="button" value="Spoil It!" onclick="spoilerView()"></i></span>
+			<span><i><input id="noSpoil" style="display:none" type="button" value="Don't Spoil It!" onclick="spoilerHide()"></i></span>
+
+			
+			<form name="spoilerForm" id="spoilerForm" action="javascript:void(0);" onsubmit="return forumPost()">
+
+				<div id="spoiler" style="display:none" >
+					<fieldset>
+						<legend>Spoiler Comments</legend>
+						
+
+						<label for="comments" class="blockLabel">Spoilers!</label>
+						<textarea name="spoilerComments" rows="5" cols="50"></textarea>
+
+						<label class="forumMail">
+							From<span>*</span>
+							<input type="text" id="postFrom" name="postFrom" size="20px" />
+						</label>
+					
+						<div>
+							<input type="submit" value="Submit" />
+							<input type="reset" value="Clear" />
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Spoiler Forum</legend>
+						<label for="comments" class="blockLabel">The Spoiled Forum!</label>
+						<fieldset>
+							<div id="contents">
+							</div>
+						</fieldset>
+					</fieldset>
+				</div>
+			</form>
+
+
+			<h3>Email your comments, ideas, and/or complaints to the site moderator.</h3>
+
+			<p><span>*</span> Required information.</p>
+
+			<form name="commentsForm" id="commentsForm" action="mailto:highrumthebrownrecluse@yahoo.com" method="post" enctype="text/plain">
+
+				<fieldset id="comments">
+					<legend>Member Comments</legend>
+
+					<label for="comments" class="blockLabel">Comments</label>
+					<textarea id="comments" name="comments" rows="5" cols="50"></textarea>
+
+					<label class="forumMail">
+						eMail<span>*</span>
+						<input type="text" id="mail" name="mail" size="10" />
+					</label>
+				
+					<div>
+						<input type="submit" value="Submit" />
+						<input type="reset" value="Cancel" />
+					</div>
+
+				</fieldset>
+
+			</form>
+		  
+		</div>
+
+		<div id="comLinkInfo">
+			<p>Check out these links to some of the <i>best</i> comic book publishers around!</p>
+			<p><span>* More links available for members.</span></p>
+		</div>
+
+		<div id="comicLinks">
+
+			<a target="_blank" href="http://marvel.com/">
+				<img src="Images/marvel_logo_resize.jpg" alt="Marvel Home Page" style="border-width: 0" />
+			</a>
+
+			<a target="_blank" href="http://www.dccomics.com/dcu/">
+				<img src="Images/dc_logo_resize.jpg" alt="DC Comics Home Page" style="border-width: 0" />
+			</a>
+
+			<a target="_blank" href="http://www.darkhorse.com/">
+				<img src="Images/dark_horse_logo_resize.jpg" alt="Dark Horse Comics Home Page" style="border-width: 0" />
+			</a>
+
+			<a target="_blank" href="http://www.idwpublishing.com/">
+				<img src="Images/idw_logo_resize.jpg" alt="IDW Publishing Home Page" style="border-width: 0" />
+			</a>
+
+			<a target="_blank" href="http://www.imagecomics.com/">
+				<img src="Images/image_logo_resize.jpg" alt="Image Comics Home Page" style="border-width: 0" />
+			</a>
+
+			<a target="_blank" href="http://www.topcow.com/">
+				<img src="Images/top_cow_logo_resize.jpg" alt="Top Cow Productions Home Page" style="border-width: 0" />
+			</a>
+
+		</div>
+
+		<hr />
+		<address style="text-align: center">
+			The Collection Corner &#9830;
+			Comic Books &#9830;
+			Action Figures &#9830;
+			HeroClix<sup>TM</sup> &#9830;
+		</address>
+
+	</body>
+
+</html>

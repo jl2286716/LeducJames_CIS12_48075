@@ -26,15 +26,32 @@
 				document.write("<h1>"+prop+"="+$_GET[prop]+"</h1>");
 			}
 			
-			//	Test object manipulation
+			//	Test object manipulation - output the Username
 			document.write("<h1>"+$_GET.uName+"</h1>");
 			
 			var str = JSON.stringify($_GET);
 			var ttl = 150;
 			var userID = ("user_"+$_GET.uName+"_"+$_GET.zip+"_TG");
-			//	Test cName
+			//	Test the User ID was made correctly
 			document.write("<h1>"+userID+"</h1>");
+			
+			//	Set Cookie
 			setCookie(userID,str,ttl);
+			//	Get Cookie
+			var CookObj=getCookies();
+			
+			document.write("<br><h1>Your registration is complete! Thank you!<h1>");
+			document.write("<br><div style='color:red;font-weight:bold'>");
+			document.write("test");
+			for(var cookie in CookObj){
+				var Obj=JSON.parse(CookObj[cookie]);
+
+				for(var property in object){
+					document.write(property+"="+object[property]+"<br>");
+				}
+			}
+			document.write("</div>");
+
 		</script>
 
     </body>

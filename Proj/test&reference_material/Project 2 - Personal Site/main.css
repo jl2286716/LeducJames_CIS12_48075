@@ -1,0 +1,273 @@
+/*
+
+    Programmer: 		James Leduc
+    Date Created: 		Feb. 7, 2011
+    Last Modified: 		Nov. 27, 2013
+
+	Filename: 			main.css
+	Supporting Files: 
+
+*/ 
+
+h1	{
+	text-align:center; 
+	background-color:rgba(0,0,0,0.7); 
+	color:white
+}
+
+p span   	{
+	font-weight:bold;
+	color:white
+}
+
+a  	{
+	text-decoration:none; 
+	color:red
+}
+
+p a:hover     	{
+	color:blue
+}
+
+li a:hover       	{
+	color:blue
+}
+
+a:visited     	{
+	color:red
+}
+
+p a sup  	{
+	font-size:6pt;
+	color:white
+}
+
+h1 sup   	{
+	font-size:10pt
+}
+
+#links ul li	{
+	background-color:rgba(0,0,0,0.7);
+	display:inline; 
+	list-style-type:none; 
+	padding-left:3em;
+	font-weight:bold
+}
+
+#rightMain  	{
+	color:white;
+	width:600px; 
+	background-color:rgba(0,0,0,0.7)
+}
+
+#rightMain span	{
+	color:red; 
+	background-color:rgba(0,0,0,0.7)
+}
+
+#leftMain   	{
+	width:600px; 
+	background-color:rgba(0,0,0,0.7)
+}
+
+#leftMain p	{
+	text-align:center; 
+	background-color:rgba(0,0,0,0.7);
+	color:white
+}
+
+label.blockLabel 	{
+	display:block;
+	margin-left:1cm
+}
+
+label.blockLabel input	{
+	margin-left:1cm
+}
+
+fieldset  	{
+	margin-bottom:10px; 
+	padding:10px
+}
+
+#firstName, #lastName, #screenName	{
+	width:20em
+}
+
+#mail   	{
+	width:25em; 
+	margin-left:30px
+}
+
+#phone	{
+	width:13em
+}
+
+label.blockLabel #phone	{
+	margin-top:13px
+}
+
+#firstName, #lastName	{
+	margin-left:2.1em
+}
+
+#username, #userPass	{
+	margin-left:2em
+}
+
+
+#homePhone 	{
+	margin-left:1px
+}
+
+#cellPhone 	{
+	margin-left:1em
+}
+
+legend  	{
+	color:green;
+	font-weight:bold
+}
+
+#comicLinks a 	{
+	display:inline; 
+	padding-left:1em
+}
+
+body  	{
+	margin:1in; 
+	border-left:1px solid black; 
+	border-right:1px solid black;
+	width:900px
+}
+
+#comLinkInfo p	{
+	font-size:17pt;
+	font-family:sans serif; 
+	font-weight:bold;
+	color:white;
+	background-color:rgba(0,0,0,0.7)
+}
+
+#comLinkInfo p span	{
+	font-size:14pt; 
+	color:red;
+	background-color:rgba(0,0,0,0.7)
+}
+				 
+#forum 	{
+	background-color:rgba(0,0,0,0.7);
+	color:white
+}
+
+#forum p span i 	{
+	color:red; 
+	border:1px dashed red;
+	padding:20px
+}
+
+label.forumMail span	{
+	color:red
+}
+
+label.forumMail input	{
+
+}
+
+#forum span	{
+	color:red;
+	margin-left:2em
+}
+
+#moonPool	{
+	float:right
+}
+
+address	{
+	background-color:black;
+	color:white
+}
+
+#clixInfo	{
+	text-align:center;
+	background-color:rgba(0,0,0,0.7);
+	color:white
+}
+
+#clixInfo sup	{
+	font-size:10pt
+}
+
+#clixTable	{
+	border:5px solid black; 
+	width:800px; 
+	margin-left:45px; 
+	background-color:rgba(0,0,0);
+	color:white
+}
+
+table.HeroClix thead	{
+	background-color:blue; 
+	color:white
+}
+
+table.HeroClix col.setName	{
+	background-color:orange
+}
+
+table.HeroClix col.universe	{
+	background-color:red; 
+	color:white
+}
+
+#clickLink	{
+	color:red; 
+	font-weight:bold
+}
+
+#batmanClix	{
+	float:right
+}
+
+#wolverineClix 	{
+	float:left
+}
+
+#figureContent p	{
+	font-size:30pt; 
+	font-weight:bold; 
+	font-variant:small-caps; 
+	color:red; 
+	background-color:rgba(0,0,0,0.7)
+}
+
+#mainBack	{
+	background:black url(Images/Wallpapers/Forever_Evil.jpg) no-repeat fixed center center;
+	margin-left:auto;
+	margin-right:auto
+}
+
+#memberInfo {
+	color:white
+}
+
+#loginForm	{
+	color:white;
+	background-color:rgba(0,0,0,0.7)
+}
+
+#com, #fig, #hClix	{
+	color:red
+}
+
+#contents	{
+	color:black;
+	background-color:rgba(255,253,208,0.9);
+	margin:0.5in 0.5in 0.5in 0.5in
+}
+
+
+
+
+
+
