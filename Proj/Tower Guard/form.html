@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+		<script src="cookie.js"></script>	<!-- Include JS Libraries -->
+		<link rel="stylesheet" href="styles.css">	<!-- Include Style Sheets -->
+        <title>Tower Guard</title>
+		
+		
+    </head>
+	
+    
+    <body>
+		<h2>GUARDIANS!</h2>
+		<h1>WELCOME TO THE MOVEMENT</h1>
+		</br>
+		<h3>"Recruiting Soldiers!"</h3>
+		<a href="index.html"><button>HOME</button></a>
+		<a href="merch.html"><button>TOWER GEAR</button></a>
+		<a href="oracle.html"><button>THE ORACLE</button></a><!--Contact Us/Sign Up -->
+    	<script>
+			var url = document.location.href;
+			$_GET=getFormInfo(url);
+			//	Test the object
+			for(prop in $_GET){
+				document.write("<h1>"+prop+"="+$_GET[prop]+"</h1>");
+			}
+			
+			//	Test object manipulation
+			document.write("<h1>"+$_GET.uName+"</h1>");
+			
+			var str = JSON.stringify($_GET);
+			var ttl = 150;
+			var userID = ("user_"+$_GET.uName+"_"+$_GET.zip+"_TG");
+			//	Test cName
+			document.write("<h1>"+userID+"</h1>");
+			setCookie(userID,str,ttl);
+		</script>
+
+    </body>
+</html>
