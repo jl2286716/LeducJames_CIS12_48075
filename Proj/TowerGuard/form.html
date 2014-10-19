@@ -5,8 +5,6 @@
 		<script src="cookie.js"></script>	<!-- Include JS Libraries -->
 		<link rel="stylesheet" href="styles.css">	<!-- Include Style Sheets -->
         <title>Tower Guard</title>
-		
-		
     </head>
 	
     
@@ -30,7 +28,7 @@
 			document.write("<h1>"+$_GET.uName+"</h1>");
 			
 			var str = JSON.stringify($_GET);
-			var ttl = 150;
+			var ttl = 6000;
 			var userID = ("user_"+$_GET.uName+"_"+$_GET.zip+"_TG");
 			//	Test the User ID was made correctly
 			document.write("<h1>"+userID+"</h1>");
@@ -41,13 +39,14 @@
 			var CookObj=getCookies();
 			
 			document.write("<br><h1>Your registration is complete! Thank you!<h1>");
+			//	Test cookies
 			document.write("<br><div style='color:red;font-weight:bold'>");
-			document.write("test");
+			document.write("My cookies are not working, must find out why.");
 			for(var cookie in CookObj){
 				var Obj=JSON.parse(CookObj[cookie]);
 
-				for(var property in object){
-					document.write(property+"="+object[property]+"<br>");
+				for(var property in Obj){
+					document.write(property+"="+Obj[property]+"<br>");
 				}
 			}
 			document.write("</div>");

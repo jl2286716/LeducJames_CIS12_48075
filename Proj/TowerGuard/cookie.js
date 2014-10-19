@@ -13,6 +13,7 @@ function getFormInfo(url){
 }
 
 //	Cookie Functions: SET and GET
+/*
 function setCookie(name, value, secondsToLive) {
 	var cookie = name + "=" + encodeURIComponent(value);
 	if (typeof daysToLive === "number") 
@@ -35,3 +36,4 @@ function getCookies() {
 	}
 	return cookies;
 }
+*/
