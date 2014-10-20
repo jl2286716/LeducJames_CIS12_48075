@@ -15,41 +15,41 @@
 		<a href="merch.html"><button>TOWER GEAR</button></a>
 		<a href="cart.html"><button>CART</button></a>
 		<a href="login.html"><button>LOGIN</button></a>
-		<h2>GUARDIANS!</h2>
+		<h2>GUARDIANS REGISTER!</h2>
 		<h1>WELCOME TO THE MOVEMENT</h1>
 		</br>
 		<h3>"Recruiting Soldiers!"</h3>
     	<script>
-			var url = document.location.href;
-			$_GET=getFormInfo(url);
+			var $url = document.location.href;
+			$_GET=getFormInfo($url);
 			//	Test the object
-			for(prop in $_GET){
-				document.write("<h1>"+prop+"="+$_GET[prop]+"</h1>");
+			for($prop in $_GET){
+				document.write("<h1>"+$prop+"="+$_GET[$prop]+"</h1>");
 			}
 			
 			//	Test object manipulation - output the Username
 			document.write("<h1>"+$_GET.uName+"</h1>");
 			
-			var str = JSON.stringify($_GET);
-			var ttl = 6000;
-			var userID = ("user_"+$_GET.uName+"_"+$_GET.zip+"_TG");
+			var $str = JSON.stringify($_GET);
+			var $ttl = 6000;
+			var $userID = ("user_"+$_GET.uName+"_"+$_GET.zip+"_TG");
 			//	Test the User ID was made correctly
 			document.write("<h1>"+userID+"</h1>");
 			
 			//	Set Cookie
-			setCookie(userID,str,ttl);
+			setCookie($userID,$str,$ttl);
 			//	Get Cookie
-			var CookObj=getCookies();
+			var $CookObj=getCookies();
 			
 			document.write("<br><h1>Your registration is complete! Thank you!<h1>");
 			//	Test cookies
 			document.write("<br><div style='color:red;font-weight:bold'>");
 			document.write("My cookies are not working, must find out why.");
-			for(var cookie in CookObj){
-				var Obj=JSON.parse(CookObj[cookie]);
+			for(var $cookie in $CookObj){
+				var $Obj=JSON.parse($CookObj[$cookie]);
 
-				for(var property in Obj){
-					document.write(property+"="+Obj[property]+"<br>");
+				for(var $property in $Obj){
+					document.write($property+"="+$Obj[$property]+"<br>");
 				}
 			}
 			document.write("</div>");
