@@ -1,12 +1,11 @@
 ul{
 	list-style-type: none;
 }
-/* edit background image to stretch downward */
 body { 
 	width: 100%;
 	height: 100%;
-	margin: 1;
-	padding: 1;
+	margin: 5;
+	padding: 5;
 	background-image: url('images/background.jpg');
 	background-color: #000000;
 	background-attachment: scroll;
