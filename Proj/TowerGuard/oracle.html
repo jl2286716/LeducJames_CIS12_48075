@@ -23,35 +23,30 @@
 		
 		<form name="signUp" action="form.html" onsubmit="" method="get">
 			<ul>
-				<li style="decoration:none">
-					First Name: <input type="text" name="fName">
-					Last Name: <input type="text" name="lName">
-				</li>
 				<li>
-					Username: <input type="text" name="uName">
-				</li>
-				<li>
-					Password: <input type="password" name="pass">
-					Verify Password: <input type="password" name="vPass">
-				</li>
-				<li>
-					Street Address: <input type="text" name="street">
-				</li>
-				<li>
-					Apt#: <input type="text" name="apt">
-					P.O. Box: <input type="text" name="poBox">
-				</li>
-				<li>
-					City: <input type="text" name="city">
-					State: <input type="text" name="state" size="2">
-					Zip: <input type="text" name="zip" size="9">
-				</li>
-				<li>
-					Email: <input type="text" name="email">
-				</li>
-				<li>
-					Area Code: <input type="text" name="area" size="3">
-					Phone: <input type="text" name="phone" size="7">
+					<pre>
+						First Name: 
+						<input type="text" name="fName">
+						Last Name: 
+						<input type="text" name="lName">
+						Male: <input type="radio" name="sex" value="male"> &nbsp; Female: <input type="radio" name="sex" value="female">
+						Username: 
+						<input type="text" name="uName">
+						Password: 
+						<input type="password" name="pass">
+						Verify Password: 
+						<input type="password" name="vPass">
+						Street Address: 
+						<input type="text" name="street">
+						Apt: <input type="text" name="apt" size="1"> &nbsp; POB: <input type="text" name="poBox" size="1">
+						City: 
+						<input type="text" name="city">
+						State: &nbsp; Zip: 
+						<input type="text" name="state" size="1" maxlength="2"> &nbsp; <input type="text" name="zip" size="6">
+						Email: 
+						<input type="text" name="email">
+						Phone: <input type="text" name="area" size="1" maxlength="3"> <input type="text" name="phone" size="6" maxlength="7">
+					</pre>
 				</li>
 				<li>
 					<input type="submit" value="Submit">
