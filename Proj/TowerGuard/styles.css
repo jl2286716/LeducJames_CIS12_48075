@@ -1,3 +1,8 @@
 ul{
 	list-style-type: none;
 }
+/* edit background image to stretch downward */
+body { 
+    background: #000000 url('images/background.jpg') no-repeat scroll;
+	background-size: 100%;
+}
