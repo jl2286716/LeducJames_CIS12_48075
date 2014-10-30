@@ -83,7 +83,7 @@
 					}
 					return true;
 				} else {
-					alert("PLEASE, ENTER A VALID STREET NUMBER!");
+					alert("PLEASE, ENTER A VALID STREET NAME!");
 					return false;
 				}
 			}
@@ -95,7 +95,19 @@
 					}
 					return true;
 				} else {
-					alert("PLEASE, ENTER A VALID STREET NUMBER!");
+					alert("PLEASE, ENTER A VALID STREET TYPE (example: St., Ave., Blvd.)!");
+					return false;
+				}
+			}
+			function validate_apt_POBox(){
+				var arr = document.forms["signup"]["aptPOB"].value.match(/^\s*[A-Za-z0-9]*\s*$/g);
+				if ( arr != null) {
+					for ( i = 0; i < arr.length; i++ ) {
+						var result = "arr[" + i + "] = " + arr[i];
+					}
+					return true;
+				} else {
+					alert("PLEASE, ENTER A VALID APARTMENT NUMBER OR P.O. BOX!");
 					return false;
 				}
 			}
@@ -134,7 +146,7 @@
 						<input type="text" name="sType" id="sType" value="St."/>
 					</label><br>
 					<label>Apt. # or P.O. Box:<br>
-						<input type="text" name="aptPOB" id="aptPOB"/>
+						<input type="text" name="aptPOB" id="aptPOB" maxlength="10"/>
 					</label><br>
 					<label>City*:<br>
 						<input type="text" name="city" id="city" value="Anycity"/>
