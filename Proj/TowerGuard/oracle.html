@@ -207,7 +207,10 @@
 				if(!validate_birth())return false;
 				return true;
 			}
-
+			function goGreen(){
+				var tagID = document.getElementById("state");
+					tagID.style.backgroundColor='#00FF00';
+			}
 		</script>
 	</head>
 	<body>
@@ -222,10 +225,11 @@
 		</br>
 		<center><h3>"We're Listening"</h3></center>
 		
-		<form name="signup" id="signup" action="oracle.html" onsubmit="return validate_form()" method="get">
+		<center><form name="signup" id="signup"
+			action="oracle.html" onsubmit="return validate_form()" method="get">
 			<legend><fieldset>
 				<fieldset id="left">
-					<legend>Login Information</legend>
+					<legend>Basic Information</legend>
 					<label>First Name*:<br>	<!-- color:#FF7E00 is a shade of Amber -->
 						<input type="text" name="fName" id="fName" value="Jane"
 							style="background-color:#FF7E00; font-weight:bold"
@@ -251,11 +255,16 @@
 							style="background-color:#FF7E00; font-weight:bold"
 						/>
 					</label><br>
+					<label>Birth Date:<br>
+						<input type="text" name="bDay" id="bDay" value="01-01-1900" maxlength="10"
+							style="background-color:#FF7E00; font-weight:bold"
+						/>
+					</label><br>
 				</fieldset>
-				<fieldset id="left">
+				<fieldset id="right">
 					<legend>Contact Information</legend>
 					<label>Street Number*:<br>
-						<input type="text" name="sNum" id="sNum" value="1234"
+						<input type="text" name="sNum" id="sNum" value="1234" size="5"
 							style="background-color:#FF7E00; font-weight:bold"
 						/>
 					</label><br>
@@ -265,7 +274,7 @@
 						/>
 					</label><br>
 					<label>Street Type*:<br>
-						<input type="text" name="sType" id="sType" value="St."
+						<input type="text" name="sType" id="sType" value="St." size="5"
 							style="background-color:#FF7E00; font-weight:bold"
 						/>
 					</label><br>
@@ -280,44 +289,87 @@
 						/>
 					</label><br>
 					<label>State*:<br><!--use a drop down menu and list to validate-->
-						<input type="text" name="state" id="state" value="CA" maxlength="2"
+						<select type="text" name="state" id="state" value="CA" maxlength="2"
 							style="background-color:#FF7E00; font-weight:bold"
-						/>
+							onclick="goGreen()">
+							<option value="AK">AK</option>
+							<option value="AL">AL</option>
+							<option value="AR">AR</option>
+							<option value="AZ">AZ</option>
+							<option value="CA">CA</option>
+							<option value="CO">CO</option>
+							<option value="CT">CT</option>
+							<option value="DC">DC</option>
+							<option value="DE">DE</option>
+							<option value="FL">FL</option>
+							<option value="GA">GA</option>
+							<option value="HI">HI</option>
+							<option value="IA">IA</option>
+							<option value="ID">ID</option>
+							<option value="IL">IL</option>
+							<option value="IN">IN</option>
+							<option value="KS">KS</option>
+							<option value="KY">KY</option>
+							<option value="LA">LA</option>
+							<option value="MA">MA</option>
+							<option value="MD">MD</option>
+							<option value="ME">ME</option>
+							<option value="MI">MI</option>
+							<option value="MN">MN</option>
+							<option value="MO">MO</option>
+							<option value="MS">MS</option>
+							<option value="MT">MT</option>
+							<option value="NC">NC</option>
+							<option value="ND">ND</option>
+							<option value="NE">NE</option>
+							<option value="NH">NH</option>
+							<option value="NJ">NJ</option>
+							<option value="NM">NM</option>
+							<option value="NV">NV</option>
+							<option value="NY">NY</option>
+							<option value="OH">OH</option>
+							<option value="OK">OK</option>
+							<option value="OR">OR</option>
+							<option value="PA">PA</option>
+							<option value="RI">RI</option>
+							<option value="SC">SC</option>
+							<option value="SD">SD</option>
+							<option value="TN">TN</option>
+							<option value="TX">TX</option>
+							<option value="UT">UT</option>
+							<option value="VA">VA</option>
+							<option value="VT">VT</option>
+							<option value="WA">WA</option>
+							<option value="WI">WI</option>
+							<option value="WV">WV</option>
+							<option value="WY">WY</option>
+						</select>
 					</label><br>
 					<label>Zipcode*:<br>
-						<input type="text" name="zip" id="zip" value="12345" maxlength="10"
+						<input type="text" name="zip" id="zip" value="12345" maxlength="10" size="7"
 							style="background-color:#FF7E00; font-weight:bold"
 						/>
 					</label><br>
 					<label>Area Code*:<br><!--True validation wouldn't allow 555-0100 through 555-0199, #11-, 0##-, or 1##- -->
-						<input type="text" name="area" id="area" value="123" maxlength="3"
+						<input type="text" name="area" id="area" value="123" maxlength="3" size="3"
 							style="background-color:#FF7E00; font-weight:bold"
 						/>
 					</label><br>
 					<label>Phone Number*:<br>
-						<input type="text" name="phone" id="phone" value="123-4567" maxlength="8"
+						<input type="text" name="phone" id="phone" value="123-4567" maxlength="8" size="7"
 							style="background-color:#FF7E00; font-weight:bold"
 						/>
 					</label><br>
 				</fieldset>
-				<fieldset>
-					<legend>Personal Information</legend>
-					<label>Birth Date:<br>
-						<input type="text" name="bDay" id="bDay" value="01-01-1900" maxlength="10"
-							style="background-color:#FF7E00; font-weight:bold"
-						/>
-					</label><br>
-					<label>Sex:<br>
-						Male<input type="radio" name="male" id="male"/>
-						Female<input type="radio" name="female" id="female"/>
-						Undecided<input type="radio" name="undecided" id="undecided"/><!-- make this the default -->
-					</label><br>
-				</fieldset>
-				<pre>&nbsp;</pre>
+				<p>&nbsp;</p>
 				<center><input type="submit" value="Enter the TowerRealm"/>
-				&nbsp;
+				<pre></pre>
 				<input type="reset" value="Return Defaults" /></center>
 			</fieldset></legend>
-		</form>
+		</form></center>
+		<script>
+			document.write("<h1>"+val+"</h1>");
+		</script>
+
 	</body>
 </html>

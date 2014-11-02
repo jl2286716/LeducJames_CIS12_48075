@@ -18,6 +18,13 @@ legend{
 label{
 	font-variant: small-caps
 }
+input{
+	text-align:center
+}
+#signup{
+	background-image:url('images/light.jpg'); 
+	background-position:center
+}
 #left{
 	float:left
 }
