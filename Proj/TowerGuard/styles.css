@@ -21,15 +21,15 @@ label{
 input{
 	text-align:center
 }
+td{
+	text-align:center
+}
 #signup{
 	background-image:url('images/light.jpg'); 
 	background-position:center
 }
 #left{
 	float:left
-}
-#middle{
-
 }
 #right{
 	float:right
