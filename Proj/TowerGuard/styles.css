@@ -11,12 +11,19 @@ body{
 	background-attachment: scroll;
 	background-position: center top;
 }
+legend{
+	font-weight:bold;
+	text-transform:uppercase
+}
+label{
+	font-variant: small-caps
+}
 #left{
-
+	float:left
 }
 #middle{
 
 }
 #right{
-
+	float:right
 }
