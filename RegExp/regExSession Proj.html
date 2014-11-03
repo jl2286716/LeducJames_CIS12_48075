@@ -1,0 +1,54 @@
+Session Nov 3, 2014 JavaScript (ECMAScript) Assignment
+1.	Using HTML, build a basic registration form called "regForm" including the following fields
+		(include both names and IDs; use the same names for consistency):
+		First Name 			name="fName"
+		Last Name			name="lName"
+		Email Address		name="eMail"
+		Password			name="passW"
+		Verify Password		name="vPass"
+2.	Using JS, write 4 regular expressions to validate fName, lName, eMail, and passW.
+3.	Using JS, write 4 field validation functions to include each of your regular expressions.
+4.	Using JS, write 1 password verification function that will make sure that "passW" and "vPass" are the same.
+5.	Using JS, write 1 form validation function that will include calls to the 5 previously create functions.
+6.	Test and troubleshoot your form's functions and field validations until they are fully functional.
+7.	CHALLENGE:	Using your field IDs, change the color of your input boxes reflecting both good and bad data
+				with the built-in 'getElementById()' function and '.style' property.
+
+<!-- Validation Function Templates -->
+<script>
+	function validate_field(){
+		var arr = document.forms["form_name"]["input_name"].value.match(/*full expression here*/);
+		if ( arr != null) {
+			//	change the color of the field if correct
+			var tagID = document.getElementById("input_name_id");
+				tagID.style.backgroundColor='#00FF00'; //	color='#00FF00' is a shade of Lime
+			return true;
+		} else {
+			alert("PLEASE, ENTER A VALID INPUT!");
+			//	change the color of the field if incorrect
+			var tagID = document.getElementById("input_name_id");
+				tagID.style.backgroundColor='#FF0000'; //	color='#FF0000' is Red; color='#FF8C69' is a shade of Salmon
+			return false;
+		}
+	}
+
+	function validate_form(){
+		if(!validate_field())return false;
+		/* add new line for each field validation, be sure the function names are correct */
+		return true;
+	}
+</script>
+
+<!-- Related Form Example -->
+<form name="form_name" id="form_name" action="current_page_name.html" onsubmit="return validate_form()" method="get">
+	<fieldset>
+		<legend>Member Information</legend>
+		<label>Field Label
+			<input type="text" name="input_name" id="input_name_id" />
+		</label><br>
+	</fieldset>
+	<div>
+		<input type="submit" value="Register" />
+		<input type="reset" value="Cancel" />	<!-- restores default values -->
+	</div>
+</form>
