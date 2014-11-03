@@ -1,0 +1,38 @@
+<!-- Validation Function Templates -->
+<script>
+	function validate_field(){
+		var arr = document.forms["form_name"]["input_name"].value.match(/*full expression here*/);
+		if ( arr != null) {
+			//	change the color of the field if correct
+			var tagID = document.getElementById("input_name_id");
+				tagID.style.backgroundColor='#00FF00'; //	color='#00FF00' is a shade of Lime
+			return true;
+		} else {
+			alert("PLEASE, ENTER A VALID INPUT!");
+			//	change the color of the field if incorrect
+			var tagID = document.getElementById("input_name_id");
+				tagID.style.backgroundColor='#FF0000'; //	color='#FF0000' is Red; color='#FF8C69' is a shade of Salmon
+			return false;
+		}
+	}
+
+	function validate_form(){
+		if(!validate_field())return false;
+		/* add new line for each field validation */
+		return true;
+	}
+</script>
+
+<!-- Related Form Example -->
+<form name="form_name" id="form_name" action="page_name.html" onsubmit="return validate_form()" method="get">
+	<fieldset>
+		<legend>Member Information</legend>
+		<label>Field Label
+			<input type="text" id="input_name_id" name="input_name" />
+		</label><br>
+	</fieldset>
+	<div>
+		<input type="submit" value="Register" />
+		<input type="reset" value="Cancel" />	<!-- restores default values -->
+	</div>
+</form>
