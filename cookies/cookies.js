@@ -1,5 +1,5 @@
 //	Validate Form Data
-function validate_field(form,field,regex,id){
+function validate_field(form,field,regex,id){	//	parameters should be removed when embedded
 	var arr = document.forms[form][field].value.match(regex);
 	if ( arr != null) {
 		//	change the color of the field to green if correct
