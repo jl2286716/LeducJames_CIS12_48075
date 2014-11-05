@@ -21,16 +21,19 @@
 				pNum1 = parseFloat(pNum1);
 			var pNum2 = prompt("Enter a power.");
 				pNum2 = parseFloat(pNum2);
-			var powN = Math.pow(pNum1,pNum2);
-			document.write("<p><b>"+pNum1+"</b> to the power of <b>"+pNum2+"</b> is <b>"+powN+"</b>.</p>");
+			if(pNum1==0){
+				document.write("<p><b>"+pNum1+"</b> to the power of <b>"+pNum2+"</b> is <b>"+pNum1+"</b>.</p>");
+			}else{
+				var powN = Math.pow(pNum1,pNum2);
+				document.write("<p><b>"+pNum1+"</b> to the power of <b>"+pNum2+"</b> is <b>"+powN+"</b>.</p>");
+			}
 			
 			var rNum = prompt("Enter a number to be square rooted.");
 				rNum = parseFloat(rNum);
 			if(rNum < 0){
 				rNum *= (-1);
 				var rootN = Math.sqrt(rNum);
-				document.write("<p>A negative squareroot creates an imaginary number; therefore, the squareroot of <b>-"+rNum+"</b> is <b>"+rootN+"i</b>,</p>");
-				document.write("<p>where the 'i' represents the imaginary value (the squareroot of -1).</p>");	
+				document.write("<p>The squareroot of <b>-"+rNum+"</b> is <b>"+rootN+"i</b>,</p>");
 			}else{
 				var rootN = Math.sqrt(rNum);
 				document.write("<p>The squareroot of <b>"+rNum+"</b> is <b>"+rootN+"</b>.</p>");	
