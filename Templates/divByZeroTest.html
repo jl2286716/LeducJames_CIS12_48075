@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>untitled</title>
+		<meta charset="utf-8">
+		<script src=""></script>
+	</head>
+	<body>
+		<script>
+			var dNum1 = prompt("Enter a numerator.");
+				dNum1 = parseFloat(dNum1);	
+			var dNum2 = prompt("Enter a denominator.");
+				dNum2 = parseFloat(dNum2);
+			if(dNum2==0){
+				document.write("<p>You cannot divide by zero!<p>")
+			}else{
+				var divN = dNum1/dNum2;
+				document.write("<p><b>"+dNum1+"</b> divided by <b>"+dNum2+"</b> is <b>"+divN+"</b>.</p>");
+			}
+			var pNum1 = prompt("Enter a base.");
+				pNum1 = parseFloat(pNum1);
+			var pNum2 = prompt("Enter a power.");
+				pNum2 = parseFloat(pNum2);
+			var powN = Math.pow(pNum1,pNum2);
+			document.write("<p><b>"+pNum1+"</b> to the power of <b>"+pNum2+"</b> is <b>"+powN+"</b>.</p>");
+			
+			var rNum = prompt("Enter a number to be square rooted.");
+				rNum = parseFloat(rNum);
+			if(rNum < 0){
+				rNum *= (-1);
+				var rootN = Math.sqrt(rNum);
+				document.write("<p>A negative squareroot creates an imaginary number; therefore, the squareroot of <b>-"+rNum+"</b> is <b>"+rootN+"i</b>,</p>");
+				document.write("<p>where the 'i' represents the imaginary value (the squareroot of -1).</p>");	
+			}else{
+				var rootN = Math.sqrt(rNum);
+				document.write("<p>The squareroot of <b>"+rNum+"</b> is <b>"+rootN+"</b>.</p>");	
+			}
+			
+		//	div0= 0/0;			//	divide by zero error
+		//	pow0=Math.pow(0,0);	//	anything to the power of zero returns a 1, but anything times 0 is 0
+		//	iRoot=Math.sqrt(-1);//	should return an imaginary number (i)
+		
+		</script>
+	</body>
+</html>
