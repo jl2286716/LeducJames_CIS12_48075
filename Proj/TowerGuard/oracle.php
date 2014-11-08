@@ -215,10 +215,28 @@
 	</head>
 	<body>
 		<?php
+			//	Connect to the database:
 			require('mysqli_connect.php');
 			
+			//	Create the query:
 			$q = "INSERT INTO jl2286716_proj_entity_users(First_Name,Last_Name,Email,Password,Birthday,Street_Number,Street_Name,Street_Type,Apartment_POBox,City,State,Zipcode,Area,Phone_Number,Registration_Date)
 				VALUES($fn,$ln,$em,SHA1('$pw'),$bd,$snu,$sna,$sty,$apo,$ci,$st,$zc,$ar,$pn,NOW())";
+				
+			//	Run the query:
+			$r = @mysqli_query($dbc,$q);
+			
+			//	Print verification:
+			if($r){	//	If it ran OK...
+				echo '<h1>Thank you!</h1><p>You are now a registered Guardian!</p><br>';
+			}else{	//	If it didn't run OK...
+				echo '<h1>System Error</h1><p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>';
+				
+				//	Debugging message:
+				echo '<p>'.mysqli_error($dbc).'<br><br>Query: '.$q.'</p>';
+			}
+			
+			//	Close the database connection:
+			mysqli_close($dbc);
 		?>
 	
 	
