@@ -219,7 +219,7 @@
 					var tagID = document.getElementById("phone");
 						tagID.style.backgroundColor='#00FF00';
 					<?php
-						$ph=trim($_POST['phone']);
+						$pn=trim($_POST['phone']);
 					?>
 					return true;
 				} else {
@@ -246,9 +246,12 @@
 				if(!validate_phone())return false;
 				return true;
 			}
-			function goGreen(){
+			function setState(){
 				var tagID = document.getElementById("state");
 					tagID.style.backgroundColor='#00FF00';
+				<?php
+					$st=trim($_POST['state']);
+				?>
 			}
 		</script>
 	</head>
@@ -277,7 +280,6 @@
 			//	Close the database connection:
 			mysqli_close($dbc);
 		?>
-	
 	
 		<center>
 			<a href="index.html"><button>HOME</button></a>
@@ -368,7 +370,7 @@
 						<select type="text" name="state" id="state" maxlength="2"
 							value="<?php if(isset($_POST['state'])) echo $_POST['state']; ?>"
 							style="background-color:#FF7E00; font-weight:bold"
-							onclick="goGreen()">
+							onclick="setState()">
 							<option value="AK">AK</option>
 							<option value="AL">AL</option>
 							<option value="AR">AR</option>
