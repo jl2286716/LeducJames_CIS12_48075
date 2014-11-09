@@ -284,7 +284,7 @@
 		<center>
 			<a href="index.html"><button>HOME</button></a>
 			<a href="crew.html"><button>CREW</button></a>
-			<a href="oracle.html"><button>THE ORACLE</button></a><!--Contact Us/Sign Up -->
+			<a href="oracle.php"><button>THE ORACLE</button></a><!--Contact Us/Sign Up -->
 			<a href="merch.html"><button>TOWER GEAR</button></a>
 			<a href="login.html"><button>LOGIN</button></a>
 		</center>
