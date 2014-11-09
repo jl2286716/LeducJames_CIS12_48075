@@ -1,4 +1,4 @@
-<?php include_once("../includes/header.php"); ?>
+<?php include_once("../includes/signHead.php"); ?>
 <?php
 	//	Connect to the database:
 	//require('mysqli_connect.php');
