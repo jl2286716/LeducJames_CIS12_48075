@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="keywords" content="rock, metal, tower, guard, music" />
+		<meta name="keywords" content="tower, guard, music, rock, metal, death, viking" />
 		<meta name="description" content="" />
 		<script src=""></script>	<!-- Line for libraries -->
 		<link rel="stylesheet" href="../CSS/styles.css">	<!-- Include Style Sheets -->
@@ -246,6 +246,7 @@
 				if(!validate_zip())return false;
 				if(!validate_area())return false;
 				if(!validate_phone())return false;
+				//postInfo();
 				return true;
 			}
 			function setState(){
@@ -255,6 +256,32 @@
 					$st=trim($_POST['state']);
 				?>
 			}
+	//		function postInfo(){
+	//			<?php
+					//	Connect to the database:
+	//				require('mysqli_connect.php');
+					
+					//	Create the query:
+	//				$q = "INSERT INTO jl2286716_proj_entity_users(fName,lName,eMail,passW,bDay,sNum,sName,sType,aptPOB,city,state,zip,area,phone,rDate)
+	//					VALUES($fn,$ln,$em,SHA1('$pw'),$bd,$snu,$sna,$sty,$apo,$ci,$st,$zc,$ac,$pn,NOW())";
+						
+					//	Run the query:
+	//				$r = @mysqli_query($dbc,$q);
+					
+					//	Print verification:
+	//				if($r){	//	If it ran OK...
+	//					echo '<h1>Thank you!</h1><p>You are now a registered Guardian!</p><br>';
+	//				}else{	//	If it didn't run OK...
+	//					echo '<h1>System Error</h1><p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>';
+						
+						//	Debugging message:
+	//					echo '<p>'.mysqli_error($dbc).'<br><br>Query: '.$q.'</p>';
+	//				}
+					
+					//	Close the database connection:
+	//				mysqli_close($dbc);
+	//			?>
+	//		}
 		</script>
 		<script>	//	Other form handling functions:
 			//	Get Form Info from URL Query String
@@ -340,3 +367,6 @@
 			<a href="merch.php"><button>TOWER GEAR</button></a>
 			<a href="login.php"><button>LOGIN</button></a>
 		</center>
+		<script>
+	//		postInfo();
+		</script>
