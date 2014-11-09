@@ -105,14 +105,14 @@
 			}
 
 			// Check Cookie - modify for specific field
-			function checkCookie() {
-				var username=getCookie("username");
-				if (username!="") {
-					alert("Welcome again " + username);
+			function checkCookie(field) {
+				var fieldValue=getCookie(field);
+				if (fieldValue!="") {
+					alert("Welcome again " + fieldValue);
 				}else{
-					username = prompt("Please enter your name:", "");
-					if (username != "" && username != null) {
-						setCookie("username", username, 365);
+					fieldValue = prompt("Please enter your name:", "");
+					if (fieldValue != "" && fieldValue != null) {
+						setCookie(field, fieldValue, 365);
 					}
 				}
 			}

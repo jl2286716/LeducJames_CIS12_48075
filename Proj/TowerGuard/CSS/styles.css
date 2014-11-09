@@ -6,7 +6,7 @@ body{
 	height: 100%;
 	margin: 5;
 	padding: 5;
-	background-image: url('images/background.jpg');
+/*	background-image: url('../images/background.jpg');	*/
 	background-color: #000000;
 	background-attachment: scroll;
 	background-position: center top;
@@ -25,7 +25,7 @@ td{
 	text-align:center
 }
 #signup{
-	background-image:url('images/light.jpg'); 
+	background-image:url('../images/light.jpg'); 
 	background-position:center
 }
 #left{
