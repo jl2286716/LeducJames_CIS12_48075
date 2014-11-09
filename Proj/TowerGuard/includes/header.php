@@ -334,9 +334,9 @@
 	</head>
 	<body>
 		<center>
-			<a href="index.html"><button>HOME</button></a>
-			<a href="crew.html"><button>CREW</button></a>
+			<a href="index.php"><button>HOME</button></a>
+			<a href="crew.php"><button>CREW</button></a>
 			<a href="oracle.php"><button>THE ORACLE</button></a><!--Contact Us/Sign Up -->
-			<a href="merch.html"><button>TOWER GEAR</button></a>
-			<a href="login.html"><button>LOGIN</button></a>
+			<a href="merch.php"><button>TOWER GEAR</button></a>
+			<a href="login.php"><button>LOGIN</button></a>
 		</center>
