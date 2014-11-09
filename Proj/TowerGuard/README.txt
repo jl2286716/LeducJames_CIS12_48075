@@ -1,0 +1,1 @@
+The site is located in the PHP folder (PHP/index.php).

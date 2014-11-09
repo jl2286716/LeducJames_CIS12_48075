@@ -9,9 +9,15 @@
 </script>
 <center><table width='auto' border='1'>
 	<tr>
-		<td><a href=""><img src="images/placeholder.jpg" height="250" width="250"></a></td>
-		<td><a href=""><img src="images/placeholder.jpg" height="250" width="250"></a></td>
-		<td><a href=""><img src="images/placeholder.jpg" height="250" width="250"></a></td>
+		<td><a href="https://soundcloud.com/towerguard">
+			<img src="../images/Cover_Image.png" height="250" width="250">
+		</a></td>
+		<td><a href="">
+			<img src="../images/placeholder.jpg" height="250" width="250">
+		</a></td>
+		<td><a href="">
+			<img src="../images/placeholder.jpg" height="250" width="250">
+		</a></td>
 	</tr>
 	<tr>
 		<td><h3><a href="https://soundcloud.com/towerguard">MUSIC</a></h3></td>
@@ -19,9 +25,15 @@
 		<td><h3><a href="">PATCHES</a></h3></td>
 	</tr>
 	<tr>
-		<td><a href=""><img src="images/placeholder.jpg" height="250" width="250"></a></td>
-		<td><a href=""><img src="images/placeholder.jpg" height="250" width="250"></a></td>
-		<td><a href=""><img src="images/placeholder.jpg" height="250" width="250"></a></td>
+		<td><a href="">
+			<img src="../images/placeholder.jpg" height="250" width="250">
+		</a></td>
+		<td><a href="">
+			<img src="../images/placeholder.jpg" height="250" width="250">
+		</a></td>
+		<td><a href="">
+			<img src="../images/placeholder.jpg" height="250" width="250">
+		</a></td>
 	</tr>
 	<tr>
 		<td><h3><a href="">T-SHIRTS</a></h3></td>
