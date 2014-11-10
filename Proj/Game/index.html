@@ -86,6 +86,24 @@
 				};
 				return player;
 			}
+			function displayStats(player){
+				var str = "<br>";
+				str+=("Name: "+player.name+"<br>");
+				str+=("Current Health: "+player.health+"<br>");
+				str+=("Max Health: "+player.maxH+"<br>");
+				str+=("Defense: "+player.def+"<br>");
+				str+=("Speed: "+player.spd+"<br>");
+				str+=("Power: "+player.pwr+"<br>");
+				str+=("Accuracy: "+player.acc+"<br>");
+				str+=("Critical Chance: "+player.crit+"<br>");
+				str+=("357mm Rounds: "+player.mm357+"<br>");
+				str+=("39mm Rounds: "+player.mm39+"<br>");
+				str+=("9mm Rounds: "+player.mm9+"<br>");
+				str+=("Shotgun Shells: "+player.shell+"<br>");
+				str+=("Quiver Capacity: "+player.quiv+"<br>");
+				str+=("Arrows: "+player.arr+"<br>");
+				document.getElementById("story").innerHTML = str;
+			}
 		</script>
 	</head>
 	<body>
@@ -97,7 +115,7 @@
 			var eqiup = setEquipment("Bare","Bare","Bare","Bare","Bare");
 			
 			//	Display updated stats:
-			
+			displayStats(player);
 
 			//	Equip default gear:
 			var previous = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -119,7 +137,7 @@
 			}
 			
 			//	Display updated stats:
-			
+			displayStats(player);
 			
 			//	Output some story:
 			document.getElementById("story").innerHTML = "You put your slippers on to check out the commotion."
@@ -142,10 +160,13 @@
 			}
 			
 			//	Display updated stats:
-			
+			displayStats(player);
 			
 		</script>
+		<hr>
 		<div id="stats"></div>
+		<hr>
 		<div id="story"></div>
+		<hr>
 	</body>
 </html>
