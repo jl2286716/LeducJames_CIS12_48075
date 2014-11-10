@@ -90,9 +90,62 @@
 	</head>
 	<body>
 		<script>
+			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");
-			setPlayer(pName);
+			var player = setPlayer(pName);
 			alert("Welcome to the end of the world, "+pName+"!");
+			var eqiup = setEquipment("Bare","Bare","Bare","Bare","Bare");
+			
+			//	Display updated stats:
+			
+
+			//	Equip default gear:
+			var previous = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var current = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var found = setGear("Shirt","Armor","Chest",5,5,1,0,0,0,0,0,0,0,0,0,0);
+			player = updatePlayer(player,found,current);
+			previous = current;
+			current = found;
+			if(found.wear=="head"){
+				equip = setEquipment(found.wear,equip.chest,equip.back,equip.hands,equip.feet);
+			}else if(found.wear=="chest"){
+				equip = setEquipment(equip.head,found.wear,equip.back,equip.hands,equip.feet);
+			}else if(found.wear=="back"){
+				equip = setEquipment(equip.head,equip.chest,found.wear,equip.hands,equip.feet);
+			}else if(found.wear=="hands"){
+				equip = setEquipment(equip.head,equip.chest,equip.back,found.wear,equip.feet);
+			}else if(found.wear=="feet"){
+				equip = setEquipment(equip.head,equip.chest,equip.back,equip.hands,found.wear);
+			}
+			
+			//	Display updated stats:
+			
+			
+			//	Output some story:
+			document.getElementById("story").innerHTML = "You put your slippers on to check out the commotion."
+			
+			//	Equip slippers:
+			found = setGear("Slippers","Armor","Feet",5,5,1,-5,0,0,0,0,0,0,0,0,0);
+			player = updatePlayer(player,found,current);
+			previous = current;
+			current = found;
+			if(found.wear=="head"){
+				equip = setEquipment(found.wear,equip.chest,equip.back,equip.hands,equip.feet);
+			}else if(found.wear=="chest"){
+				equip = setEquipment(equip.head,found.wear,equip.back,equip.hands,equip.feet);
+			}else if(found.wear=="back"){
+				equip = setEquipment(equip.head,equip.chest,found.wear,equip.hands,equip.feet);
+			}else if(found.wear=="hands"){
+				equip = setEquipment(equip.head,equip.chest,equip.back,found.wear,equip.feet);
+			}else if(found.wear=="feet"){
+				equip = setEquipment(equip.head,equip.chest,equip.back,equip.hands,found.wear);
+			}
+			
+			//	Display updated stats:
+			
+			
 		</script>
+		<div id="stats"></div>
+		<div id="story"></div>
 	</body>
 </html>
