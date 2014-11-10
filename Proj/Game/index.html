@@ -104,6 +104,15 @@
 				str+=("Arrows: "+player.arr+"<br>");
 				document.getElementById("story").innerHTML = str;
 			}
+			function displayEquip(equip){
+				var str = "<br>";
+				str+=("Head: "+equip.head+"<br>");
+				str+=("Chest: "+equip.chest+"<br>");
+				str+=("Back: "+equip.back+"<br>");
+				str+=("Hands: "+equip.hands+"<br>");
+				str+=("Feet: "+equip.feet+"<br>");
+				document.getElementById("equip").innerHTML = str;
+			}
 		</script>
 	</head>
 	<body>
@@ -116,6 +125,7 @@
 			
 			//	Display updated stats:
 			displayStats(player);
+			displayEquip(equip);
 
 			//	Equip default gear:
 			var previous = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -165,6 +175,8 @@
 		</script>
 		<hr>
 		<div id="stats"></div>
+		<hr>
+		<div id="equip"></div>
 		<hr>
 		<div id="story"></div>
 		<hr>
