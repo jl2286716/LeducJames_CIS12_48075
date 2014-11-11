@@ -93,34 +93,35 @@
 			}
 			function displayStats(player){
 				var str = "";
-				str+=("Name: "+player.name+"<br>");
-				str+=("Current Health: "+player.health+"<br>");
-				str+=("Max Health: "+player.maxH+"<br>");
-				str+=("Defense: "+player.def+"<br>");
-				str+=("Speed: "+player.spd+"<br>");
-				str+=("Power: "+player.pwr+"<br>");
-				str+=("Accuracy: "+player.acc+"<br>");
-				str+=("Critical Chance: "+player.crit+"<br>");
-				str+=("357mm Rounds: "+player.mm357+"<br>");
-				str+=("39mm Rounds: "+player.mm39+"<br>");
-				str+=("9mm Rounds: "+player.mm9+"<br>");
-				str+=("Shotgun Shells: "+player.shell+"<br>");
-				str+=("Quiver Capacity: "+player.quiv+"<br>");
-				str+=("Arrows: "+player.arr+"<br>");
+				str+=("Name: <b>"+player.name+"</b><br>");
+				str+=("Current Health: <b>"+player.health+"</b><br>");
+				str+=("Max Health: <b>"+player.maxH+"</b><br>");
+				str+=("Defense: <b>"+player.def+"</b><br>");
+				str+=("Speed: <b>"+player.spd+"</b><br>");
+				str+=("Power: <b>"+player.pwr+"</b><br>");
+				str+=("Accuracy: <b>"+player.acc+"</b><br>");
+				str+=("Critical Chance: <b>"+player.crit+"</b><br>");
+				str+=("357mm Rounds: <b>"+player.mm357+"</b><br>");
+				str+=("39mm Rounds: <b>"+player.mm39+"</b><br>");
+				str+=("9mm Rounds: <b>"+player.mm9+"</b><br>");
+				str+=("Shotgun Shells: <b>"+player.shell+"</b><br>");
+				str+=("Quiver Capacity: <b>"+player.quiv+"</b><br>");
+				str+=("Arrows: <b>"+player.arr+"</b><br>");
 				document.getElementById("stats").innerHTML = str;
 			}
 			function displayEquip(equip){
 				var str = "";
-				str+=("Head: "+equip.head+"<br>");
-				str+=("Chest: "+equip.chest+"<br>");
-				str+=("Back: "+equip.back+"<br>");
-				str+=("Hands: "+equip.hands+"<br>");
-				str+=("Feet: "+equip.feet+"<br>");
+				str+=("Head: <b>"+equip.head+"</b><br>");
+				str+=("Chest: <b>"+equip.chest+"</b><br>");
+				str+=("Back: <b>"+equip.back+"</b><br>");
+				str+=("Hands: <b>"+equip.hands+"</b><br>");
+				str+=("Feet: <b>"+equip.feet+"</b><br>");
 				document.getElementById("equip").innerHTML = str;
 			}
 		</script>
 	</head>
 	<body>
+		<center><h1 id="header">Introduction</h1></center>
 		<script>
 			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");
@@ -173,11 +174,11 @@
 			//	Output Intro story:
 			alert("For the past few days, there have been news reports of a new global viral pandemic sweeping across the nation...");
 			alert("The time is 9:42 PM on a Sunday night: You are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
-			alert("Reporter: Chaos has erupted in Los Angeles and the surrounding counties! We now go live to our correspondent on the scene!");
-			alert("Correspondent: -shrk-...pandemonium...-shrk-...are attacking other people...-shrk-...dead...-shrk-...rising and...-shrk-AAAAAHHH!!!-shrk-schhh-");
-			alert("Reporter: Oh! Oh my God! Wha... Was that blood that just spla...What?! This just in! The president is issuing a statement. We now go live to the White House.");
-			alert("President: ...remain indoors!-shrk-...of rations and board up all...-shrk-schhh-");
-			alert("Reporter: We seem to have lost the feed and...-yelling in the background-...OH MY GOD!!!-shrk-schhh-");
+			alert('Reporter: "Chaos has erupted in Los Angeles and the surrounding counties! We now go live to our correspondent on the scene!"');
+			alert('Correspondent: "-shrk-...pandemonium...-shrk-...are attacking other people...-shrk-...dead...-shrk-...rising and...-shrk-AAAAAHHH!!!-shrk-schhh-"');
+			alert('Reporter: "Oh! Oh my God! Wha... Was that blood that just spla...What?! This just in! The president is issuing a statement. We now go live to the White House."');
+			alert('President: "...remain indoors!-shrk-...of rations and board up all...-shrk-schhh-"');
+			alert('Reporter: "We seem to have lost the feed and...-yelling in the background-...OH MY GOD!!!-shrk-schhh-"');
 			alert("The television turns to static. You turn to the other channels for further info...Nothing but static.");
 			alert("You pick up your cellphone to check on your family and friends...No service.");
 			alert("You put on a shirt and throw on your slippers and walk into the living room when you hear an explosion in the distance. The windows shake and the power goes out.");
@@ -199,6 +200,36 @@
 			//	Display updated stats:
 			displayStats(player);
 			displayEquip(equip);
+			
+			alert("You hear faint screams accompanied by the neighborhood dogs barking frantically. The screams grow nearer!");
+			
+			document.getElementById("header").innerHTML = "Level 1: Get Out of There!";
+
+			var choice = prompt("Investigate (i) or prepare (p)?");
+			while(choice!='i' || choice!='p'){
+				if(choice=='i'){	//	Investigate
+					alert("You look out the window and see a woman running up the street being chased by two ghoulish-looking men.");
+					choice = prompt("Keep watching (w) or help (h) her?");
+					while(choice!='w' || choice!='h'){
+						if(choice=='w'){	//	Watch
+							alert("A truck swerves into the ghoulish men, flipping and wrecking into the woman before exlopding!");
+							choice = prompt('"WOW!" You decide to search for supplies: Check the entertainment center (e) or the couch (c)?');	//	set the reaction
+						}else if(choice=='h'){	//	Help
+							alert('You grab run out to help the woman, shouting, "Leave her alone!"');
+							alert("Both goulish men turn and head towards you when a truck wrecks into one of them and the woman, flips, and explodes!");
+							choice = prompt("Search (s) for a weapon or run (r) back into the house?");	//	set the reaction
+						}else{
+							alert("Enter 'w' to 'watch' or 'h' to 'help' - letter only!");
+							choice = prompt("Keep watching (w) or help (h) her?");	//	set the reaction
+						}
+					}
+				}else if(choice=='p'){	//	Prepare
+					choice = prompt("You decide to search for supplies: Check the entertainment center (e) or the couch (c)?");	//	set the reaction
+				}else{
+					alert("Enter 'i' for 'investigate' or 'p' for 'prepare' - letter only!");
+					choice = prompt("Investigate (i) or prepare (p)?");	//	set the reaction
+				}
+			}
 			
 		</script>
 	</body>
