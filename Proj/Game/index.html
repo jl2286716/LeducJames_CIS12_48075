@@ -3,6 +3,7 @@
 	<head>
 		<title>Zompocalypse</title>
 		<meta charset="utf-8">
+		<!--link rel="stylesheet" href="styles/styles.css"-->	<!-- Include Style Sheets -->
 		<script src=""></script>
 		<script>
 			function setPlayer(playerName){
@@ -22,8 +23,47 @@
 					shell:0,
 					quiv:0,
 					arr:0
-				};
+					};
 				return p;
+			}
+			function setFoe(n,h,d,s,p){
+				var f = new Object();
+					f = {
+						name:n,
+						health:h,
+						def:d,
+						spd:s,
+						pwr:p
+					};
+				return f;
+			}
+			function displayFoe(foe){
+				var str = "";
+					str+=("Name: <b>"+foe.name+"</b><br>");
+					str+=("Health: <b>"+foe.health+"</b><br>");
+					str+=("Defense: <b>"+foe.def+"</b><br>");
+					str+=("Speed: <b>"+foe.spd+"</b><br>");
+					str+=("Power: <b>"+foe.pwr+"</b><br>");
+					str+=("<button onclick='attack(player,foe)'>ATTACK!</button><br>");
+				document.getElementById("foeN").innerHTML = (foe.name+"'s Stats");
+				document.getElementById("foe").innerHTML = str;
+			}
+			function attack(p,f){
+				//	set player attack strength
+				var	pA = p.pwr-f.def;	//	20-5 = 15
+				//	set foe attack strength
+				var fA = f.pwr-p.def;	//	15-10 = 5
+				//	compare speeds
+				//	set attack intervals
+				//	incorporate accuracy
+				//	update player
+					//	check health
+				//	update foe
+					//	check health
+			}
+			function clearFoe(){
+				document.getElementById("foeN").innerHTML = "";
+				document.getElementById("foe").innerHTML = "";
 			}
 			function setGear(n,t,w,h,mh,d,s,p,a,c,m357,m39,m9,sh,q,ar){
 				var g = new Object();
@@ -44,50 +84,37 @@
 					shell:sh,
 					quiv:q,
 					arr:ar
-				};
+					};
 				return g;
 			}
-			function setEquip(hd,ch,bk,hn,ft){
+			function setEquip(hd,ch,bk,hn,ft,he){	//	add held item
 				var e = new Object();
 					e = {
 					head:hd,
 					chest:ch,
 					back:bk,
 					hands:hn,
-					feet:ft
+					feet:ft,
+					held:he
 				};
 				return e;
 			}
 			function updatePlayer(player,found,current){
-				//var name = player.name;
-				var health = player.health - current.health + found.health;
-				var maxHealth = player.maxH - current.maxH + found.maxH;
-				var defense = player.def - current.def + found.def;
-				var speed = player.spd - current.spd + found.spd;
-				var power = player.pwr - current.pwr + found.pwr;
-				var accuracy = player.acc - current.acc + found.acc;
-				var critChance = player.crit - current.crit + found.crit;
-				var mm357Round = player.mm357 - current.mm357 + found.mm357;
-				var mm39Round = player.mm39 - current.mm39 + found.mm39;
-				var mm9Round = player.mm9 - current.mm9 + found.mm9;
-				var shell = player.shell - current.shell + found.shell;
-				var quiver = player.quiv - current.quiv + found.quiv;
-				var arrows = player.arr - current.arr + found.arr;
 				player = {
 					name:player.name,
-					health:health,
-					maxH:maxHealth,
-					def:defense,
-					spd:speed,
-					pwr:power,
-					acc:accuracy,
-					crit:critChance,
-					mm357:mm357Round,
-					mm39:mm39Round,
-					mm9:mm9Round,
-					shell:shell,
-					quiv:quiver,
-					arr:arrows
+					health:player.health - current.health + found.health,
+					maxH:player.maxH - current.maxH + found.maxH,
+					def:player.def - current.def + found.def,
+					spd:player.spd - current.spd + found.spd,
+					pwr:player.pwr - current.pwr + found.pwr,
+					acc:player.acc - current.acc + found.acc,
+					crit:player.crit - current.crit + found.crit,
+					mm357:player.mm357 - current.mm357 + found.mm357,
+					mm39:player.mm39 - current.mm39 + found.mm39,
+					mm9:player.mm9 - current.mm9 + found.mm9,
+					shell:player.shell - current.shell + found.shell,
+					quiv:player.quiv - current.quiv + found.quiv,
+					arr:player.arr - current.arr + found.arr
 				};
 				return player;
 			}
@@ -99,8 +126,8 @@
 				str+=("Defense: <b>"+player.def+"</b><br>");
 				str+=("Speed: <b>"+player.spd+"</b><br>");
 				str+=("Power: <b>"+player.pwr+"</b><br>");
-				str+=("Accuracy: <b>"+player.acc+"</b><br>");
-				str+=("Critical Chance: <b>"+player.crit+"</b><br>");
+				str+=("Accuracy: <b>"+player.acc+"%</b><br>");
+				str+=("Critical Chance: <b>"+player.crit+"%</b><br>");
 				str+=("357mm Rounds: <b>"+player.mm357+"</b><br>");
 				str+=("39mm Rounds: <b>"+player.mm39+"</b><br>");
 				str+=("9mm Rounds: <b>"+player.mm9+"</b><br>");
@@ -116,11 +143,12 @@
 				str+=("Back: <b>"+equip.back+"</b><br>");
 				str+=("Hands: <b>"+equip.hands+"</b><br>");
 				str+=("Feet: <b>"+equip.feet+"</b><br>");
+				str+=("Held Item: <b>"+equip.held+"</b><br>");
 				document.getElementById("equip").innerHTML = str;
 			}
 		</script>
 	</head>
-	<body>
+	<body background="city.jpg">
 		<center><h1 id="header">Introduction</h1></center>
 		<script>
 			//	Create the player and set default stats:
@@ -129,21 +157,13 @@
 			
 			//	Output stat table:
 			//	Display table headers:
-			document.write("<center><table width='500' border=1><tr><td><h2>"+pName+"'s Stats</h2></td><td><h2>Equipment</h2></td></tr>");
+			document.write("<center><table width='500' border=1><tr><td><h2>"+pName+"'s Stats</h2></td><td><h2 id='foeN'></h2></td><td><h2>Equipment</h2></td></tr>");
 			//	Display table content holders:
-			document.write("<tr><td id='stats'></td><td id='equip' style='vertical-align:text-top'></td></tr></table></center>");
-		
-		//	for(value in player){
-		//		document.write("<h1>"+value+": "+player[value]+"<h1>");
-		//	}
+			document.write("<tr><td id='stats'></td><td id='foe'></td><td id='equip' style='vertical-align:text-top'></td></tr></table></center>");
 		
 			//	Set default player equipment
 			alert("Welcome to the end of the world, "+pName+"!");
-			var equip = setEquip("Bare","Bare","Bare","Bare","Bare");
-			
-		//	for(value in equip){
-		//		document.write("<h1>"+value+": "+equip[value]+"<h1>");
-		//	}
+			var equip = setEquip("Bare","Bare","Bare","Bare","Bare","Empty");
 			
 			//	Display stats and equipment:
 			displayStats(player);
@@ -170,32 +190,43 @@
 			var pFeet = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
 			var cFeet = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
 			var fFeet = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			//	Held objects
+			var pHeld = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var cHeld = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var fHeld = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			
+			//	Create and initialize other variables:
+			var foe = new Object;
 			
 			//	Output Intro story:
 			alert("For the past few days, there have been news reports of a new global viral pandemic sweeping across the nation...");
-			alert("The time is 9:42 PM on a Sunday night: You are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
-			alert('Reporter: "Chaos has erupted in Los Angeles and the surrounding counties! We now go live to our correspondent on the scene!"');
-			alert('Correspondent: "-shrk-...pandemonium...-shrk-...are attacking other people...-shrk-...dead...-shrk-...rising and...-shrk-AAAAAHHH!!!-shrk-schhh-"');
-			alert('Reporter: "Oh! Oh my God! Wha... Was that blood that just spla...What?! This just in! The president is issuing a statement. We now go live to the White House."');
-			alert('President: "...remain indoors!-shrk-...of rations and board up all...-shrk-schhh-"');
-			alert('Reporter: "We seem to have lost the feed and...-yelling in the background-...OH MY GOD!!!-shrk-schhh-"');
-			alert("The television turns to static. You turn to the other channels for further info...Nothing but static.");
-			alert("You pick up your cellphone to check on your family and friends...No service.");
+			alert("The time is 9:42 PM on a Sunday night: \nYou are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
+			alert('Reporter: \n"Chaos has erupted in Los Angeles and the surrounding counties! We now go live to our correspondent on the scene!"');
+			alert('Correspondent: \n"-shrk-...pandemonium...-shrk-...are attacking other people...-shrk-...dead...-shrk-...rising and...-shrk-AAAAAHHH!!!-shrk-schhh-"');
+			alert('Reporter: \n"Oh! Oh my God! Wha... Was that blood that just spla... What?! This just in! The president is issuing a statement. We now go live to the White House."');
+			alert('President: \n"...remain indoors!-shrk-...of rations and board up all...-shrk-schhh-"');
+			alert('Reporter: \n"We seem to have lost the feed and...-yelling in the background-...OH MY GOD!!!-shrk-schhh-"');
+			alert("The television turns to static. You turn to the other channels for further info.../nNothing but static.");
+			alert("You pick up your cellphone to check on your family and friends.../nNo service.");
+			
+			//	Level 1 begins...
+			document.getElementById("header").innerHTML = "Level 1: Get Out of There!";
+
 			alert("You put on a shirt and throw on your slippers and walk into the living room when you hear an explosion in the distance. The windows shake and the power goes out.");
 			
-			//	Equip shirt (chest):
+			//	Equip shirt (chest) & update stats:
 			fChest = setGear("Shirt","Armor","Chest",5,5,1,0,0,0,0,0,0,0,0,0,0);
 			player = updatePlayer(player,fChest,cChest);
 			pChest = cChest;
 			cChest = fChest;
-			equip = setEquip(equip.head,cChest.name,equip.back,equip.hands,equip.feet);
+			equip = setEquip(equip.head,cChest.name,equip.back,equip.hands,equip.feet,equip.held);
 						
-			//	Equip slippers (feet):
+			//	Equip slippers (feet) & update stats:
 			fFeet = setGear("Slippers","Armor","Feet",5,5,1,-5,0,0,0,0,0,0,0,0,0);
 			player = updatePlayer(player,fFeet,cFeet);
 			pFeet = cFeet;
 			cFeet = fFeet;
-			equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,cFeet.name);
+			equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,cFeet.name,equip.held);
 			
 			//	Display updated stats:
 			displayStats(player);
@@ -203,31 +234,86 @@
 			
 			alert("You hear faint screams accompanied by the neighborhood dogs barking frantically. The screams grow nearer!");
 			
-			document.getElementById("header").innerHTML = "Level 1: Get Out of There!";
-
-			var choice = prompt("Investigate (i) or prepare (p)?");
-			while(choice!='i' || choice!='p'){
-				if(choice=='i'){	//	Investigate
-					alert("You look out the window and see a woman running up the street being chased by two ghoulish-looking men.");
+			do{	//	choose: i || p
+				var choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
+			}while(choice!='i' || choice!='p');
+			
+			if(choice=='i'){	//	Investigate (i)
+				alert("You look out the window and see a woman running up the street being chased by two ghoulish-looking men.");
+				
+				do{	//	choose: w || h
 					choice = prompt("Keep watching (w) or help (h) her?");
-					while(choice!='w' || choice!='h'){
-						if(choice=='w'){	//	Watch
-							alert("A truck swerves into the ghoulish men, flipping and wrecking into the woman before exlopding!");
-							choice = prompt('"WOW!" You decide to search for supplies: Check the entertainment center (e) or the couch (c)?');	//	set the reaction
-						}else if(choice=='h'){	//	Help
-							alert('You grab run out to help the woman, shouting, "Leave her alone!"');
-							alert("Both goulish men turn and head towards you when a truck wrecks into one of them and the woman, flips, and explodes!");
-							choice = prompt("Search (s) for a weapon or run (r) back into the house?");	//	set the reaction
-						}else{
-							alert("Enter 'w' to 'watch' or 'h' to 'help' - letter only!");
-							choice = prompt("Keep watching (w) or help (h) her?");	//	set the reaction
-						}
+				}while(choice!='w' || choice!='h');
+				
+				if(choice=='w'){	//	Watch (w)
+					alert("A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!");
+					
+					do{	//	choose e || c - search livingroom
+						choice = prompt('"WOW!" You decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
+					}while(choice!='e' || choice!='c');
+					
+					//	set the reaction
+					if(choice=='e'){	//	Search the Entertainment Center (e)
+						alert("You search the entertainment center...\nYou find the Mag-Lite!");
+						
+						//	Equip Mag-Lite (held) & update stats:
+						fHeld = setGear("Mag-Lite","Item","Held",0,0,0,9,5,10,5,0,0,0,0,0,0);
+						player = updatePlayer(player,fHeld,cHeld);
+						pHeld = cHeld;
+						cHeld = fHeld;
+						equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,equip.feet,cHeld.name);
+						
+					}else if(choice!=='c'){	//	Search the Couch (c)
+						alert("You search the couch...\nYou find the Defender 1300!");
+						
+						//	Equip Defender 1300 (hands) & update stats:
+						fHands = setGear("Defender 1300","Weapon","Hands",0,0,1,5,35,50,80,0,0,0,5,0,0);
+						player = updatePlayer(player,fHands,cHands);
+						pHands = cHands;
+						cHands = fHands;
+						equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
 					}
-				}else if(choice=='p'){	//	Prepare
-					choice = prompt("You decide to search for supplies: Check the entertainment center (e) or the couch (c)?");	//	set the reaction
-				}else{
-					alert("Enter 'i' for 'investigate' or 'p' for 'prepare' - letter only!");
-					choice = prompt("Investigate (i) or prepare (p)?");	//	set the reaction
+					
+					//	check this part out
+					
+				}else if(choice=='h'){	//	Help (h)
+					alert('You grab run out to help the woman, shouting, "Leave her alone!"');
+					alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them and the woman, flips, and explodes!");
+					
+					do{	//	choose s || r
+						choice = prompt("Search (s) for a weapon or run (r) back into the house?");
+					}while(choice!='s' || choice!='r');
+					
+					//	set the reaction
+					if(choice=='s'){
+						alert("You scan the yard...\nYou find a shovel!");
+						
+						//	Equip shovel (hands) & update stats:
+						fHands = setGear("Shovel","Weapon","Hands",0,0,0,2,20,40,75,0,0,0,0,0,0);
+						player = updatePlayer(player,fHands,cHands);
+						pHands = cHands;
+						cHands = fHands;
+						equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+						
+						alert("The ghoulish man attacks!");
+						foe = setFoe("Ghoulish",100,5,30,15);
+						
+					}else if(choice=='r'){
+					
+					}
+				}
+				
+			}else if(choice=='p'){	//	Prepare (p)
+			
+				do{	//	choose e || c - search livingroom
+					choice = prompt("You decide to search for supplies: Check the entertainment center (e) or the couch (c)?");
+				}while(choice!='e' || choice!='c');
+				
+				//	set the reaction
+				if(choice=='e'){
+				
+				}else if(choice=='c'){
+				
 				}
 			}
 			
