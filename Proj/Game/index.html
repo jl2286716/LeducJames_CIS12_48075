@@ -187,12 +187,14 @@
 			player = updatePlayer(player,fChest,cChest);
 			pChest = cChest;
 			cChest = fChest;
+			equip = setEquip(equip.head,cChest.name,equip.back,equip.hands,equip.feet);
 						
 			//	Equip slippers (feet):
 			fFeet = setGear("Slippers","Armor","Feet",5,5,1,-5,0,0,0,0,0,0,0,0,0);
 			player = updatePlayer(player,fFeet,cFeet);
 			pFeet = cFeet;
 			cFeet = fFeet;
+			equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,cFeet.name);
 			
 			//	Display updated stats:
 			displayStats(player);
