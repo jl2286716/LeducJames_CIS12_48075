@@ -6,7 +6,8 @@
 		<script src=""></script>
 		<script>
 			function setPlayer(playerName){
-				var player = {
+				var p = new Object();
+					p = {
 					name:playerName,
 					health:200,
 					maxH:200,
@@ -22,10 +23,11 @@
 					quiv:0,
 					arr:0
 				};
-				return player;
+				return p;
 			}
 			function setGear(n,t,w,h,mh,d,s,p,a,c,m357,m39,m9,sh,q,ar){
-				var gear = {
+				var g = new Object();
+					g = {
 					name:n,
 					type:t,
 					wear:w,
@@ -43,17 +45,18 @@
 					quiv:q,
 					arr:ar
 				};
-				return gear;
+				return g;
 			}
-			function setEquipment(hd,ch,bk,hn,ft){
-				var equipment = {
+			function setEquip(hd,ch,bk,hn,ft){
+				var e = new Object();
+					e = {
 					head:hd,
 					chest:ch,
 					back:bk,
 					hands:hn,
 					feet:ft
 				};
-				return equipment;
+				return e;
 			}
 			function updatePlayer(player,found,current){
 				var health = player.health - current.health + found.health;
@@ -87,7 +90,7 @@
 				return player;
 			}
 			function displayStats(player){
-				var str = "<br>";
+				var str = "";
 				str+=("Name: "+player.name+"<br>");
 				str+=("Current Health: "+player.health+"<br>");
 				str+=("Max Health: "+player.maxH+"<br>");
@@ -102,10 +105,10 @@
 				str+=("Shotgun Shells: "+player.shell+"<br>");
 				str+=("Quiver Capacity: "+player.quiv+"<br>");
 				str+=("Arrows: "+player.arr+"<br>");
-				document.getElementById("story").innerHTML = str;
+				document.getElementById("stats").innerHTML = str;
 			}
 			function displayEquip(equip){
-				var str = "<br>";
+				var str = "";
 				str+=("Head: "+equip.head+"<br>");
 				str+=("Chest: "+equip.chest+"<br>");
 				str+=("Back: "+equip.back+"<br>");
@@ -116,19 +119,35 @@
 		</script>
 	</head>
 	<body>
+		<hr>
+		<div id="stats">1</div>
+		<hr>
+		<div id="equip">2</div>
+		<hr>
+		<div id="story">3</div>
+		<hr>
 		<script>
 			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");
 			var player = setPlayer(pName);
+		//	for(value in player){
+		//		document.write("<h1>"+value+": "+player[value]+"<h1>");
+		//	}
 			alert("Welcome to the end of the world, "+pName+"!");
-			var eqiup = setEquipment("Bare","Bare","Bare","Bare","Bare");
+			var equip = setEquip("Bare","Bare","Bare","Bare","Bare");
+			
+		//	for(value in equip){
+		//		document.write("<h1>"+value+": "+equip[value]+"<h1>");
+		//	}
 			
 			//	Display stats:
 			displayStats(player);
 			displayEquip(equip);
 
+		//	alert("Prepare yourself!");
+			
 			//	Equip default gear:
-			var previous = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+	/*		var previous = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
 			var current = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
 			var found = setGear("Shirt","Armor","Chest",5,5,1,0,0,0,0,0,0,0,0,0,0);
 			player = updatePlayer(player,found,current);
@@ -173,14 +192,7 @@
 			//	Display updated stats:
 			displayStats(player);
 			displayEquip(equip);
-			
+	*/		
 		</script>
-		<hr>
-		<div id="stats"></div>
-		<hr>
-		<div id="equip"></div>
-		<hr>
-		<div id="story"></div>
-		<hr>
 	</body>
 </html>
