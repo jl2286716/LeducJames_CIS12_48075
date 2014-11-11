@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>untitled</title>
+		<title>Zompocalypse</title>
 		<meta charset="utf-8">
 		<script src=""></script>
 		<script>
@@ -59,6 +59,7 @@
 				return e;
 			}
 			function updatePlayer(player,found,current){
+				//var name = player.name;
 				var health = player.health - current.health + found.health;
 				var maxHealth = player.maxH - current.maxH + found.maxH;
 				var defense = player.def - current.def + found.def;
@@ -73,6 +74,7 @@
 				var quiver = player.quiv - current.quiv + found.quiv;
 				var arrows = player.arr - current.arr + found.arr;
 				player = {
+					name:player.name,
 					health:health,
 					maxH:maxHealth,
 					def:defense,
@@ -119,20 +121,22 @@
 		</script>
 	</head>
 	<body>
-		<hr>
-		<div id="stats">1</div>
-		<hr>
-		<div id="equip">2</div>
-		<hr>
-		<div id="story">3</div>
-		<hr>
 		<script>
 			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");
 			var player = setPlayer(pName);
+			
+			//	Output stat table:
+			//	Display table headers:
+			document.write("<center><table width='500' border=1><tr><td><h2>"+pName+"'s Stats</h2></td><td><h2>Equipment</h2></td></tr>");
+			//	Display table content holders:
+			document.write("<tr><td id='stats'></td><td id='equip' style='vertical-align:text-top'></td></tr></table></center>");
+		
 		//	for(value in player){
 		//		document.write("<h1>"+value+": "+player[value]+"<h1>");
 		//	}
+		
+			//	Set default player equipment
 			alert("Welcome to the end of the world, "+pName+"!");
 			var equip = setEquip("Bare","Bare","Bare","Bare","Bare");
 			
@@ -140,59 +144,60 @@
 		//		document.write("<h1>"+value+": "+equip[value]+"<h1>");
 		//	}
 			
-			//	Display stats:
+			//	Display stats and equipment:
 			displayStats(player);
 			displayEquip(equip);
 
-		//	alert("Prepare yourself!");
+			//	Create & initialize gear variables (previous, current, found):
+			//	Head objects:
+			var pHead = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var cHead = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var fHead = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			//	Chest objects:
+			var pChest = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var cChest = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var fChest = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			//	Back objects:
+			var pBack = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var cBack = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var fBack = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			//	Hands objects
+			var pHands = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var cHands = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var fHands = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			//	Feet objects
+			var pFeet = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var cFeet = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			var fFeet = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
 			
-			//	Equip default gear:
-	/*		var previous = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
-			var current = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
-			var found = setGear("Shirt","Armor","Chest",5,5,1,0,0,0,0,0,0,0,0,0,0);
-			player = updatePlayer(player,found,current);
-			previous = current;
-			current = found;
-			if(found.wear=="head"){
-				equip = setEquipment(found.wear,equip.chest,equip.back,equip.hands,equip.feet);
-			}else if(found.wear=="chest"){
-				equip = setEquipment(equip.head,found.wear,equip.back,equip.hands,equip.feet);
-			}else if(found.wear=="back"){
-				equip = setEquipment(equip.head,equip.chest,found.wear,equip.hands,equip.feet);
-			}else if(found.wear=="hands"){
-				equip = setEquipment(equip.head,equip.chest,equip.back,found.wear,equip.feet);
-			}else if(found.wear=="feet"){
-				equip = setEquipment(equip.head,equip.chest,equip.back,equip.hands,found.wear);
-			}
+			//	Output Intro story:
+			alert("For the past few days, there have been news reports of a new global viral pandemic sweeping across the nation...");
+			alert("The time is 9:42 PM on a Sunday night: You are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
+			alert("Reporter: Chaos has erupted in Los Angeles and the surrounding counties! We now go live to our correspondent on the scene!");
+			alert("Correspondent: -shrk-...pandemonium...-shrk-...are attacking other people...-shrk-...dead...-shrk-...rising and...-shrk-AAAAAHHH!!!-shrk-schhh-");
+			alert("Reporter: Oh! Oh my God! Wha... Was that blood that just spla...What?! This just in! The president is issuing a statement. We now go live to the White House.");
+			alert("President: ...remain indoors!-shrk-...of rations and board up all...-shrk-schhh-");
+			alert("Reporter: We seem to have lost the feed and...-yelling in the background-...OH MY GOD!!!-shrk-schhh-");
+			alert("The television turns to static. You turn to the other channels for further info...Nothing but static.");
+			alert("You pick up your cellphone to check on your family and friends...No service.");
+			alert("You put on a shirt and throw on your slippers and walk into the living room when you hear an explosion in the distance. The windows shake and the power goes out.");
+			
+			//	Equip shirt (chest):
+			fChest = setGear("Shirt","Armor","Chest",5,5,1,0,0,0,0,0,0,0,0,0,0);
+			player = updatePlayer(player,fChest,cChest);
+			pChest = cChest;
+			cChest = fChest;
+						
+			//	Equip slippers (feet):
+			fFeet = setGear("Slippers","Armor","Feet",5,5,1,-5,0,0,0,0,0,0,0,0,0);
+			player = updatePlayer(player,fFeet,cFeet);
+			pFeet = cFeet;
+			cFeet = fFeet;
 			
 			//	Display updated stats:
 			displayStats(player);
 			displayEquip(equip);
 			
-			//	Output some story:
-			document.getElementById("story").innerHTML = "You put your slippers on to check out the commotion."
-			
-			//	Equip slippers:
-			found = setGear("Slippers","Armor","Feet",5,5,1,-5,0,0,0,0,0,0,0,0,0);
-			player = updatePlayer(player,found,current);
-			previous = current;
-			current = found;
-			if(found.wear=="head"){
-				equip = setEquipment(found.wear,equip.chest,equip.back,equip.hands,equip.feet);
-			}else if(found.wear=="chest"){
-				equip = setEquipment(equip.head,found.wear,equip.back,equip.hands,equip.feet);
-			}else if(found.wear=="back"){
-				equip = setEquipment(equip.head,equip.chest,found.wear,equip.hands,equip.feet);
-			}else if(found.wear=="hands"){
-				equip = setEquipment(equip.head,equip.chest,equip.back,found.wear,equip.feet);
-			}else if(found.wear=="feet"){
-				equip = setEquipment(equip.head,equip.chest,equip.back,equip.hands,found.wear);
-			}
-			
-			//	Display updated stats:
-			displayStats(player);
-			displayEquip(equip);
-	*/		
 		</script>
 	</body>
 </html>
