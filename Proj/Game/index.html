@@ -37,7 +37,8 @@
 					};
 				return f;
 			}
-			function displayFoe(foe){
+			//	might need to pass everything with php and/or cookies:
+			function displayFoe(foe){	//	might need to change foe display and attack button
 				var str = "";
 					str+=("Name: <b>"+foe.name+"</b><br>");
 					str+=("Health: <b>"+foe.health+"</b><br>");
@@ -48,18 +49,38 @@
 				document.getElementById("foeN").innerHTML = (foe.name+"'s Stats");
 				document.getElementById("foe").innerHTML = str;
 			}
-			function attack(p,f){
-				//	set player attack strength
-				var	pA = p.pwr-f.def;	//	20-5 = 15
-				//	set foe attack strength
-				var fA = f.pwr-p.def;	//	15-10 = 5
+			function attack(p,f){		//	problem returning player updates
+				var	pA = p.pwr-f.def;	//	set player attack strength
+				var fA = f.pwr-p.def;	//	set foe attack strength
+				var turn = 1;			//	set turn counter
+				
 				//	compare speeds
-				//	set attack intervals
-				//	incorporate accuracy
-				//	update player
-					//	check health
-				//	update foe
-					//	check health
+				do{
+					if((f.spd)%turn) == 0){	//	Player Attacks
+						if((p.acc)<=(Math.floor((Math.floor()*100)+1))){	//	Calculate Accuracy
+							f.health-=pA;
+						}
+					}
+					if((p.spd)%turn) == 0){	//	Foe Attacks
+						if(fA<2){
+							p.health--;
+						}else{
+							p.health-=fA;
+						}
+					}
+					turn++;
+					if((f.health)<=0){
+						alert("The "+f.name+" is dead!");
+						clearFoe();
+						break;
+					}
+					if((p.health)<=0){	//	End Game
+						alert(p.name+", you are dead!");
+						exit();
+					}
+				}while((p.health)>0 && (f.health)>0);
+				
+				return p;
 			}
 			function clearFoe(){
 				document.getElementById("foeN").innerHTML = "";
@@ -87,7 +108,7 @@
 					};
 				return g;
 			}
-			function setEquip(hd,ch,bk,hn,ft,he){	//	add held item
+			function setEquip(hd,ch,bk,hn,ft,he){
 				var e = new Object();
 					e = {
 					head:hd,
