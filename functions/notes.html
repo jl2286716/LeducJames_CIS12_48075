@@ -1,0 +1,48 @@
+<!-- Accessing Objects -->
+<script>
+	//	Declare the object in JavaScript:
+	var ObjectName = new Object();
+	
+	//	Fill the object in JavaScript:
+	ObjectName = {
+		name1:value1,
+		name2:value2,
+		...
+		nameN:valueN
+	};
+	
+	//	Displaying object contents with a FOR/IN Loop in JavaScript:
+	for(val in ObjectName){
+		document.write("<h1>"+val+": "+ObjectName[val]+"</h1>");
+	}
+</script>
+<?php
+	//	Declare and set the class object in PHP:
+	class ClassName{
+		//	Create public or private properties (names):
+		public $name1;
+		public $name2;
+		...
+		public $nameN;
+		
+		//	Create the constructor and set the parameters (values):
+		public function __construct($value1, $value2, ..., $valueN){
+			$this->name1=$value1;
+			$this->name2=$value2;
+			...
+			$this->nameN=$valueN;
+		}
+	}
+
+	//	Instantiate the class and initialize the parameters (vals):
+	$ClassVarName = new ClassName('val1', 'val2', ..., 'valN');
+	
+	//	Echo out a parameter (val):
+	echo $ClassVarName -> name1;
+	
+	//	This might only be for arrays, needs further investigation...
+	//	Displaying object contents with a FOR/EACH Loop in PHP:
+	for($val as $ClassVarName){
+		echo ("<h1>".$val.": ".$ClassVarName[$val]."</h1>");
+	}
+?>
