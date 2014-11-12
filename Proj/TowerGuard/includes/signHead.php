@@ -252,9 +252,9 @@
 			function setState(){
 				var tagID = document.getElementById("state");
 					tagID.style.backgroundColor='#00FF00';
-				<?php
-					$st=trim($_POST['state']);
-				?>
+			//	<?php
+			//		$st=trim($_POST['state']);
+			//	?>
 			}
 			function postInfo(){
 				<?php

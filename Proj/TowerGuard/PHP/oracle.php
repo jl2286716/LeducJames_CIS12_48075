@@ -40,7 +40,7 @@
 				/>
 			</label><br>
 			<label>Birth Date:<br>
-				<input type="text" name="bDay" id="bDay" value="01-01-1900" maxlength="10"
+				<input type="text" name="bDay" id="bDay" maxlength="10"
 					value="<?php if(isset($_POST['bDay'])) echo $_POST['bDay']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>
