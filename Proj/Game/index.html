@@ -8,6 +8,7 @@
 		<!--link rel="stylesheet" href="styles/styles.css"-->	<!-- Include Style Sheets -->
 		<script src=""></script>
 		<script>
+			//	Sets:
 			function setPlayer(playerName){
 				var p = new Object();
 					p = {
@@ -38,55 +39,6 @@
 						pwr:p
 					};
 				return f;
-			}
-			//	might need to pass everything with php and/or cookies:
-			function displayFoe(foe){	//	might need to change foe display and attack button
-				var str = "";
-					str+=("Name: <b>"+foe.name+"</b><br>");
-					str+=("Health: <b>"+foe.health+"</b><br>");
-					str+=("Defense: <b>"+foe.def+"</b><br>");
-					str+=("Speed: <b>"+foe.spd+"</b><br>");
-					str+=("Power: <b>"+foe.pwr+"</b><br>");
-					str+=("<button onclick='attack(player,foe)'>ATTACK!</button><br>");
-				document.getElementById("foeN").innerHTML = (foe.name+"'s Stats");
-				document.getElementById("foe").innerHTML = str;
-			}
-			function attack(p,f){		//	problem returning player updates
-				var	pA = p.pwr-f.def;	//	set player attack strength
-				var fA = f.pwr-p.def;	//	set foe attack strength
-				var turn = 1;			//	set turn counter
-				
-				//	compare speeds
-				do{
-					if((f.spd)%turn) == 0){	//	Player Attacks
-						if((p.acc)<=(Math.floor((Math.floor()*100)+1))){	//	Calculate Accuracy
-							f.health-=pA;
-						}
-					}
-					if((p.spd)%turn) == 0){	//	Foe Attacks
-						if(fA<2){
-							p.health--;
-						}else{
-							p.health-=fA;
-						}
-					}
-					turn++;
-					if((f.health)<=0){
-						alert("The "+f.name+" is dead!");
-						clearFoe();
-						break;
-					}
-					if((p.health)<=0){	//	End Game
-						alert(p.name+", you are dead!");
-						exit();
-					}
-				}while((p.health)>0 && (f.health)>0);
-				
-				return p;
-			}
-			function clearFoe(){
-				document.getElementById("foeN").innerHTML = "";
-				document.getElementById("foe").innerHTML = "";
 			}
 			function setGear(n,t,w,h,mh,d,s,p,a,c,m357,m39,m9,sh,q,ar){
 				var g = new Object();
@@ -122,25 +74,8 @@
 				};
 				return e;
 			}
-			function updatePlayer(player,found,current){
-				player = {
-					name:player.name,
-					health:player.health - current.health + found.health,
-					maxH:player.maxH - current.maxH + found.maxH,
-					def:player.def - current.def + found.def,
-					spd:player.spd - current.spd + found.spd,
-					pwr:player.pwr - current.pwr + found.pwr,
-					acc:player.acc - current.acc + found.acc,
-					crit:player.crit - current.crit + found.crit,
-					mm357:player.mm357 - current.mm357 + found.mm357,
-					mm39:player.mm39 - current.mm39 + found.mm39,
-					mm9:player.mm9 - current.mm9 + found.mm9,
-					shell:player.shell - current.shell + found.shell,
-					quiv:player.quiv - current.quiv + found.quiv,
-					arr:player.arr - current.arr + found.arr
-				};
-				return player;
-			}
+			
+			//	Displays:
 			function displayStats(player){
 				var str = "";
 				str+=("Name: <b>"+player.name+"</b><br>");
@@ -168,6 +103,77 @@
 				str+=("Feet: <b>"+equip.feet+"</b><br>");
 				str+=("Held Item: <b>"+equip.held+"</b><br>");
 				document.getElementById("equip").innerHTML = str;
+			}
+			function displayFoe(foe){	//	might need to change foe display and attack button
+				var str = "";
+					str+=("Name: <b>"+foe.name+"</b><br>");
+					str+=("Health: <b>"+foe.health+"</b><br>");
+					str+=("Defense: <b>"+foe.def+"</b><br>");
+					str+=("Speed: <b>"+foe.spd+"</b><br>");
+					str+=("Power: <b>"+foe.pwr+"</b><br>");
+				document.getElementById("foeN").innerHTML = (foe.name+"'s Stats");
+				document.getElementById("foe").innerHTML = str;
+			}
+			
+			//	Updates:
+			function updatePlayer(player,found,current){
+				player = {
+					name:player.name,
+					health:player.health - current.health + found.health,
+					maxH:player.maxH - current.maxH + found.maxH,
+					def:player.def - current.def + found.def,
+					spd:player.spd - current.spd + found.spd,
+					pwr:player.pwr - current.pwr + found.pwr,
+					acc:player.acc - current.acc + found.acc,
+					crit:player.crit - current.crit + found.crit,
+					mm357:player.mm357 - current.mm357 + found.mm357,
+					mm39:player.mm39 - current.mm39 + found.mm39,
+					mm9:player.mm9 - current.mm9 + found.mm9,
+					shell:player.shell - current.shell + found.shell,
+					quiv:player.quiv - current.quiv + found.quiv,
+					arr:player.arr - current.arr + found.arr
+				};
+				return player;
+			}
+			function clearFoe(){
+				document.getElementById("foeN").innerHTML = "";
+				document.getElementById("foe").innerHTML = "";
+			}
+			
+			//	Attacking:
+			function attack(p,f,e){
+				var	pA = p.pwr-f.def;	//	set player attack strength
+				var fA = f.pwr-p.def;	//	set foe attack strength
+				var turn = 1;			//	set turn counter
+				
+				//	compare speeds; calculate accuracy; consider ammo; attack; update player and foe; check healths; prompt after each turn; 
+				do{
+					if((f.spd)%turn) == 0){	//	Player Attacks
+						if((p.acc)<=(Math.floor((Math.floor()*100)+1))){	//	Calculate Accuracy
+							//	Check Ammo
+							f.health-=pA;
+						}
+					}
+					if((p.spd)%turn) == 0){	//	Foe Attacks
+						if(fA<2){
+							p.health--;
+						}else{
+							p.health-=fA;
+						}
+					}
+					turn++;
+					if((f.health)<=0){
+						alert("The "+f.name+" is dead!");
+						clearFoe();
+						break;
+					}
+					if((p.health)<=0){	//	End Game
+						alert(p.name+", you are dead!");
+						exit();
+					}
+				}while((p.health)>0 && (f.health)>0);
+				
+				return p;
 			}
 		</script>
 	</head>
@@ -320,6 +326,7 @@
 						
 						alert("The ghoulish man attacks!");
 						foe = setFoe("Ghoulish",100,5,30,15);
+						//	attack here
 						
 					}else if(choice=='r'){
 					
