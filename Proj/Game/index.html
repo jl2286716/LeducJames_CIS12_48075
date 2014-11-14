@@ -140,17 +140,21 @@
 			}
 			
 			//	Attacking: - 'attack' function is broken
-	/*		function attack(p,f,e){
+/*	*/		function attack(p,f,e){
 				var	pA = p.pwr-f.def;	//	set player attack strength
 				var fA = f.pwr-p.def;	//	set foe attack strength
 				var turn = 1;			//	set turn counter
+				var pSpd = f.spd;		//	set player attack speed
+				var fSpd = p.spd;		//	set foe attack speed
+				var pAcc = p.acc;		//	set player accuracy
 				var hit;				//	create hit variable
 				
 				//	compare speeds; calculate accuracy; consider ammo; consider crits; attack; update player and foe; check healths; prompt after each turn; 
 				do{
 					//	Player Attacks
-					if((f.spd)%turn) == 0){	//	Calculate Speed
-						if((p.acc)<=(Math.floor((Math.random()*100)+1))){	//	Calculate Accuracy
+					if((pSpd%turn) == 0){	//	Calculate Speed
+						var randAcc = Math.floor((Math.random()*100)+1);
+						if(pAcc<=randAcc){	//	Calculate Accuracy
 							//	Check Ammo
 							//	Check for Defender 1300
 							if(e.hands=="Defender 1300"){
@@ -229,7 +233,7 @@
 						}
 					}
 					//	Foe Attacks
-					if((p.spd)%turn) == 0){	//	Calculate Speed
+					if((fSpd%turn) == 0){	//	Calculate Speed
 						if(fA<2){
 							p.health--;
 						}else{
@@ -248,7 +252,7 @@
 					//	Check Player's Health
 					if((p.health)<=0){
 						alert(p.name+", you are DEAD!");
-						exit();	//	End Game
+						exit();		//	End Game
 					}
 				}while((p.health)>0 && (f.health)>0);
 				
