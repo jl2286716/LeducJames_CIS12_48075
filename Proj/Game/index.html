@@ -1,5 +1,4 @@
-<!--NOTE: re-encode as PHP and embed PHP into onclick event in button to solve problem -->
-<!-- BETTER NOTE: remove the button; instead, alert box out each turn within their turns prompting (within alert box, not prompt box) for the user to press 'Okay' button on alert box as the attack button -->
+<!--NOTE: don't forget to consider the crit hits for the 'attack' function -->
 <!doctype html>
 <html lang="en">
 	<head>
@@ -147,7 +146,7 @@
 				var turn = 1;			//	set turn counter
 				var hit;				//	create hit variable
 				
-				//	compare speeds; calculate accuracy; consider ammo; attack; update player and foe; check healths; prompt after each turn; 
+				//	compare speeds; calculate accuracy; consider ammo; consider crits; attack; update player and foe; check healths; prompt after each turn; 
 				do{
 					//	Player Attacks
 					if((f.spd)%turn) == 0){	//	Calculate Speed
@@ -323,7 +322,7 @@
 			alert("For the past few days, there have been news reports of a new global viral pandemic sweeping across the nation...");
 			alert("The time is 9:42 PM on a Sunday night: \nYou are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
 			alert('Reporter: \n"Chaos has erupted in Los Angeles and the surrounding counties!\nWe now go live to our correspondent on the scene!"');
-			alert('Correspondent: \n-shrk-\n"...pandemonium..."\n-shrk-\n"...are attacking other people..."\n-shrk-\n"...dead..."\n-shrk-\n"...rising and..."\n-shrk-\n"AAAAAHHH!!!"\n-shrk-schhh');
+			alert('Correspondent: \n-shrk-\n"...pandemonium..."\n-shrk-\n"...are attacking other people..."\n-shrk-\n"...dead..."\n-shrk-\n"...rising and..."\n-shrk-\n"AAAAAHHH!!!"\n-shrk-schhh-');
 			alert('Reporter: \n"Oh! Oh my God! Wha... Was that blood that just spla...\nWhat?! This just in! The president is issuing a statement.\nWe now go live to the White House."');
 			alert('President: \n"...remain indoors!"\n-shrk-\n"...of rations and board up all..."\n-shrk-schhh-');
 			alert('Reporter: \n"We seem to have lost the feed and..."\n-yelling in the background-\n"...OH MY GOD!!!"\n-shrk-schhh-');
@@ -434,36 +433,53 @@
 						alert('You run into the kitchen.\nSomeone starts pounding on the front door again!\n"Yeah, yeah! I\'m not falling for that again!"');
 						
 						do{
-							choice=prompt("Search the cabinet (c), drawer (d), or sink (s)?");
-						}while(choice!='c' && choice!='d' && choice!='s');
+							choice=prompt("Search the cabinet (c) or drawer (d)?");
+						}while(choice!='c' && choice!='d');
 						
-						if(choice=='c'){
-							alert("You search the cabinet...\nYou find the Defender 1300!");
+						if(choice=='c'){	//	Search the cabinet (c)
+							alert("You search the cabinet...\nYou find the truck key!");
 							do{
-								choice = prompt("Do you want to grab the Defender 1300?\nYes (y) or no (n)?");
+								choice = prompt("Do you want to grab the truck key?\nYes (y) or no (n)?");
 							}while(choice!='y' && choice!='n');
 							
 							if(choice=='y'){
-								//	Equip Defender 1300 (hands) & update stats:
-								fHands = setGear("Defender 1300","Weapon","Hands",0,0,1,5,35,50,80,0,0,0,5,0,0);
-								player = updatePlayer(player,fHands,cHands);
-								pHands = cHands;
-								cHands = fHands;
-								equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+								//	Equip Truck Key (held) & update stats:
+								fHands = setGear("Truck Key","Item","Held",0,0,0,0,0,0,0,0,0,0,0,0,0);
+								player = updatePlayer(player,fHeld,cHeld);
+								pHeld = cHeld;
+								cHeld = fHeld;
+								equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,equip.feet,cHeld.name);
 								
-								alert("You grabbed the Defender 1300!");
+								alert("You grabbed the truck key!");
 								
 								//	Display updated stats:
 								displayStats(player);
 								displayEquip(equip);
 							}else{
-								alert("You did not grab the Defender 1300.");
+								alert("You did not grab the truck key.");
 							}
+						}else if(choice=='d'){	//	Search the drawer (d)
+							alert("You search the drawer...\nYou find the Ginsu knife!");
+							do{
+								choice = prompt("Do you want to grab the Ginsu knife?\nYes (y) or no (n)?");
+							}while(choice!='y' && choice!='n');
 							
-						}else if(choice=='d'){
-						
-						}else if(choice=='s'){
-						
+							if(choice=='y'){
+								//	Equip Ginsu Knife (hands) & update stats:
+								fHands = setGear("Ginsu Knife","Weapon","Hands",0,0,0,12,6,40,30,0,0,0,0,0,0);
+								player = updatePlayer(player,fHands,cHands);
+								pHands = cHands;
+								cHands = fHands;
+								equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+								
+								alert("You grabbed the Ginsu knife!");
+								
+								//	Display updated stats:
+								displayStats(player);
+								displayEquip(equip);
+							}else{
+								alert("You did not grab the Ginsu knife.");
+							}
 						}
 						
 					}else if(choice=='b'){
@@ -473,19 +489,19 @@
 							choice=prompt("Search the dresser (d), nightstand (n), or closet (c)?");
 						}while(choice!='d' && choice!='n' && choice!='c');
 						
-						if(choice=='d'){
+						if(choice=='d'){	//	shells
 						
-						}else if(choice=='n'){
+						}else if(choice=='n'){	//	beanie
 						
-						}else if(choice=='c'){
+						}else if(choice=='c'){	//	coat
 						
 						}
 					}
 					
-					//	check this part out
+					//	CHECK ABOVE
 					
 				}else if(choice=='h'){	//	Help (h)
-					alert('You grab run out to help the woman, shouting,\n"Leave her alone!"');
+					alert('You run out to help the woman, shouting,\n"Leave her alone!"');
 					alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them, flips into the fleeing woman, and explodes!");
 					
 					do{	//	choose s || r
