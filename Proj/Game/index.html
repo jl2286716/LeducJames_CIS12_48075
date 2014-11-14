@@ -310,11 +310,11 @@
 			//	Output Intro story:
 			alert("For the past few days, there have been news reports of a new global viral pandemic sweeping across the nation...");
 			alert("The time is 9:42 PM on a Sunday night: \nYou are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
-			alert('Reporter: \n"Chaos has erupted in Los Angeles and the surrounding counties! We now go live to our correspondent on the scene!"');
-			alert('Correspondent: \n"-shrk-...pandemonium...-shrk-...are attacking other people...-shrk-...dead...-shrk-...rising and...-shrk-AAAAAHHH!!!-shrk-schhh-"');
-			alert('Reporter: \n"Oh! Oh my God! Wha... Was that blood that just spla... What?! This just in! The president is issuing a statement. We now go live to the White House."');
-			alert('President: \n"...remain indoors!-shrk-...of rations and board up all...-shrk-schhh-"');
-			alert('Reporter: \n"We seem to have lost the feed and...-yelling in the background-...OH MY GOD!!!-shrk-schhh-"');
+			alert('Reporter: \n"Chaos has erupted in Los Angeles and the surrounding counties!\nWe now go live to our correspondent on the scene!"');
+			alert('Correspondent: \n-shrk-\n"...pandemonium..."\n-shrk-\n"...are attacking other people..."\n-shrk-\n"...dead..."\n-shrk-\n"...rising and..."\n-shrk-\n"AAAAAHHH!!!"\n-shrk-schhh');
+			alert('Reporter: \n"Oh! Oh my God! Wha... Was that blood that just spla...\nWhat?! This just in! The president is issuing a statement.\nWe now go live to the White House."');
+			alert('President: \n"...remain indoors!"\n-shrk-\n"...of rations and board up all..."\n-shrk-schhh-');
+			alert('Reporter: \n"We seem to have lost the feed and..."\n-yelling in the background-\n"...OH MY GOD!!!"\n-shrk-schhh-');
 			alert("The television turns to static. You turn to the other channels for further info...\nNothing but static.");
 			alert("You pick up your cellphone to check on your family and friends...\nNo service.");
 			
@@ -372,6 +372,9 @@
 						cHeld = fHeld;
 						equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,equip.feet,cHeld.name);
 						
+						//	Display updated stats:
+						displayStats(player);
+						displayEquip(equip);
 					}else if(choice!=='c'){	//	Search the Couch (c)
 						alert("You search the couch...\nYou find the Defender 1300!");
 						
@@ -381,12 +384,16 @@
 						pHands = cHands;
 						cHands = fHands;
 						equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+						
+						//	Display updated stats:
+						displayStats(player);
+						displayEquip(equip);
 					}
 					
 					//	check this part out
 					
 				}else if(choice=='h'){	//	Help (h)
-					alert('You grab run out to help the woman, shouting, "Leave her alone!"');
+					alert('You grab run out to help the woman, shouting,\n"Leave her alone!"');
 					alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them and the woman, flips, and explodes!");
 					
 					do{	//	choose s || r
@@ -403,6 +410,10 @@
 						pHands = cHands;
 						cHands = fHands;
 						equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+						
+						//	Display updated stats:
+						displayStats(player);
+						displayEquip(equip);
 						
 						alert("The ghoulish man attacks!");
 						foe = setFoe("Ghoulish",100,5,30,15);
