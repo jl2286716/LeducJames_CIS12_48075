@@ -277,6 +277,7 @@
 									f.health-=hit;
 								}
 							}
+							displayFoe(f);
 							alert("SUCCESSFUL HIT!\nYou inflicted "+hit+" damage on the "+f.name+"!");
 						}else{
 							alert("YOU'RE ATTACK MISSED!");
@@ -289,7 +290,8 @@
 						}else{
 							p.health-=fA;
 						}
-						alert("YOU'VE BEEN HIT!\nThe "+f.name+" inflicted "+hit+" damage on you!");
+						displayStats(p);
+						alert("YOU'VE BEEN HIT!\nThe "+f.name+" inflicted "+fA+" damage on you!");
 					}
 					//	End Turn
 					turn++;
@@ -305,7 +307,6 @@
 						exit();		//	End Game
 					}
 				}while((p.health)>0 && (f.health)>0);
-				
 				return p;
 			}
 			function randomChance(cS,cD){
@@ -318,7 +319,6 @@
 					exit();
 				}
 			}
-
 		</script>
 	</head>
 	<body>
@@ -592,6 +592,7 @@
 						foe = setFoe("Ghoulish",100,5,30,15);
 						displayFoe(foe);
 						player = attack(player,foe,equip);
+						displayStats(player);
 						
 					}else if(choice=='r'){
 					
