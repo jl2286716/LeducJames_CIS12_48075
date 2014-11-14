@@ -111,7 +111,7 @@
 					str+=("Defense: <b>"+foe.def+"</b><br>");
 					str+=("Speed: <b>"+foe.spd+"</b><br>");
 					str+=("Power: <b>"+foe.pwr+"</b><br>");
-				document.getElementById("foeN").innerHTML = (foe.name+"'s Stats");
+				document.getElementById("foeN").innerHTML = (foe.name+" Stats");
 				document.getElementById("foe").innerHTML = str;
 			}
 			
@@ -258,7 +258,8 @@
 	*/	</script>
 	</head>
 	<body>
-		<center><h1 id="header">Introduction</h1></center>
+		<br><br>
+		<center><h1 id="header">Introduction</h1></center><br><br>
 		<script>
 			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");
@@ -268,7 +269,7 @@
 			//	Display table headers:
 			document.write("<center><table width='500' border=1><tr><td><h2>"+pName+"'s Stats</h2></td><td><h2 id='foeN'></h2></td><td><h2>Equipment</h2></td></tr>");
 			//	Display table content holders:
-			document.write("<tr><td id='stats'></td><td id='foe'></td><td id='equip' style='vertical-align:text-top'></td></tr></table></center>");
+			document.write("<tr><td id='stats'></td><td id='foe' style='vertical-align:text-top'></td><td id='equip' style='vertical-align:text-top'></td></tr></table></center>");
 		
 			//	Set default player equipment
 			alert("Welcome to the end of the world, "+pName+"!");
@@ -358,43 +359,64 @@
 					alert("A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!");
 					
 					do{	//	choose e || c - search livingroom
-						choice = prompt('"WOW!" You decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
+						choice = prompt('"WOW!"\nYou decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
 					}while(choice!='e' && choice!='c');
 					
 					//	set the reaction
 					if(choice=='e'){	//	Search the Entertainment Center (e)
 						alert("You search the entertainment center...\nYou find the Mag-Lite!");
 						
-						//	Equip Mag-Lite (held) & update stats:
-						fHeld = setGear("Mag-Lite","Item","Held",0,0,0,9,5,10,5,0,0,0,0,0,0);
-						player = updatePlayer(player,fHeld,cHeld);
-						pHeld = cHeld;
-						cHeld = fHeld;
-						equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,equip.feet,cHeld.name);
+						do{
+							choice = prompt("Do you want to grab the Mag-Lite?\nYes (y) or no (n)?");
+						}while(choice!='y' && choice!='n');
 						
-						//	Display updated stats:
-						displayStats(player);
-						displayEquip(equip);
+						if(choice=='y'){
+							//	Equip Mag-Lite (held) & update stats:
+							fHeld = setGear("Mag-Lite","Item","Held",0,0,0,9,5,10,5,0,0,0,0,0,0);
+							player = updatePlayer(player,fHeld,cHeld);
+							pHeld = cHeld;
+							cHeld = fHeld;
+							equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,equip.feet,cHeld.name);
+							
+							alert("You grabbed the Mag-Lite!");
+							
+							//	Display updated stats:
+							displayStats(player);
+							displayEquip(equip);
+							
+						}else{
+							alert("You did not grab the Mag-Lite.");
+						}
+						
 					}else if(choice!=='c'){	//	Search the Couch (c)
 						alert("You search the couch...\nYou find the Defender 1300!");
+						do{
+							choice = prompt("Do you want to grab the Defender 1300?\nYes (y) or no (n)?");
+						}while(choice!='y' && choice!='n');
 						
-						//	Equip Defender 1300 (hands) & update stats:
-						fHands = setGear("Defender 1300","Weapon","Hands",0,0,1,5,35,50,80,0,0,0,5,0,0);
-						player = updatePlayer(player,fHands,cHands);
-						pHands = cHands;
-						cHands = fHands;
-						equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
-						
-						//	Display updated stats:
-						displayStats(player);
-						displayEquip(equip);
+						if(choice=='y'){
+							//	Equip Defender 1300 (hands) & update stats:
+							fHands = setGear("Defender 1300","Weapon","Hands",0,0,1,5,35,50,80,0,0,0,5,0,0);
+							player = updatePlayer(player,fHands,cHands);
+							pHands = cHands;
+							cHands = fHands;
+							equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+							
+							alert("You grabbed the Defender 1300!");
+							
+							//	Display updated stats:
+							displayStats(player);
+							displayEquip(equip);
+						}else{
+							alert("You did not grab the Defender 1300.");
+						}
 					}
 					
 					//	check this part out
 					
 				}else if(choice=='h'){	//	Help (h)
 					alert('You grab run out to help the woman, shouting,\n"Leave her alone!"');
-					alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them and the woman, flips, and explodes!");
+					alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them, flips into the fleeing woman, and explodes!");
 					
 					do{	//	choose s || r
 						choice = prompt("Search (s) for a weapon or run (r) back into the house?");
@@ -404,20 +426,32 @@
 					if(choice=='s'){
 						alert("You scan the yard...\nYou find a shovel!");
 						
-						//	Equip shovel (hands) & update stats:
-						fHands = setGear("Shovel","Weapon","Hands",0,0,0,2,20,40,75,0,0,0,0,0,0);
-						player = updatePlayer(player,fHands,cHands);
-						pHands = cHands;
-						cHands = fHands;
-						equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+						do{
+							choice = prompt("Do you want to grab the shovel?\nYes (y) or no (n)?");
+						}while(choice!='y' && choice!='n');
 						
-						//	Display updated stats:
-						displayStats(player);
-						displayEquip(equip);
+						if(choice=='y'){
+							//	Equip shovel (hands) & update stats:
+							fHands = setGear("Shovel","Weapon","Hands",0,0,0,2,20,40,75,0,0,0,0,0,0);
+							player = updatePlayer(player,fHands,cHands);
+							pHands = cHands;
+							cHands = fHands;
+							equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+							
+							alert("You grabbed the shovel!");
+							
+							//	Display updated stats:
+							displayStats(player);
+							displayEquip(equip);
+						}else{
+							alert("You did not grab the shovel.");
+						}
 						
+						//	The battle begins:
 						alert("The ghoulish man attacks!");
 						foe = setFoe("Ghoulish",100,5,30,15);
-						//	attack here
+						displayFoe(foe);
+						//	player = attack(player,foe,equip);
 						
 					}else if(choice=='r'){
 					
