@@ -139,9 +139,9 @@
 				document.getElementById("foeN").innerHTML = "";
 				document.getElementById("foe").innerHTML = "";
 			}
-	/*		
-			//	Attacking: - this is broken
-			function attack(p,f,e){
+			
+			//	Attacking: - 'attack' function is broken
+	/*		function attack(p,f,e){
 				var	pA = p.pwr-f.def;	//	set player attack strength
 				var fA = f.pwr-p.def;	//	set foe attack strength
 				var turn = 1;			//	set turn counter
@@ -151,7 +151,7 @@
 				do{
 					//	Player Attacks
 					if((f.spd)%turn) == 0){	//	Calculate Speed
-						if((p.acc)<=(Math.floor((Math.floor()*100)+1))){	//	Calculate Accuracy
+						if((p.acc)<=(Math.floor((Math.random()*100)+1))){	//	Calculate Accuracy
 							//	Check Ammo
 							//	Check for Defender 1300
 							if(e.hands=="Defender 1300"){
@@ -255,7 +255,18 @@
 				
 				return p;
 			}
-	*/	</script>
+	*/		function randomChance(cS,cD){
+				var random=Math.floor((Math.random()*100)+1)
+				var chance=Math.floor((Math.random()*100)+1)
+				if(chance>=random){	//	IF you survive
+					alert(cS);
+				}else{	//	ELSE you die
+					alert(cD);
+					exit();
+				}
+			}
+
+		</script>
 	</head>
 	<body>
 		<br><br>
@@ -409,6 +420,65 @@
 							displayEquip(equip);
 						}else{
 							alert("You did not grab the Defender 1300.");
+						}
+					}
+					
+					//	Encounter a random chance to survive:
+					alert('Someone starts pounding on your front door!\nYou look out the window and notice your neighbor looking sick and injured, so you open the door to help her.\n"Hey!, are you alright?"\nShe lunges at you!');
+					var cSurv = "You kick her off, slam, and lock the door!";
+					var cDie = "Knocking you down to the floor, she bites into your throat tearing out your jugular!\nYou are DEAD!";
+					randomChance(cSurv,cDie);
+					
+					choice=prompt('You try to catch your breath.\n"HOLY SHIT!"\nTime\'s running thin! Search the kitchen (k) or bedroom (b)?');
+					if(choice=='k'){
+						alert('You run into the kitchen.\nSomeone starts pounding on the front door again!\n"Yeah, yeah! I\'m not falling for that again!"');
+						
+						do{
+							choice=prompt("Search the cabinet (c), drawer (d), or sink (s)?");
+						}while(choice!='c' && choice!='d' && choice!='s');
+						
+						if(choice=='c'){
+							alert("You search the cabinet...\nYou find the Defender 1300!");
+							do{
+								choice = prompt("Do you want to grab the Defender 1300?\nYes (y) or no (n)?");
+							}while(choice!='y' && choice!='n');
+							
+							if(choice=='y'){
+								//	Equip Defender 1300 (hands) & update stats:
+								fHands = setGear("Defender 1300","Weapon","Hands",0,0,1,5,35,50,80,0,0,0,5,0,0);
+								player = updatePlayer(player,fHands,cHands);
+								pHands = cHands;
+								cHands = fHands;
+								equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+								
+								alert("You grabbed the Defender 1300!");
+								
+								//	Display updated stats:
+								displayStats(player);
+								displayEquip(equip);
+							}else{
+								alert("You did not grab the Defender 1300.");
+							}
+							
+						}else if(choice=='d'){
+						
+						}else if(choice=='s'){
+						
+						}
+						
+					}else if(choice=='b'){
+						alert('You run into the bedroom.\nSomeone starts pounding on the bedroom window!\n"Awe, crap!"');
+						
+						do{
+							choice=prompt("Search the dresser (d), nightstand (n), or closet (c)?");
+						}while(choice!='d' && choice!='n' && choice!='c');
+						
+						if(choice=='d'){
+						
+						}else if(choice=='n'){
+						
+						}else if(choice=='c'){
+						
 						}
 					}
 					
