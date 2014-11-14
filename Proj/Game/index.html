@@ -139,7 +139,7 @@
 				document.getElementById("foeN").innerHTML = "";
 				document.getElementById("foe").innerHTML = "";
 			}
-			
+	/*	*/	
 			//	Attacking:
 			function attack(p,f,e){
 				var	pA = p.pwr-f.def;	//	set player attack strength
@@ -151,7 +151,76 @@
 					if((f.spd)%turn) == 0){	//	Player Attacks
 						if((p.acc)<=(Math.floor((Math.floor()*100)+1))){	//	Calculate Accuracy
 							//	Check Ammo
-							f.health-=pA;
+							//	Check for Defender 1300
+							if(e.hands=="Defender 1300"){
+								//Check for shell
+								if(p.shell>0){	//	IF there is ammo
+									f.health-=pA;
+									p.shell--;
+								}else{	//	ELSE Temporarily lower attack - power 35
+									pA-=35;
+									f.health-=pA;
+									pA+=35;
+								}
+							//	Check for Glock 19
+							}else if(e.hands=="Glock 19"){
+								//	Check for 9mm
+								if(p.mm9>0){	//	IF there is ammo
+									f.health-=pA;
+									p.mm9--;
+								}else{	//	ELSE Temporarily lower attack - power 20
+									pA-=20;
+									f.health-=pA;
+									pA+=20;
+								}
+							//	Check for MAC-10
+							}else if(e.hands=="MAC-10"){
+								//	Check for 9mm
+								if(p.mm9>0){	//	IF there is ammo
+									f.health-=pA;
+									p.mm9--;
+								}else{	//	ELSE Temporarily lower attack - power 15
+									pA-=15;
+									f.health-=pA;
+									pA+=15;
+								}
+							//	Check for Python
+							}else if(e.hands=="Python"){
+								//	Check for 357mm
+								if(p.mm357>0){	//	IF there is ammo
+									f.health-=pA;
+									p.mm357--;
+								}else{	//	ELSE Temporarily lower attack - power 25
+									pA-=25;
+									f.health-=pA;
+									pA+=25;
+								}
+							//	Check for AK-47
+							}else if(e.hands=="AK-47"){
+								//	Check for 39mm
+								if(p.mm39>0){	//	IF there is ammo
+									f.health-=pA;
+									p.mm39--;
+								}else{	//	ELSE Temporarily lower attack - power 30
+									pA-=30;
+									f.health-=pA;
+									pA+=30;
+								}
+							//	Check for Crossbow
+							}else if(e.hands=="Crossbow"){
+								//	Check for arrows
+								if(p.arr>0){	//	IF there is ammo
+									f.health-=pA;
+									p.arr--;
+								}else{	//	ELSE Temporarily lower attack - power 15
+									pA-=15;
+									f.health-=pA;
+									pA+=15;
+								}
+							//	ESLE regular attack
+							}else{
+								f.health-=pA;
+							}
 						}
 					}
 					if((p.spd)%turn) == 0){	//	Foe Attacks
@@ -162,22 +231,22 @@
 						}
 					}
 					turn++;
-					if((f.health)<=0){
+					if((f.health)<=0){	//	Check Foe's Health
 						alert("The "+f.name+" is dead!");
-						clearFoe();
-						break;
+						clearFoe();	//	Clear the Foe
+						break;		//	End the Battle
 					}
-					if((p.health)<=0){	//	End Game
+					if((p.health)<=0){	//	Check Player's Health
 						alert(p.name+", you are dead!");
-						exit();
+						exit();	//	End Game
 					}
 				}while((p.health)>0 && (f.health)>0);
 				
 				return p;
 			}
-		</script>
+/*	*/	</script>
 	</head>
-	<body background="city.jpg">
+	<body>
 		<center><h1 id="header">Introduction</h1></center>
 		<script>
 			//	Create the player and set default stats:
@@ -235,8 +304,8 @@
 			alert('Reporter: \n"Oh! Oh my God! Wha... Was that blood that just spla... What?! This just in! The president is issuing a statement. We now go live to the White House."');
 			alert('President: \n"...remain indoors!-shrk-...of rations and board up all...-shrk-schhh-"');
 			alert('Reporter: \n"We seem to have lost the feed and...-yelling in the background-...OH MY GOD!!!-shrk-schhh-"');
-			alert("The television turns to static. You turn to the other channels for further info.../nNothing but static.");
-			alert("You pick up your cellphone to check on your family and friends.../nNo service.");
+			alert("The television turns to static. You turn to the other channels for further info...\nNothing but static.");
+			alert("You pick up your cellphone to check on your family and friends...\nNo service.");
 			
 			//	Level 1 begins...
 			document.getElementById("header").innerHTML = "Level 1: Get Out of There!";
@@ -262,7 +331,7 @@
 			displayEquip(equip);
 			
 			alert("You hear faint screams accompanied by the neighborhood dogs barking frantically. The screams grow nearer!");
-			
+/*	*/		
 			do{	//	choose: i || p
 				var choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
 			}while(choice!='i' || choice!='p');
@@ -346,7 +415,7 @@
 				
 				}
 			}
-			
+/*	*/		
 		</script>
 	</body>
 </html>
