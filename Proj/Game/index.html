@@ -139,8 +139,8 @@
 				document.getElementById("foeN").innerHTML = "";
 				document.getElementById("foe").innerHTML = "";
 			}
-	/*	*/	
-			//	Attacking:
+	/*		
+			//	Attacking: - this is broken
 			function attack(p,f,e){
 				var	pA = p.pwr-f.def;	//	set player attack strength
 				var fA = f.pwr-p.def;	//	set foe attack strength
@@ -255,7 +255,7 @@
 				
 				return p;
 			}
-/*	*/	</script>
+	*/	</script>
 	</head>
 	<body>
 		<center><h1 id="header">Introduction</h1></center>
@@ -345,21 +345,21 @@
 /*	*/		
 			do{	//	choose: i || p
 				var choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
-			}while(choice!='i' || choice!='p');
+			}while(choice!='i' && choice!='p');
 			
 			if(choice=='i'){	//	Investigate (i)
 				alert("You look out the window and see a woman running up the street being chased by two ghoulish-looking men.");
 				
 				do{	//	choose: w || h
 					choice = prompt("Keep watching (w) or help (h) her?");
-				}while(choice!='w' || choice!='h');
+				}while(choice!='w' && choice!='h');
 				
 				if(choice=='w'){	//	Watch (w)
 					alert("A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!");
 					
 					do{	//	choose e || c - search livingroom
 						choice = prompt('"WOW!" You decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
-					}while(choice!='e' || choice!='c');
+					}while(choice!='e' && choice!='c');
 					
 					//	set the reaction
 					if(choice=='e'){	//	Search the Entertainment Center (e)
@@ -391,7 +391,7 @@
 					
 					do{	//	choose s || r
 						choice = prompt("Search (s) for a weapon or run (r) back into the house?");
-					}while(choice!='s' || choice!='r');
+					}while(choice!='s' && choice!='r');
 					
 					//	set the reaction
 					if(choice=='s'){
@@ -417,7 +417,7 @@
 			
 				do{	//	choose e || c - search livingroom
 					choice = prompt("You decide to search for supplies: Check the entertainment center (e) or the couch (c)?");
-				}while(choice!='e' || choice!='c');
+				}while(choice!='e' && choice!='c');
 				
 				//	set the reaction
 				if(choice=='e'){
