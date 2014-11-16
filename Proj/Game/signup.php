@@ -9,7 +9,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Zompocalypse Login</title>
+		<title>Zompocalypse Sign Up</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles/styles.css">	<!-- Include Style Sheets -->
 		<script src=""></script>
