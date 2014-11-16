@@ -8,13 +8,25 @@ body{
 	background-attachment: scroll;
 	background-position: center top;
 }
+a{
+	text-decoration:none !important;
+}
 #sign{
-	float:left;
-	padding-left:25%;
+	padding-left:33%;
+	padding-right:33%;
+
 }
 #log{
-	float:right;
-	padding-right:25%;
+	padding-left:33%;
+	padding-right:33%;
+}
+#errors{
+    color: black;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
 }
 #left{
 	float:left;
