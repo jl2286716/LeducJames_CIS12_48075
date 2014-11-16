@@ -481,14 +481,17 @@
 						}
 					}
 					
-					//	Encounter a random chance to survive:
+					//	Random Chance:
 					alert('Someone starts pounding on your front door!\nYou look out the window and notice your neighbor looking sick and injured, so you open the door to help her.\n"Hey!, are you alright?"\nShe lunges at you!');
 					cSurv = "You kick her off, slam, and lock the door!";
 					cDie = "Knocking you down to the floor, she bites into your throat tearing out your jugular!\nYou are DEAD!";
 					randomChance(cSurv,cDie);
 					
-					choice=prompt('You try to catch your breath.\n"HOLY SHIT!"\nTime\'s running thin! Search the kitchen (k) or bedroom (b)?');
-					if(choice=='k'){
+					do{	//	choose k || b
+						choice=prompt('You try to catch your breath.\n"HOLY SHIT!"\nTime\'s running thin! Search the kitchen (k) or bedroom (b)?');
+					}while(choice!='k' && choice!='b');
+					
+					if(choice=='k'){	//	search the kitchen (k)
 						alert('You run into the kitchen.\nSomeone starts pounding on the front door again!\n"Yeah, yeah! I\'m not falling for that again!"');
 						
 						do{	//	choose c || d
@@ -540,29 +543,28 @@
 								alert("You did not grab the Ginsu knife.");
 							}
 						}
-						
 					}else if(choice=='b'){	//	Search the bedroom (b)
 						alert('You run into the bedroom.\nSomeone starts pounding on the bedroom window!\n"Awe, crap!"');
 						
-						do{
+						do{	//	choose d || n || c
 							choice=prompt("Search the dresser (d), nightstand (n), or closet (c)?");
 						}while(choice!='d' && choice!='n' && choice!='c');
 						
 						if(choice=='d'){	//	search the dresser (d)
 							alert("You search the dresser...\nYou find a small box of shotgun shells!");
 							do{
-								choice = prompt("Do you want to grab the box of shells shells?\nYes (y) or no (n)?");
+								choice = prompt("Do you want to grab the box of shotgun shells shells?\nYes (y) or no (n)?");
 							}while(choice!='y' && choice!='n');
 							
 							if(choice=='y'){
 								//	Update player.shell:
 								player.shell+=5;
-								alert("You grabbed the small box of shells!");
+								alert("You grabbed the small box of shotgun shells!");
 								
 								//	Display updated stats:
 								displayStats(player);
 							}else{
-								alert("You did not grab the small box of shells.");
+								alert("You did not grab the small box of shotgun shells.");
 							}
 						}else if(choice=='n'){	//	search the nightstand (n)	-	beanie
 							alert("You search the nightstand...\nYou find the beanie!");
@@ -610,7 +612,7 @@
 							}
 						}
 						choice=prompt('A ghoulish woman smashes in the bedroom window!\nAttack (a) her or run (r) out the backdoor?');
-						if(choice=='a'){
+						if(choice=='a'){	//	attack (a)
 							//	The battle begins:
 							alert("You attack the ghoulish woman!");
 							foe = setFoe("Ghoulish",100,5,30,15);
@@ -629,7 +631,7 @@
 						
 						alert("The hell hound chases you!\nYou get to your truck, but it's locked!");
 						if(player.held=="Truck Key"){
-							alert("You jump into the truck, slamming the door behind you just in time for the hound to slam it's head into the window...\nSmashing the window, but knocking the hound unconscious!");
+							alert("You ulock the truck and jump in, slamming the door behind you just in time for the hound to slam it's head into the window...\nSmashing the window, but knocking the hound unconscious!");
 							alert("You turn on the truck!\nYou see another one of those ghoulish bastards walking up the driveway, so you plow right through him, taking off up the street!");
 							
 							
@@ -650,7 +652,7 @@
 							
 							
 							
-							//	SET RANDOM CHANCE FOR THE TRUCK TO TURN OVER OR NOT!
+							//	SET RANDOM CHANCE FOR THE TRUCK TO START OR NOT!
 							
 							
 							
