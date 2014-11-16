@@ -8,6 +8,14 @@ body{
 	background-attachment: scroll;
 	background-position: center top;
 }
+#sign{
+	float:left;
+	padding-left:25%;
+}
+#log{
+	float:right;
+	padding-right:25%;
+}
 #left{
 	float:left;
 }
