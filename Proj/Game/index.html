@@ -1,4 +1,10 @@
-<!--NOTE: don't forget to consider the crit hits for the 'attack' function -->
+<!--
+	Author:		James Leduc
+	Title:		Zompocalypse
+	Purpose:	A zombie game where survival is based upon choice and chance.
+	Created:	Oct 09, 2014
+	Modified:	Nov 16, 2014
+-->
 <!doctype html>
 <html lang="en">
 	<head>
@@ -7,7 +13,7 @@
 		<link rel="stylesheet" href="styles/styles.css">	<!-- Include Style Sheets -->
 		<script src=""></script>
 		<script>
-			//	Sets:
+			//	Setter Functions:
 			function setPlayer(playerName){
 				var p = new Object();
 					p = {
@@ -28,6 +34,7 @@
 					};
 				return p;
 			}
+			
 			function setFoe(n,h,d,s,p){
 				var f = new Object();
 					f = {
@@ -39,6 +46,7 @@
 					};
 				return f;
 			}
+			
 			function setGear(n,t,w,h,mh,d,s,p,a,c,m357,m39,m9,sh,q,ar){
 				var g = new Object();
 					g = {
@@ -61,6 +69,7 @@
 					};
 				return g;
 			}
+			
 			function setEquip(hd,ch,bk,hn,ft,he){
 				var e = new Object();
 					e = {
@@ -74,7 +83,7 @@
 				return e;
 			}
 			
-			//	Displays:
+			//	Display Functions:
 			function displayStats(player){
 				var str = "";
 				str+=("Name: <b>"+player.name+"</b><br>");
@@ -93,6 +102,7 @@
 				str+=("Arrows: <b>"+player.arr+"</b><br>");
 				document.getElementById("stats").innerHTML = str;
 			}
+			
 			function displayEquip(equip){
 				var str = "";
 				str+=("Head: <b>"+equip.head+"</b><br>");
@@ -103,6 +113,7 @@
 				str+=("Held Item: <b>"+equip.held+"</b><br>");
 				document.getElementById("equip").innerHTML = str;
 			}
+			
 			function displayFoe(foe){
 				var str = "";
 					str+=("Name: <b>"+foe.name+"</b><br>");
@@ -114,7 +125,7 @@
 				document.getElementById("foe").innerHTML = str;
 			}
 			
-			//	Updates:
+			//	Update Functions:
 			function updatePlayer(player,found,current){
 				player = {
 					name:player.name,
@@ -134,34 +145,34 @@
 				};
 				return player;
 			}
+			
 			function clearFoe(){
 				document.getElementById("foeN").innerHTML = "";
 				document.getElementById("foe").innerHTML = "";
 			}
 			
-			//	Attacking: - 'attack' function needs refining
-/*	*/		function attack(p,f,e){
+			//	Battle Functions: - 'attack' function may need some refining
+			function attack(p,f,e){
 				var	pA = (p.pwr)-(f.def);	//	set player attack strength
 				var fA = (f.pwr)-(p.def);	//	set foe attack strength
 				var turn = 1;				//	set turn counter
 				var pSpd = (f.spd);			//	set player attack speed
 				var fSpd = (p.spd);			//	set foe attack speed
 				var pAcc = (p.acc);			//	set player accuracy
-				var pCrit = (p.crit);
+				var pCrit = (p.crit);		//	set critical chance
 				var hit;					//	create hit variable
 				
-				//	compare speeds; calculate accuracy; consider ammo; consider crits; attack; update player and foe; check healths; prompt after each turn; 
 				do{
-					//	Player Attacks
+					//	Player Attacks:
 					if((pSpd%turn) == 0){	//	Calculate Speed
 						var randAcc = Math.floor((Math.random()*100)+1);
 						var randCrit = Math.floor((Math.random()*100)+1);
 						if(pAcc>=randAcc){	//	Calculate Accuracy
-							//	Check Ammo
-							//	Check for Defender 1300
+							//	Check for projectile ammo:
+							//	Check for Defender 1300:
 							if(e.hands=="Defender 1300"){
-								//Check for shell
-								if(p.shell>0){	//	IF there is ammo - calc crit
+								//Check for shell:
+								if(p.shell>0){	//	IF there is ammo
 									if(pCrit>=randCrit){	//	calc crit
 										hit=pA;
 										hit*=1.5;
@@ -176,10 +187,10 @@
 									hit=pA-35;
 									f.health-=hit;
 								}
-							//	Check for Glock 19
+							//	Check for Glock 19:
 							}else if(e.hands=="Glock 19"){
-								//	Check for 9mm
-								if(p.mm9>0){	//	IF there is ammo - calc crit
+								//	Check for 9mm:
+								if(p.mm9>0){	//	IF there is ammo
 									if(pCrit>=randCrit){	//	calc crit
 										hit=pA;
 										hit*=1.5;
@@ -194,10 +205,10 @@
 									hit=pA-20;
 									f.health-=hit;
 								}
-							//	Check for MAC-10
+							//	Check for MAC-10:
 							}else if(e.hands=="MAC-10"){
-								//	Check for 9mm
-								if(p.mm9>0){	//	IF there is ammo - calc crit
+								//	Check for 9mm:
+								if(p.mm9>0){	//	IF there is ammo
 									if(pCrit>=randCrit){	//	calc crit
 										hit=pA;
 										hit*=1.5;
@@ -212,10 +223,10 @@
 									hit=pA-15;
 									f.health-=hit;
 								}
-							//	Check for Python
+							//	Check for Python:
 							}else if(e.hands=="Python"){
-								//	Check for 357mm
-								if(p.mm357>0){	//	IF there is ammo - calc crit
+								//	Check for 357mm:
+								if(p.mm357>0){	//	IF there is ammo
 									if(pCrit>=randCrit){	//	calc crit
 										hit=pA;
 										hit*=1.5;
@@ -230,10 +241,10 @@
 									hit=pA-25;
 									f.health-=hit;
 								}
-							//	Check for AK-47
+							//	Check for AK-47:
 							}else if(e.hands=="AK-47"){
-								//	Check for 39mm
-								if(p.mm39>0){	//	IF there is ammo - calc crit
+								//	Check for 39mm:
+								if(p.mm39>0){	//	IF there is ammo
 									if(pCrit>=randCrit){	//	calc crit
 										hit=pA;
 										hit*=1.5;
@@ -248,10 +259,10 @@
 									hit=pA-30;
 									f.health-=hit;
 								}
-							//	Check for Crossbow
+							//	Check for Crossbow:
 							}else if(e.hands=="Crossbow"){
-								//	Check for arrows
-								if(p.arr>0){	//	IF there is ammo - calc crit
+								//	Check for arrows:
+								if(p.arr>0){	//	IF there is ammo
 									if(pCrit>=randCrit){	//	calc crit
 										hit=pA;
 										hit*=1.5;
@@ -266,8 +277,7 @@
 									hit=pA-15;
 									f.health-=hit;
 								}
-							//	ESLE regular attack - clac crit
-							}else{
+							}else{	//	ESLE regular attack
 								if(pCrit>=randCrit){	//	calc crit
 									hit=pA;
 									hit*=1.5;
@@ -309,6 +319,7 @@
 				}while((p.health)>0 && (f.health)>0);
 				return p;
 			}
+			
 			function randomChance(cS,cD){
 				var random=Math.floor((Math.random()*100)+1)
 				var chance=Math.floor((Math.random()*100)+1)
@@ -319,34 +330,59 @@
 					exit();
 				}
 			}
+			
+			//	Scoring Functions:
+			function initScore($_GET,p,u){
+			
+				var startT = new Date(); 
+				
+				$_GET = {
+					name:p.name,		//	set player name
+					eMail:u.email,		//	user.email	-	user object still needs to be created
+					kills:0,			//	initialize kills
+					score:0,			//	initialize score
+					hiLvl:0,			//	Highest Level Completed
+					start:startT,		//	Date/Time First Played
+					lstPly:startT,		//	Date/Time Last Played
+					lstLoc:"In Bed"		//	Last Location Played
+				};
+			
+				return $_GET;
+			}
 		</script>
 	</head>
 	<body>
 		<br><br>
 		<center><h1 id="header">Introduction</h1></center><br><br>
 		<script>
+		
+/*	Beginning of the 'Game Intro & Set'.	*/
+		
 			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");
 			var player = setPlayer(pName);
 			
-			//	Output stat table:
-			//	Display table headers:
+			//	Output stat tables:
+			//	Display character table headers:
 			document.write("<table width='500' border=1 id='left'><tr><td><h2>"+pName+"'s Stats</h2></td><td><h2 id='foeN'></h2></td></tr>");
-			//	Display table content holders:
+			//	Display character table content holders:
 			document.write("<tr><td id='stats'></td><td id='foe' style='vertical-align:text-top'></td></tr></table>");
 			//	Display equipment header:
 			document.write("<table width='500' border=1 id='right'><tr><td><h2>Equipment</h2></td></tr>")
-			//	Display equipment body:
+			//	Display equipment content holder:
 			document.write("<tr><td id='equip' style='vertical-align:text-top'></td></tr></table>");
-			//	Set default player equipment
+			
+			//	Address the player:
 			alert("Welcome to the end of the world, "+pName+"!");
+
+			//	Set default player equipment:
 			var equip = setEquip("Bare","Bare","Bare","Bare","Bare","Empty");
 			
 			//	Display stats and equipment:
 			displayStats(player);
 			displayEquip(equip);
 
-			//	Create & initialize gear variables (previous, current, found):
+			//	Create & initialize gear objects	-	previous (p), current (c), found (f):
 			//	Head objects:
 			var pHead = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
 			var cHead = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -374,21 +410,27 @@
 			
 			//	Create and initialize other variables:
 			var foe = new Object;
+			var $_GET = new Object;	//	Use to store the score.
+//				$_GET = initScore($_GET,player,user);
+			var choice = "";
 			var cSurv = "";
 			var cDie = "";
 
-			
 			//	Output Intro story:
-			alert("For the past few days, there have been news reports of a new global viral pandemic sweeping across the nation...");
-			alert("The time is 9:42 PM on a Sunday night: \nYou are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
-			alert('Reporter: \n"Chaos has erupted in Los Angeles and the surrounding counties!\nWe now go live to our correspondent on the scene!"');
-			alert('Correspondent: \n-shrk-\n"...pandemonium..."\n-shrk-\n"...are attacking other people..."\n-shrk-\n"...dead..."\n-shrk-\n"...rising and..."\n-shrk-\n"AAAAAHHH!!!"\n-shrk-schhh-');
-			alert('Reporter: \n"Oh! Oh my God! Wha... Was that blood that just spla...\nWhat?! This just in! The president is issuing a statement.\nWe now go live to the White House."');
-			alert('President: \n"...remain indoors!"\n-shrk-\n"...of rations and board up all..."\n-shrk-schhh-');
-			alert('Reporter: \n"We seem to have lost the feed and..."\n-yelling in the background-\n"...OH MY GOD!!!"\n-shrk-schhh-');
-			alert("The television turns to static. You turn to the other channels for further info...\nNothing but static.");
-			alert("You pick up your cellphone to check on your family and friends...\nNo service.");
+/*1*/		alert("For the past few days, there have been news reports of a new global viral pandemic sweeping across the nation...");
+/*2*/		alert("The time is 9:42 PM on a Sunday night: \nYou are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
+/*3*/		alert('Reporter: \n"Chaos has erupted in Los Angeles and the surrounding counties!\nWe now go live to our correspondent on the scene!"');
+/*4*/		alert('Correspondent: \n-shrk-\n"...pandemonium..."\n-shrk-\n"...are attacking other people..."\n-shrk-\n"...dead..."\n-shrk-\n"...rising and..."\n-shrk-\n"AAAAAHHH!!!"\n-shrk-schhh-');
+/*5*/		alert('Reporter: \n"Oh! Oh my God! Wha... Was that blood that just spla...\nWhat?! This just in! The president is issuing a statement.\nWe now go live to the White House."');
+/*6*/		alert('President: \n"...remain indoors!"\n-shrk-\n"...of rations and board up all..."\n-shrk-schhh-');
+/*7*/		alert('Reporter: \n"We seem to have lost the feed and..."\n-yelling in the background-\n"...OH MY GOD!!!"\n-shrk-schhh-');
+/*8*/		alert("The television turns to static. You turn to the other channels for further info...\nNothing but static.");
+/*9*/		alert("You pick up your cellphone to check on your family and friends...\nNo service.");
 			
+/*	End of the 'Game Intro & Set'.	*/
+			
+/*	Beginning of the 'Level 1 Intro'.	*/
+
 			//	Level 1 begins...
 			document.getElementById("header").innerHTML = "Level 1: Get the Hell Out of There!";
 
@@ -413,9 +455,11 @@
 			displayEquip(equip);
 			
 			alert("You hear faint screams accompanied by the neighborhood dogs barking frantically. The screams grow nearer!");
-/*	*/		
+			
+/*	End of the 'Level 1 Intro'.	*/		
+
 			do{	//	choose: i || p
-				var choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
+				choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
 			}while(choice!='i' && choice!='p');
 			
 			if(choice=='i'){	//	Investigate (i)
@@ -426,10 +470,12 @@
 				}while(choice!='w' && choice!='h');
 				
 				if(choice=='w'){	//	Watch (w)
-					alert("A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!");
+					alert('A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!"\nWOW!"');
+
+/*	Beginning of the 'House Path'.	*/
 					
 					do{	//	choose e || c - search livingroom
-						choice = prompt('"WOW!"\nYou decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
+						choice = prompt('You decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
 					}while(choice!='e' && choice!='c');
 					
 					if(choice=='e'){	//	Search the Entertainment Center (e)
@@ -634,10 +680,7 @@
 							alert("You unlock the truck and jump in, slamming the door behind you just in time for the hound to slam it's head into the passenger-side window...\nSmashing the window, but knocking the hound unconscious!");
 							alert("You turn on the truck!\nYou see another one of those ghoulish bastards walking up the driveway, so you plow right through him, taking off up the street!");
 							
-							
-							
 							//	END THE LEVEL
-							
 							
 						}else{
 							//	The battle begins:
@@ -655,23 +698,22 @@
 							cDie = "A zombie starts banging on the driver-side window!\nYou try and try, but the switch wont turn over.\nThe zombie smashes the driver-side window, grabbing you by the neck!\nA hell hound leaps through the broken passenger-side window and bites down into your face!\nYou are DEAD!";
 							randomChance(cSurv,cDie);
 							
-							
-							
 							//	END THE LEVEL
-							
-							
 							
 						}
 						
 					}
-
+/*	End of the 'House Path'.	*/
 
 					
-					//	CHECK ABOVE
+					//	CHECK BELOW
 
 
 					
 				}else if(choice=='h'){	//	Help (h)
+				
+/*	Beginning of the 'Yard Path'.	*/
+
 					alert('You run out to help the woman, shouting,\n"Leave her alone!"');
 					alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them, flips into the fleeing woman, and explodes!");
 					
@@ -715,19 +757,19 @@
 					
 					}
 				}
-				
+
+
+/*	End of the 'Yard Path'.	*/					
+					//	CHECK ABOVE & BELOW
+
+
+					
 			}else if(choice=='p'){	//	Prepare (p)
 			
-				do{	//	choose e || c - search livingroom
-					choice = prompt("You decide to search for supplies: Check the entertainment center (e) or the couch (c)?");
-				}while(choice!='e' && choice!='c');
-				
-				//	set the reaction
-				if(choice=='e'){
-				
-				}else if(choice=='c'){
-				
-				}
+/*	Paste in 'House Path' below.	*/			
+			
+			
+			
 			}
 /*	*/		
 		</script>
