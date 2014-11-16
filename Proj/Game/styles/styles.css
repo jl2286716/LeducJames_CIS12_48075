@@ -1,10 +1,16 @@
 body{ 
-	width: 100%;
+	width: auto;
 	height: 100%;
 	margin: 5;
 	padding: 5;
 	background-image: url('images/city.jpg');
-	background-color: #000000;
+	background-color: #CF1020;	/*	color:#CF1020 is Lava(a shade of red)	*/
 	background-attachment: scroll;
 	background-position: center top;
+}
+#left{
+	float:left;
+}
+#right{
+	float:right;
 }
