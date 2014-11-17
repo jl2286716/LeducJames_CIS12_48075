@@ -25,7 +25,7 @@
 		</script>
 	</head>
 	<body>
-		<a href="play.html"><button>PLAY TEST</button></a>
+		<a href="play.php"><button>PLAY TEST</button></a>
 		<br><br><center><h1>LOGIN TO ENTER THE ZOMBIE APOCALYPSE!</h1></center><br><br>
 		<center>
 			<button onclick="clickLogin()" id="logBtn" style="display:inline">LOGIN</button>

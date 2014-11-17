@@ -156,14 +156,14 @@
 			
 			</script>
 			<!--	Beginning of the attack function - include 'attack.php'	-->
-			<?php include_once("../includes/attack.php"); ?>
+			<?php include("includes/attack.php"); ?>
 			<!--	End of the attack function	-->
 			<script>
 			
 			function randomChance(cS,cD){
 				var random=Math.floor((Math.random()*100)+1)
 				var chance=Math.floor((Math.random()*100)+1)
-				if(chance>=random){	//	IF you survive
+				if(chance<=random){	//	IF you survive
 					alert(cS);
 				}else{	//	ELSE you die
 					alert(cD);
@@ -196,11 +196,10 @@
 		<center><h1 id="header">Introduction</h1></center><br><br>
 		
 <!--	Let the Games Begin!	-->
+		
+<!--	Beginning of the 'Game Intro & Set'.	-->
+	<!--?php include("includes/introSets.php"); ?-->
 		<script>
-		
-/*	Beginning of the 'Game Intro & Set'.	*/
-//<?php include_once("../includes/introSets.php"); ?>
-		
 			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");
 			var player = setPlayer(pName);
@@ -274,28 +273,32 @@
 
 			</script>			
 			<!--	Beginning of the 'Level 1 Intro'.	-->
-			<?php include_once("../includes/lvl1_Intro.php"); ?>
-			<!--	End of the 'Level 1 Intro'.	-->		
-			<script>
-			
-			do{	//	choose: i || p
-				choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
-			}while(choice!='i' && choice!='p');
-			
-			if(choice=='i'){	//	Investigate (i)
-				alert("You look out the window and see a woman running up the street being chased by two ghoulish-looking men.");
-				
-				do{	//	choose: w || h
-					choice = prompt("Keep watching (w) or help (h) her?");
-				}while(choice!='w' && choice!='h');
-				
-				if(choice=='w'){	//	Watch (w)
-					alert('A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!"\nWOW!"');
-					
+			<?php include("includes/lvl1_Intro.php"); ?>
+			<!--	End of the 'Level 1 Intro'.	-->	
+
+			<!--	WHY IN THE FUCK IS THIS BEING SKIPPED!!!!	-->
+			<?php 
+				echo ("
+					<script>
+						do{	//	choose: i || p
+							choice = prompt(\"Investigate (i) or prepare (p)?\nEnter one letter only!\");
+						}while(choice!='i' && choice!='p');
+						
+						if(choice=='i'){	//	Investigate (i)
+							alert(\"You look out the window and see a woman running up the street being chased by two ghoulish-looking men.\");
+							
+							do{	//	choose: w || h
+								choice = prompt(\"Keep watching (w) or help (h) her?\");
+							}while(choice!='w' && choice!='h');
+							
+							if(choice=='w'){	//	Watch (w)
+								alert('MARK!! A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!\"\nWOW!\"');
 					</script>
+				");	
+			?>
 					<!--	Beginning of the 'House Route'.	-->
-					<?php include("../includes/lvl1_HouseRte.php"); ?>					
-					<!--	End of the 'House Path'.	-->
+					<?php include("includes/lvl1_HouseRte.php"); ?>					
+					<!--	End of the 'House Route'.	-->
 					<script>
 					
 					//	CHECK BELOW
@@ -304,7 +307,7 @@
 					
 				}else if(choice=='h'){	//	Help (h)
 				
-/*	Beginning of the 'Yard Path'.	*/
+/*	Beginning of the 'Yard Route'.	*/
 
 					alert('You run out to help the woman, shouting,\n"Leave her alone!"');
 					alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them, flips into the fleeing woman, and explodes!");
@@ -351,7 +354,7 @@
 				}
 
 
-/*	End of the 'Yard Path'.	*/					
+/*	End of the 'Yard Route'.	*/					
 					//	CHECK ABOVE & BELOW
 
 
@@ -360,7 +363,7 @@
 			
 				</script>			
 				<!--	Beginning of the 'House Route'.	-->
-				<?php include("../includes/lvl1_HouseRte.php"); ?>					
+				<?php include("includes/lvl1_HouseRte.php"); ?>					
 				<!--	End of the 'House Route'.	-->
 				<script>			
 				

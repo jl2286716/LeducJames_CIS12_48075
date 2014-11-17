@@ -28,8 +28,14 @@
 			alert("You did not grab the Mag-Lite.");
 		}
 		
-	}else if(choice!=='c'){	//	Search the Couch (c)
+		
+		
+	//	THE FOLLOWING ELSE WONT EXECUTE...
+	
+	
+	}else{	//	Search the Couch (c)
 		alert("You search the couch...\nYou find the Defender 1300!");
+		
 		do{
 			choice = prompt("Do you want to grab the Defender 1300?\nYes (y) or no (n)?");
 		}while(choice!='y' && choice!='n');
@@ -75,6 +81,10 @@
 				choice = prompt("Do you want to grab the truck key?\nYes (y) or no (n)?");
 			}while(choice!='y' && choice!='n');
 			
+			
+			//	THE FOLLOWING IF STATEMENT WONT EXECUTE
+			
+			
 			if(choice=='y'){
 				//	Equip Truck Key (held) & update stats:
 				fHands = setGear("Truck Key","Item","Held",0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -91,6 +101,9 @@
 			}else{
 				alert("You did not grab the truck key.");
 			}
+			
+		//	THE DRAWER SEARCH WORKS, BUT BREAKS AFTER EQUIPTING THE GINSU KNIFE...
+			
 		}else if(choice=='d'){	//	Search the drawer (d)
 			alert("You search the drawer...\nYou find the Ginsu knife!");
 			do{
@@ -114,6 +127,11 @@
 				alert("You did not grab the Ginsu knife.");
 			}
 		}
+		
+		
+	//	BEDROOM SEARCH WORKS FINE...
+	
+	
 	}else if(choice=='b'){	//	Search the bedroom (b)
 		alert('You run into the bedroom.\nSomeone starts pounding on the bedroom window!\n"Awe, crap!"');
 		
@@ -121,7 +139,7 @@
 			choice=prompt("Search the dresser (d), nightstand (n), or closet (c)?");
 		}while(choice!='d' && choice!='n' && choice!='c');
 		
-		if(choice=='d'){	//	search the dresser (d)
+		if(choice=='d'){	//	search the dresser (d) - WORKS PERFECT
 			alert("You search the dresser...\nYou find a small box of shotgun shells!");
 			do{
 				choice = prompt("Do you want to grab the box of shotgun shells shells?\nYes (y) or no (n)?");
@@ -137,7 +155,7 @@
 			}else{
 				alert("You did not grab the small box of shotgun shells.");
 			}
-		}else if(choice=='n'){	//	search the nightstand (n)	-	beanie
+		}else if(choice=='n'){	//	search the nightstand (n)	-	beanie	-	IS RETURNING 'NONE' FOR EQUIPMENT NAME
 			alert("You search the nightstand...\nYou find the beanie!");
 			do{
 				choice = prompt("Do you want to put on the beanie?\nYes (y) or no (n)?");
@@ -159,7 +177,7 @@
 			}else{
 				alert("You did not grab the beanie.");
 			}
-		}else if(choice=='c'){	//	search the closet (c)	-	coat
+		}else if(choice=='c'){	//	search the closet (c)	-	coat	-	DOES NOT EQUIPT AT ALL
 			alert("You search the closet...\nYou find the coat!");
 			do{
 				choice = prompt("Do you want to put on the coat?\nYes (y) or no (n)?");
@@ -182,7 +200,9 @@
 				alert("You did not grab the coat.");
 			}
 		}
+		
 		choice=prompt('A ghoulish woman smashes in the bedroom window!\nAttack (a) her or run (r) out the backdoor?');
+		
 		if(choice=='a'){	//	attack (a)
 			//	The battle begins:
 			alert("You attack the ghoulish woman!");
@@ -192,6 +212,7 @@
 			//	Display post-battle stats:
 			displayStats(player);
 		}
+		
 		alert("You run out the backdoor!");
 		alert("You look to the right...\nClear!\nYou look to the left...\nYou spot a bloody, snarling dog with glowing red eyes forming at the mouth!");
 		
