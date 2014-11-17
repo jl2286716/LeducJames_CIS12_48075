@@ -151,10 +151,15 @@
 				document.getElementById("foe").innerHTML = "";
 			}
 			
-			//	Battle Functions: - 'attack' function may need some refining
-/*	Beginning of the attack function - include 'attack.php'	*/
-<?php include_once("../includes/attack.php"); ?>
-/*	End of the attack function	*/
+
+			//	Battle Functions: - attack function may need some refining
+			
+			</script>
+			<!--	Beginning of the attack function - include 'attack.php'	-->
+			<?php include_once("../includes/attack.php"); ?>
+			<!--	End of the attack function	-->
+			<script>
+			
 			function randomChance(cS,cD){
 				var random=Math.floor((Math.random()*100)+1)
 				var chance=Math.floor((Math.random()*100)+1)
@@ -266,11 +271,13 @@
 /*9*/		alert("You pick up your cellphone to check on your family and friends...\nNo service.");
 			
 /*	End of the 'Game Intro & Set'.	*/
-			
-/*	Beginning of the 'Level 1 Intro'.	*/
-<?php include_once("../includes/lvl1_Intro.php"); ?>
-/*	End of the 'Level 1 Intro'.	*/		
 
+			</script>			
+			<!--	Beginning of the 'Level 1 Intro'.	-->
+			<?php include_once("../includes/lvl1_Intro.php"); ?>
+			<!--	End of the 'Level 1 Intro'.	-->		
+			<script>
+			
 			do{	//	choose: i || p
 				choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
 			}while(choice!='i' && choice!='p');
@@ -284,11 +291,12 @@
 				
 				if(choice=='w'){	//	Watch (w)
 					alert('A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!"\nWOW!"');
-
-/*	Beginning of the 'House Route'.	*/
-<?php include("../includes/lvl1_HouseRte.php"); ?>					
-/*	End of the 'House Path'.	*/
-
+					
+					</script>
+					<!--	Beginning of the 'House Route'.	-->
+					<?php include("../includes/lvl1_HouseRte.php"); ?>					
+					<!--	End of the 'House Path'.	-->
+					<script>
 					
 					//	CHECK BELOW
 
@@ -350,10 +358,12 @@
 					
 			}else if(choice=='p'){	//	Prepare (p)
 			
-/*	Beginning of the 'House Route'.	*/
-<?php include("../includes/lvl1_HouseRte.php"); ?>					
-/*	End of the 'House Path'.	*/
-			
+				</script>			
+				<!--	Beginning of the 'House Route'.	-->
+				<?php include("../includes/lvl1_HouseRte.php"); ?>					
+				<!--	End of the 'House Route'.	-->
+				<script>			
+				
 			}
 /*	*/		
 		</script>
