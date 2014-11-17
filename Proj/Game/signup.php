@@ -3,13 +3,13 @@
 	Title:		Zompocalypse
 	Purpose:	A zombie game where survival is based upon choice and chance.
 	Created:	Nov 16, 2014
-	Modified:	Nov 16, 2014
+	Modified:	Nov 17, 2014
 	NOTE:		Still need to create and connect to the database with the 'connect.php'.
 -->
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Zompocalypse Sign Up</title>
+		<title>Zompocalypse: Sign Up</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles/styles.css">	<!-- Include Style Sheets -->
 		<script src=""></script>

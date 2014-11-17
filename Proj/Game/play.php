@@ -3,7 +3,7 @@
 	Title:		Zompocalypse
 	Purpose:	A zombie game where survival is based upon choice and chance.
 	Created:	Oct 09, 2014
-	Modified:	Nov 16, 2014
+	Modified:	Nov 17, 2014
 -->
 <!doctype html>
 <html lang="en">
@@ -155,9 +155,8 @@
 			//	Battle Functions: - attack function may need some refining
 			
 			</script>
-			<!--	Beginning of the attack function - include 'attack.php'	-->
+			<!--	Attack Function - include 'attack.php'	-->
 			<?php include("includes/attack.php"); ?>
-			<!--	End of the attack function	-->
 			<script>
 			
 			function randomChance(cS,cD){
@@ -171,7 +170,7 @@
 				}
 			}
 			
-			//	Scoring Functions:
+			//	Scoring Functions:	-	might need to recode in PHP	-	use either forms or arrays
 			function initScore($_GET,p,u){
 			
 				var startT = new Date(); 
@@ -183,8 +182,8 @@
 					score:0,			//	initialize score
 					hiLvl:0,			//	Highest Level Completed
 					start:startT,		//	Date/Time First Played
-					lstPly:startT,		//	Date/Time Last Played
-					lstLoc:"In Bed"		//	Last Location Played
+					lastPly:startT,		//	Date/Time Last Played
+					lastLoc:"In Bed"		//	Last Location Played
 				};
 			
 				return $_GET;
@@ -197,7 +196,7 @@
 		
 <!--	Let the Games Begin!	-->
 		
-<!--	Beginning of the 'Game Sets'.	-->
+<!--	Beginning of the 'Game Sets'	-	'introSets.php'	-->
 		<script>
 			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");

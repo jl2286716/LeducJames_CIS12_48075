@@ -3,12 +3,12 @@
 	Title:		Zompocalypse
 	Purpose:	A zombie game where survival is based upon choice and chance.
 	Created:	Nov 16, 2014
-	Modified:	Nov 16, 2014
+	Modified:	Nov 17, 2014
 -->
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Zompocalypse Login</title>
+		<title>Zompocalypse: Login</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles/styles.css">	<!-- Include Style Sheets -->
 		<script src=""></script>
