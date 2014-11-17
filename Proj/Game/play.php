@@ -197,8 +197,7 @@
 		
 <!--	Let the Games Begin!	-->
 		
-<!--	Beginning of the 'Game Intro & Set'.	-->
-	<!--?php include("includes/introSets.php"); ?-->
+<!--	Beginning of the 'Game Sets'.	-->
 		<script>
 			//	Create the player and set default stats:
 			var pName = prompt("What's your name?");
@@ -257,49 +256,34 @@
 			var choice = "";
 			var cSurv = "";
 			var cDie = "";
+/*	End of the 'Game Sets'.	*/
 
-			//	Output Intro story:
-/*1*/		alert("For the past few days, there have been news reports of a new global viral pandemic sweeping across the nation...");
-/*2*/		alert("The time is 9:42 PM on a Sunday night: \nYou are at home in bed watching your favorite TV show when it is interrupted by a breaking news bulletin...");
-/*3*/		alert('Reporter: \n"Chaos has erupted in Los Angeles and the surrounding counties!\nWe now go live to our correspondent on the scene!"');
-/*4*/		alert('Correspondent: \n-shrk-\n"...pandemonium..."\n-shrk-\n"...are attacking other people..."\n-shrk-\n"...dead..."\n-shrk-\n"...rising and..."\n-shrk-\n"AAAAAHHH!!!"\n-shrk-schhh-');
-/*5*/		alert('Reporter: \n"Oh! Oh my God! Wha... Was that blood that just spla...\nWhat?! This just in! The president is issuing a statement.\nWe now go live to the White House."');
-/*6*/		alert('President: \n"...remain indoors!"\n-shrk-\n"...of rations and board up all..."\n-shrk-schhh-');
-/*7*/		alert('Reporter: \n"We seem to have lost the feed and..."\n-yelling in the background-\n"...OH MY GOD!!!"\n-shrk-schhh-');
-/*8*/		alert("The television turns to static. You turn to the other channels for further info...\nNothing but static.");
-/*9*/		alert("You pick up your cellphone to check on your family and friends...\nNo service.");
-			
-/*	End of the 'Game Intro & Set'.	*/
 
-			</script>			
+			<!--	Beginning of the 'Intro Story'.	-->
+			<?php include_once("includes/introMain.php"); ?>
+			<!--	End of the 'Intro Story'.	-->	
+
 			<!--	Beginning of the 'Level 1 Intro'.	-->
-			<?php include("includes/lvl1_Intro.php"); ?>
+			<?php include_once("includes/lvl1_Intro.php"); ?>
 			<!--	End of the 'Level 1 Intro'.	-->	
 
-			<!--	WHY IN THE FUCK IS THIS BEING SKIPPED!!!!	-->
-			<?php 
-				echo ("
-					<script>
-						do{	//	choose: i || p
-							choice = prompt(\"Investigate (i) or prepare (p)?\nEnter one letter only!\");
-						}while(choice!='i' && choice!='p');
-						
-						if(choice=='i'){	//	Investigate (i)
-							alert(\"You look out the window and see a woman running up the street being chased by two ghoulish-looking men.\");
-							
-							do{	//	choose: w || h
-								choice = prompt(\"Keep watching (w) or help (h) her?\");
-							}while(choice!='w' && choice!='h');
-							
-							if(choice=='w'){	//	Watch (w)
-								alert('MARK!! A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!\"\nWOW!\"');
-					</script>
-				");	
-			?>
+			do{	//	choose: i || p
+				choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
+			}while(choice!='i' && choice!='p');
+			
+			if(choice=='i'){	//	Investigate (i)
+				alert("You look out the window and see a woman running up the street being chased by two ghoulish-looking men.");
+				
+				do{	//	choose: w || h
+					choice = prompt("Keep watching (w) or help (h) her?");
+				}while(choice!='w' && choice!='h');
+				
+				if(choice=='w'){	//	Watch (w)
+					alert('A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!"\nWOW!"');
+					
 					<!--	Beginning of the 'House Route'.	-->
 					<?php include("includes/lvl1_HouseRte.php"); ?>					
 					<!--	End of the 'House Route'.	-->
-					<script>
 					
 					//	CHECK BELOW
 
@@ -354,18 +338,16 @@
 				}
 
 
-/*	End of the 'Yard Route'.	*/					
-					//	CHECK ABOVE & BELOW
+/*	End of the 'Yard Route'.	*/
 
 
+					//	CHECK ABOVE
 					
 			}else if(choice=='p'){	//	Prepare (p)
 			
-				</script>			
 				<!--	Beginning of the 'House Route'.	-->
 				<?php include("includes/lvl1_HouseRte.php"); ?>					
 				<!--	End of the 'House Route'.	-->
-				<script>			
 				
 			}
 /*	*/		
