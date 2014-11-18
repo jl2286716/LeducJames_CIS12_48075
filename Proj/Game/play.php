@@ -299,7 +299,6 @@
 						choice = prompt("Search (s) for a weapon or run (r) back into the house?");
 					}while(choice!='s' && choice!='r');
 					
-					//	set the reaction
 					if(choice=='s'){
 						alert("You scan the yard...\nYou find a shovel!");
 						
@@ -331,9 +330,65 @@
 						player = attack(player,foe,equip);
 						displayStats(player);
 						
-					}else if(choice=='r'){
+					}else{
+						
+						//	The battle begins:
+						alert("You turn and run back to your house,\nbut a ghoulish woman is blocking your path!\nShe attacks!");
+						foe = setFoe("Ghoulish",100,5,30,15);
+						displayFoe(foe);
+						player = attack(player,foe,equip);
+						displayStats(player);
+						
+					}
+					
+					do{	//	choose g || l
+						choice = prompt("In a panic, you run towards the backyard. Should you head towards the garage (g) or the laundry (l) room?");
+					}while(choice!='g' && choice!='l');
+
+					if(choice=='g'){
+					
+						//	The battle begins:
+						alert("You run into the garage when you hear something growling.\n You turn around and a bloodied, grim-looking hound leaps at you!");
+						foe = setFoe("Hell Hound",75,10,60,10);
+						displayFoe(foe);
+						player = attack(player,foe,equip);
+						displayStats(player);
+						
+						do{	//	choose w || t
+							choice = prompt('"WHAT THE F**K WAS THAT!?"\nWhile trying to catch your breath, you start looking for supplies...\nSearch the workbench (w) or the toolbox (t)?');
+						while(choice!=='w' && choice!='t');
+						
+						if(choice=='w'){
+							alert("You search the workbench...\nYou find a helmet!");
+							
+							do{
+								choice = prompt("Do you want to grab the helmet?\nYes (y) or no (n)?");
+							}while(choice!='y' && choice!='n');
+							
+							if(choice=='y'){
+								//	Equip Helmet (head) & update stats:
+								fHead = setGear("Helmet","Armor","Head",20,20,10,-3,0,-3,-3,0,0,0,0,0,0);
+								player = updatePlayer(player,fHead,cHead);
+								pHead = cHead;
+								cHead = fHead;
+								equip = setEquip(cHead.name,equip.chest,equip.back,equip.hands,equip.feet,equip.held);
+								
+								alert("You grabbed the helmet!");
+								
+								//	Display updated stats:
+								displayStats(player);
+								displayEquip(equip);
+							}else{
+								alert("You did not grab the helmet.");
+							}
+						}else{
+						
+						}
+							
+					}else{
 					
 					}
+					
 				}
 
 
