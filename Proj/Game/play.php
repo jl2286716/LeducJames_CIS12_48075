@@ -4,6 +4,7 @@
 	Purpose:	A zombie game where survival is based upon choice and chance.
 	Created:	Oct 09, 2014
 	Modified:	Nov 17, 2014
+	NOTE:		Fix the Ghoulish and Hell Hounds stats on the lvl1_HouseRte.php
 -->
 <!doctype html>
 <html lang="en">
@@ -325,7 +326,7 @@
 						
 						//	The battle begins:
 						alert("The ghoulish man attacks!");
-						foe = setFoe("Ghoulish",100,5,30,15);
+						foe = setFoe("Ghoulish",100,5,30,20);
 						displayFoe(foe);
 						player = attack(player,foe,equip);
 						displayStats(player);
@@ -334,7 +335,7 @@
 						
 						//	The battle begins:
 						alert("You turn and run back to your house,\nbut a ghoulish woman is blocking your path!\nShe attacks!");
-						foe = setFoe("Ghoulish",100,5,30,15);
+						foe = setFoe("Ghoulish",100,5,30,20);
 						displayFoe(foe);
 						player = attack(player,foe,equip);
 						displayStats(player);
@@ -345,20 +346,20 @@
 						choice = prompt("In a panic, you run towards the backyard. Should you head towards the garage (g) or the laundry (l) room?");
 					}while(choice!='g' && choice!='l');
 
-					if(choice=='g'){
+					if(choice=='g'){	//	go to the garage (g)
 					
 						//	The battle begins:
 						alert("You run into the garage when you hear something growling.\n You turn around and a bloodied, grim-looking hound leaps at you!");
-						foe = setFoe("Hell Hound",75,10,60,10);
+						foe = setFoe("Hell Hound",65,10,60,15);
 						displayFoe(foe);
 						player = attack(player,foe,equip);
 						displayStats(player);
 						
 						do{	//	choose w || t
 							choice = prompt('"WHAT THE F**K WAS THAT!?"\nWhile trying to catch your breath, you start looking for supplies...\nSearch the workbench (w) or the toolbox (t)?');
-						while(choice!=='w' && choice!='t');
+						}while(choice!=='w' && choice!='t');
 						
-						if(choice=='w'){
+						if(choice=='w'){	//	search workbench (w)
 							alert("You search the workbench...\nYou find a helmet!");
 							
 							do{
@@ -381,11 +382,47 @@
 							}else{
 								alert("You did not grab the helmet.");
 							}
-						}else{
-						
-						}
+						}else{	//	search toolbox (t)
+							alert("You search the toolbox...\nYou find your spare truck key!");
 							
-					}else{
+							do{
+								choice = prompt("Do you want to grab the truck key?\nYes (y) or no (n)?");
+							}while(choice!='y' && choice!='n');
+							
+							if(choice=='y'){
+								//	Equip Helmet (head) & update stats:
+								fHead = setGear("Truck Key","Item","Held",0,0,0,0,0,0,0,0,0,0,0,0,0);
+								player = updatePlayer(player,fHeld,cHeld);
+								pHeld = cHeld;
+								cHeld = fHeld;
+								equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,equip.feet,cHeld.name);
+								
+								alert("You grabbed the truck key!");
+								
+								//	Display updated stats:
+								displayStats(player);
+								displayEquip(equip);
+							}else{
+								alert("You did not grab the truck key.");
+							}
+						}
+						
+						alert("You carefully walk out of the garage, heading for your truck.\nYou take two steps when you hear a screach coming from above!\n");
+
+						//	The battle begins:
+						alert("You look up and this hellish-looking cat leaps down onto you!");
+						foe = setFoe("Hell Cat",25,5,75,10);
+						displayFoe(foe);
+						player = attack(player,foe,equip);
+						displayStats(player);
+						
+						alert('"What the hell is going on?"\nBefore you can catch your breath,\nyou spot another hell hound!\nYou run for the truck!');
+						
+						<!--	Beginning of the 'Truck Encounter'.	-->
+						<?php include("includes/lvl1_Truck.php"); ?>					
+						<!--	End of the 'Truck Encounter'.	-->
+							
+					}else{	//	go to the laundry (l) room
 					
 					}
 					
