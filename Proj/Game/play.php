@@ -191,6 +191,7 @@
 				s = {
 					name:p.name,		//	set player name
 					kills:0,			//	initialize kills
+					accur:0,			//	initialize accuracy
 					score:0,			//	initialize score
 					hiLvl:0,			//	Highest Level Completed
 					start:startT,		//	Date/Time First Played
@@ -260,7 +261,9 @@
 //				Score = initScore(Score,player);
 			var level = 0;		//	current level
 			var lvlName = "";	//	current level name
-			var scrLvl = "";	//	toUpperCase() the 'lvlName'
+			var scrLvl = "";	//	stores the scored level name	-	use with scrLvl = lvlName.toUpperCase();
+			var turns = 0;		//	initialize player attack times
+			var landed = 0;		//	initialize attacks landed
 			var choice = "";	//	player's choice
 			var cSurv = "";		//	random chance survival message
 			var cDie = "";		//	random chance death message
