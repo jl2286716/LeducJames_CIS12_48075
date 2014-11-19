@@ -1,4 +1,5 @@
 //	Level 1 begins...
+level++;
 document.getElementById("header").innerHTML = "Level 1: Get the Hell Out of There!";
 
 alert("You put on a shirt and throw on your slippers and walk into the living room when you hear an explosion in the distance. The windows shake and the power goes out.");

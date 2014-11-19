@@ -183,23 +183,36 @@
 			}
 			
 			//	Scoring Functions:	-	might need to recode in PHP	-	use either forms or arrays
-			function initScore($_GET,p,u){
+			//	Initialize Score:
+			function initScore(s,p){
 			
 				var startT = new Date(); 
 				
-				$_GET = {
+				s = {
 					name:p.name,		//	set player name
-					eMail:u.email,		//	user.email	-	user object still needs to be created
 					kills:0,			//	initialize kills
 					score:0,			//	initialize score
 					hiLvl:0,			//	Highest Level Completed
 					start:startT,		//	Date/Time First Played
 					lastPly:startT,		//	Date/Time Last Played
-					lastLoc:"In Bed"		//	Last Location Played
+					lastLoc:"In Bed"	//	Last Location Played
 				};
 			
-				return $_GET;
+				return s;
 			}
+			
+			//	Complete Round Score:
+			function rndScore
+			
+			
+			//	Display Round Score:
+			
+			
+			//	Update Total Score:
+			
+			
+			//	Display Total Score:
+			
 		</script>
 	</head>
 	<body>
@@ -210,29 +223,10 @@
 		
 <!--	Beginning of the 'Game Sets'	-	'introSets.php'	-->
 		<script>
-			//	Create the player and set default stats:
+			//	Create and initialize the player:
 			var pName = prompt("What's your name?");
 			var player = setPlayer(pName);
-			
-			//	Output stat tables:
-			//	Display character table headers:
-			document.write("<table width='33%' border=1 id='left'><tr><td><h2>"+pName+"'s Stats</h2></td><td><h2 id='foeN'></h2></td></tr>");
-			//	Display character table content holders:
-			document.write("<tr><td id='stats'></td><td id='foe' style='vertical-align:text-top'></td></tr></table>");
-			//	Display equipment header:
-			document.write("<table width='33%' border=1 id='right'><tr><td><h2>Equipment</h2></td></tr>")
-			//	Display equipment content holder:
-			document.write("<tr><td id='equip' style='vertical-align:text-top'></td></tr></table>");
-			
-			//	Address the player:
-			alert("Welcome to the end of the world, "+pName+"!");
-
-			//	Set default player equipment:
 			var equip = setEquip("Bare","Bare","Bare","Bare","Bare","Empty");
-			
-			//	Display stats and equipment:
-			displayStats(player);
-			displayEquip(equip);
 
 			//	Create & initialize gear objects	-	previous (p), current (c), found (f):
 			//	Head objects:
@@ -262,11 +256,42 @@
 			
 			//	Create and initialize other variables:
 			var foe = new Object;
-			var $_GET = new Object;	//	Use to store the score.
-//				$_GET = initScore($_GET,player,user);
-			var choice = "";
-			var cSurv = "";
-			var cDie = "";
+			var Score = new Object;	//	Use to store the score.
+//				Score = initScore(Score,player);
+			var level = 0;		//	current level
+			var lvlName = "";	//	current level name
+			var scrLvl = "";	//	toUpperCase() the 'lvlName'
+			var choice = "";	//	player's choice
+			var cSurv = "";		//	random chance survival message
+			var cDie = "";		//	random chance death message
+			
+			//	Output Stat Tables:
+			//	Display character table headers:
+			document.write("<table width='33%' border=1 id='left'><tr><td><h2>"+pName+"'s Stats</h2></td><td><h2 id='foeN'></h2></td></tr>");
+			//	Display character table content holders:
+			document.write("<tr><td id='stats'></td><td id='foe' style='vertical-align:text-top'></td></tr></table>");
+			//	Display equipment header:
+			document.write("<table width='33%' border=1 id='right'><tr><td><h2>Equipment</h2></td></tr>")
+			//	Display equipment content holder:
+			document.write("<tr><td id='equip' style='vertical-align:text-top'></td></tr></table>");
+			
+			//	Output Score Table:
+			//	Display Congratulation Message:
+			document.write("<table width='100%' border='1' id='score' style='display:hidden'><tr><td colspan='2'><h1>CONGRATULATIONS! LEVEL "+level+": "+scrLvl+" COMPLETED!</h1></td></tr>");
+			//	Display score table headers:
+			document.write("<tr><td>Level "+level+" Score</td><td>Total Score</td></tr>");
+			//	Display level score:
+			document.write("<tr><td id='level'></td>");
+			//	Display total score:
+			document.write("<td id='total'></td></tr></table>");
+			
+			//	Address the player:
+			alert("Welcome to the end of the world, "+pName+"!");
+
+			//	Display stats and equipment:
+			displayStats(player);
+			displayEquip(equip);
+
 /*	End of the 'Game Sets'.	*/
 
 			<!--	The 'Story Intro'	-->
