@@ -168,7 +168,7 @@
 						alert(cS);
 					}else{	//	ELSE you die
 						alert(cD);
-						alert("YOU ARE DEAD!");
+						alert(p.name+", YOU ARE DEAD!");
 						exit();
 					}
 				}else{	//	ELSE give better chance of survival
@@ -176,7 +176,7 @@
 						alert(cS);
 					}else{	//	ELSE you die
 						alert(cD);
-						alert("YOU ARE DEAD!");
+						alert(p.name+", YOU ARE DEAD!");
 						exit();
 					}
 				}

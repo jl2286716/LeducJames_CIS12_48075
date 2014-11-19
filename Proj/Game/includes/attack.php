@@ -138,11 +138,11 @@
 							f.health-=hit;
 						}
 					}
-					alert("SUCCESSFUL HIT!\nYou inflicted "+hit+" damage on the "+f.name+"!");
 					if(f.health<0){	//	check and adjust for negative value
 						f.health=0;
 					}
 					displayFoe(f);
+					alert("SUCCESSFUL HIT!\nYou inflicted "+hit+" damage on the "+f.name+"!");
 				}else{
 					alert("YOU'RE ATTACK MISSED!");
 				}
@@ -166,15 +166,15 @@
 					hit=fA;
 					p.health-=hit;
 				}
-				alert("YOU'VE BEEN HIT!\nThe "+f.name+" inflicted "+hit+" damage on you!");
 				if(p.health<0){	//	check and adjust for negative value
 					p.health=0;
 				}
 				displayStats(p);
+				alert("YOU'VE BEEN HIT!\nThe "+f.name+" inflicted "+hit+" damage on you!");
 			}
 			//	Check Player's Health
 			if((p.health)<=0){
-				alert(p.name+", you are DEAD!");
+				alert(p.name+", YOU ARE DEAD!");
 				exit();		//	End Game
 			}
 			//	End Turn
