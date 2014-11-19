@@ -3,8 +3,8 @@
 	Title:		Zompocalypse
 	Purpose:	A zombie game where survival is based upon choice and chance.
 	Created:	Oct 09, 2014
-	Modified:	Nov 17, 2014
-	NOTE:		Fix the Ghoulish and Hell Hounds stats on the lvl1_HouseRte.php
+	Modified:	Nov 18, 2014
+	NOTE:		Once scores are settled, update scores after each battle!
 -->
 <!doctype html>
 <html lang="en">
@@ -31,10 +31,20 @@
 					mm9:0,
 					shell:0,
 					quiv:0,
-					arr:0
+					arr:0,
+					lvlKills:0,
+					totKills:0,
+					lvlScr:0,
+					totScr:0,
+					btlHits:0,
+					btlRnds:0,
+					lvlHits:0,
+					totHits:0
 					};
 				return p;
 			}
+			
+			//	Initialize Player for beginning of level	-	reset:	lvlKills, lvlScr, lvlHits
 			
 			function setFoe(n,h,d,s,p){
 				var f = new Object();
@@ -85,22 +95,24 @@
 			}
 			
 			//	Display Functions:
-			function displayStats(player){
+			function displayStats(p){
 				var str = "";
-				str+=("Name: <b>"+player.name+"</b><br>");
-				str+=("Current Health: <b>"+player.health+"</b><br>");
-				str+=("Max Health: <b>"+player.maxH+"</b><br>");
-				str+=("Defense: <b>"+player.def+"</b><br>");
-				str+=("Speed: <b>"+player.spd+"</b><br>");
-				str+=("Power: <b>"+player.pwr+"</b><br>");
-				str+=("Accuracy: <b>"+player.acc+"%</b><br>");
-				str+=("Critical Chance: <b>"+player.crit+"%</b><br>");
-				str+=("357mm Rounds: <b>"+player.mm357+"</b><br>");
-				str+=("39mm Rounds: <b>"+player.mm39+"</b><br>");
-				str+=("9mm Rounds: <b>"+player.mm9+"</b><br>");
-				str+=("Shotgun Shells: <b>"+player.shell+"</b><br>");
-				str+=("Quiver Capacity: <b>"+player.quiv+"</b><br>");
-				str+=("Arrows: <b>"+player.arr+"</b><br>");
+				str+=("Name: <b>"+p.name+"</b><br>");
+				str+=("Current Health: <b>"+p.health+"</b><br>");
+				str+=("Max Health: <b>"+p.maxH+"</b><br>");
+				str+=("Defense: <b>"+p.def+"</b><br>");
+				str+=("Speed: <b>"+p.spd+"</b><br>");
+				str+=("Power: <b>"+p.pwr+"</b><br>");
+				str+=("Accuracy: <b>"+p.acc+"%</b><br>");
+				str+=("Critical Chance: <b>"+p.crit+"%</b><br>");
+				str+=("357mm Rounds: <b>"+p.mm357+"</b><br>");
+				str+=("39mm Rounds: <b>"+p.mm39+"</b><br>");
+				str+=("9mm Rounds: <b>"+p.mm9+"</b><br>");
+				str+=("Shotgun Shells: <b>"+p.shell+"</b><br>");
+				str+=("Quiver Capacity: <b>"+p.quiv+"</b><br>");
+				str+=("Arrows: <b>"+p.arr+"</b><br>");
+				str+=("Kills: <b>"+p.totKills+"</b><br>");
+				str+=("Score: <b>"+p.totScr+"</b><br>");
 				document.getElementById("stats").innerHTML = str;
 			}
 			
@@ -127,24 +139,32 @@
 			}
 			
 			//	Update Functions:
-			function updatePlayer(player,found,current){
-				player = {
-					name:player.name,
-					health:player.health - current.health + found.health,
-					maxH:player.maxH - current.maxH + found.maxH,
-					def:player.def - current.def + found.def,
-					spd:player.spd - current.spd + found.spd,
-					pwr:player.pwr - current.pwr + found.pwr,
-					acc:player.acc - current.acc + found.acc,
-					crit:player.crit - current.crit + found.crit,
-					mm357:player.mm357 - current.mm357 + found.mm357,
-					mm39:player.mm39 - current.mm39 + found.mm39,
-					mm9:player.mm9 - current.mm9 + found.mm9,
-					shell:player.shell - current.shell + found.shell,
-					quiv:player.quiv - current.quiv + found.quiv,
-					arr:player.arr - current.arr + found.arr
+			function updatePlayer(p,f,c){
+				p = {
+					name:p.name,
+					health:p.health - c.health + f.health,
+					maxH:p.maxH - c.maxH + f.maxH,
+					def:p.def - c.def + f.def,
+					spd:p.spd - c.spd + f.spd,
+					pwr:p.pwr - c.pwr + f.pwr,
+					acc:p.acc - c.acc + f.acc,
+					crit:p.crit - c.crit + f.crit,
+					mm357:p.mm357 - c.mm357 + f.mm357,
+					mm39:p.mm39 - c.mm39 + f.mm39,
+					mm9:p.mm9 - c.mm9 + f.mm9,
+					shell:p.shell - c.shell + f.shell,
+					quiv:p.quiv - c.quiv + f.quiv,
+					arr:p.arr - c.arr + f.arr,
+					lvlKills:p.lvlKills,
+					totKills:p.totKills,
+					lvlScr:p.lvlScr,
+					totScr:p.totScr,
+					btlHits:p.btlHits,
+					btlRnds:p.btlRnds,
+					lvlHits:p.lvlHits,
+					totHits:p.totHits
 				};
-				return player;
+				return p;
 			}
 			
 			function clearFoe(){
@@ -183,36 +203,53 @@
 			}
 			
 			//	Scoring Functions:	-	might need to recode in PHP	-	use either forms or arrays
-			//	Initialize Score:
-			function initScore(s,p){
-			
+			//	Initialize Score Object:
+			function initScr(s,p){
 				var startT = new Date(); 
-				
 				s = {
 					name:p.name,		//	set player name
 					kills:0,			//	initialize kills
+					rTurns:0,			//	round turns	-	reinitializes in the beginning of each level
+					tTurns:0,			//	total turns	-	updates at the end of each completed battle round
+					rLand:0,			//	total attack turns	-	reinitializes in the beginning of each level
+					tLand:0,			//	total landed attacks	-	updates at the end of each completed battle round
 					accur:0,			//	initialize accuracy
-					score:0,			//	initialize score
+					rScr:0,				//	initialize the level's score
+					tScr:0,				//	initialize the total score
 					hiLvl:0,			//	Highest Level Completed
-					start:startT,		//	Date/Time First Played
-					lastPly:startT,		//	Date/Time Last Played
-					lastLoc:"In Bed"	//	Last Location Played
+					lastLvl:0,			//	Last Level played
+					lastLoc:"In Bed",	//	Last Location Played
+					firstP:startT,		//	Date/Time First Played
+					lastP:startT		//	Date/Time Last Played
 				};
-			
 				return s;
 			}
 			
-			//	Complete Round Score:
-			function rndScore
+			//	Initialize Level Score
+			function initRndScr(){
+			
+			}
+			
+			//	Update Round Score:
+			function updateRndScr(){
+			
+			}
 			
 			
 			//	Display Round Score:
+			function displayRndScr(){
 			
+			}
 			
 			//	Update Total Score:
+			function updateTtlScr(){
 			
+			}
 			
 			//	Display Total Score:
+			function displayTtlScr(){
+			
+			}
 			
 		</script>
 	</head>
@@ -257,12 +294,15 @@
 			
 			//	Create and initialize other variables:
 			var foe = new Object;
-			var Score = new Object;	//	Use to store the score.
-//				Score = initScore(Score,player);
-			var level = 0;		//	current level
-			var lvlName = "";	//	current level name
-			var scrLvl = "";	//	stores the scored level name	-	use with scrLvl = lvlName.toUpperCase();
-			var turns = 0;		//	initialize player attack times
+			var LevelScore = new Object;	//	Use to store the level score	-	reinitialize at the beginning of each level
+			var TotalScore = new Object;	//	Use to store the total score	-	update after each level
+//				TotalScore = initScr(TotalScore,Player);
+			var level = 0;		//	current level	-	update for each level
+			var lvlName = "";	//	current level name	-	update for each laval
+			var scrLvl = "";	//	stores the scored level name
+//				scrLvl = lvlName.toUpperCase();
+			var	locat = "";		//	initialize location	-	update for each module
+			var turns = 0;		//	initialize player attack turns
 			var landed = 0;		//	initialize attacks landed
 			var choice = "";	//	player's choice
 			var cSurv = "";		//	random chance survival message
@@ -280,7 +320,7 @@
 			
 			//	Output Score Table:
 			//	Display Congratulation Message:
-			document.write("<table width='100%' border='1' id='score' style='display:hidden'><tr><td colspan='2'><h1>CONGRATULATIONS! LEVEL "+level+": "+scrLvl+" COMPLETED!</h1></td></tr>");
+			document.write("<table width='100%' border='1' id='score' style='display:none'><tr><td colspan='2'><h1>CONGRATULATIONS! LEVEL "+level+": "+scrLvl+" COMPLETED!</h1></td></tr>");
 			//	Display score table headers:
 			document.write("<tr><td>Level "+level+" Score</td><td>Total Score</td></tr>");
 			//	Display level score:

@@ -1,5 +1,32 @@
 <script>
-	function attack(p,f,e,s){
+//	Attack function has access to the following objects and properties:
+	//	Player Object = p	//	Foe Object = f		//	Equip Object = e	//	Score Object = s
+		//	p.name				//	f.name				//	e.head				//	s.name
+		//	p.health			//	f.health			//	e.chest				//	s.kills
+		//	p.maxH				//	f.def				//	e.back				//	s.rTurns
+		//	p.def				//	f.spd				//	e.hands				//	s.tTurns
+		//	p.spd				//	f.pwr				//	e.feet				//	s.rLand
+		//	p.pwr										//	e.held				//	s.tLand
+		//	p.acc																//	s.accur
+		//	p.crit																//	s.rScr
+		//	p.mm357																//	s.tScr
+		//	p.mm39																//	s.hiLvl
+		//	p.mm9																//	s.lastLvl
+		//	p.shell																//	s.lastLoc
+		//	p.quiv																//	s.firstP
+		//	p.arr																//	s.lastP
+		//	p.lvlKills
+		//	p.totKills
+		//	p.lvlScr
+		//	p.totScr
+		//	p.btlHits
+		//	p.btlRnds
+		//	p.lvlHits
+		//	p.totHits
+
+//	NOTE:	Incorporate score updates and reinitializations!
+
+	function attack(p,f,e){
 		var	pA = (p.pwr)-(f.def);	//	set player attack strength
 		var fA = (f.pwr)-(p.def);	//	set foe attack strength
 		var turn = 1;				//	set turn counter
