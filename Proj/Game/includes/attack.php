@@ -10,10 +10,13 @@
 		var hit;					//	create hit variable
 		
 		do{
+			//	Prompt for the beginning of the battle:
+			alert("And the battle begins...");
+		
 			//	Player Attacks:
 			if((pSpd%turn) == 0){	//	Calculate Speed
-				var randAcc = Math.floor((Math.random()*100)+1);
-				var randCrit = Math.floor((Math.random()*100)+1);
+				var randAcc = Math.floor((Math.random()*100)+1);	//	Create a Random Accuracy Variable
+				var randCrit = Math.floor((Math.random()*100)+1);	//	Create a Random Critical Chance Variable
 				if(pAcc>=randAcc){	//	Calculate Accuracy
 					//	Check for projectile ammo:
 					//	Check for Defender 1300:
@@ -135,6 +138,9 @@
 						}
 					}
 					alert("SUCCESSFUL HIT!\nYou inflicted "+hit+" damage on the "+f.name+"!");
+					if(f.health<0){	//	check and adjust for negative value
+						f.health=0;
+					}
 					displayFoe(f);
 				}else{
 					alert("YOU'RE ATTACK MISSED!");
@@ -143,11 +149,20 @@
 			//	Foe Attacks
 			if((fSpd%turn) == 0){	//	Calculate Speed
 				if(fA<2){
-					p.health--;
+					hit=2;
+					p.health-=hit;
+				}else if(fA<5){
+					hit=fA;
+					hit*=2;
+					p.health-=hit;
 				}else{
-					p.health-=fA;
+					hit=fA;
+					p.health-=hit;
 				}
-				alert("YOU'VE BEEN HIT!\nThe "+f.name+" inflicted "+fA+" damage on you!");
+				alert("YOU'VE BEEN HIT!\nThe "+f.name+" inflicted "+hit+" damage on you!");
+				if(p.health<0){	//	check and adjust for negative value
+					p.health=0;
+				}
 				displayStats(p);
 			}
 			//	End Turn
