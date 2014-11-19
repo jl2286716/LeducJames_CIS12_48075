@@ -258,14 +258,11 @@
 			var cDie = "";
 /*	End of the 'Game Sets'.	*/
 
-
-			<!--	Beginning of the 'Intro Story'.	-->
+			<!--	The 'Story Intro'	-->
 			<?php include_once("includes/introMain.php"); ?>
-			<!--	End of the 'Intro Story'.	-->	
 
-			<!--	Beginning of the 'Level 1 Intro'.	-->
+			<!--	The 'Level 1 Intro'	-->
 			<?php include_once("includes/lvl1_Intro.php"); ?>
-			<!--	End of the 'Level 1 Intro'.	-->	
 
 			do{	//	choose: i || p
 				choice = prompt("Investigate (i) or prepare (p)?\nEnter one letter only!");
@@ -281,175 +278,26 @@
 				if(choice=='w'){	//	Watch (w)
 					alert('A truck swerves into the ghoulish men, flips and wrecks into the woman before it exlopdes!"\nWOW!"');
 					
-					<!--	Beginning of the 'House Route'.	-->
-					<?php include("includes/lvl1_HouseRte.php"); ?>					
-					<!--	End of the 'House Route'.	-->
-					
-					//	CHECK BELOW
-
-
+					<!--	The 'House Encounter'	-->
+					<?php include("includes/lvl1_House.php"); ?>					
 					
 				}else if(choice=='h'){	//	Help (h)
 				
-/*	Beginning of the 'Yard Route'.	*/
-
-					alert('You run out to help the woman, shouting,\n"Leave her alone!"');
-					alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them, flips into the fleeing woman, and explodes!");
-					
-					do{	//	choose s || r
-						choice = prompt("Search (s) for a weapon or run (r) back into the house?");
-					}while(choice!='s' && choice!='r');
-					
-					if(choice=='s'){
-						alert("You scan the yard...\nYou find a shovel!");
-						
-						do{
-							choice = prompt("Do you want to grab the shovel?\nYes (y) or no (n)?");
-						}while(choice!='y' && choice!='n');
-						
-						if(choice=='y'){
-							//	Equip shovel (hands) & update stats:
-							fHands = setGear("Shovel","Weapon","Hands",0,0,0,2,20,40,75,0,0,0,0,0,0);
-							player = updatePlayer(player,fHands,cHands);
-							pHands = cHands;
-							cHands = fHands;
-							equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
-							
-							alert("You grabbed the shovel!");
-							
-							//	Display updated stats:
-							displayStats(player);
-							displayEquip(equip);
-						}else{
-							alert("You did not grab the shovel.");
-						}
-						
-						//	The battle begins:
-						alert("The ghoulish man attacks!");
-						foe = setFoe("Ghoulish",100,5,30,20);
-						displayFoe(foe);
-						player = attack(player,foe,equip);
-						displayStats(player);
-						
-					}else{
-						
-						//	The battle begins:
-						alert("You turn and run back to your house,\nbut a ghoulish woman is blocking your path!\nShe attacks!");
-						foe = setFoe("Ghoulish",100,5,30,20);
-						displayFoe(foe);
-						player = attack(player,foe,equip);
-						displayStats(player);
-						
-					}
-					
-					do{	//	choose g || l
-						choice = prompt("In a panic, you run towards the backyard. Should you head towards the garage (g) or the laundry (l) room?");
-					}while(choice!='g' && choice!='l');
-
-					if(choice=='g'){	//	go to the garage (g)
-					
-						//	The battle begins:
-						alert("You run into the garage when you hear something growling.\n You turn around and a bloodied, grim-looking hound leaps at you!");
-						foe = setFoe("Hell Hound",65,10,60,15);
-						displayFoe(foe);
-						player = attack(player,foe,equip);
-						displayStats(player);
-						
-						do{	//	choose w || t
-							choice = prompt('"WHAT THE F**K WAS THAT!?"\nWhile trying to catch your breath, you start looking for supplies...\nSearch the workbench (w) or the toolbox (t)?');
-						}while(choice!=='w' && choice!='t');
-						
-						if(choice=='w'){	//	search workbench (w)
-							alert("You search the workbench...\nYou find a helmet!");
-							
-							do{
-								choice = prompt("Do you want to grab the helmet?\nYes (y) or no (n)?");
-							}while(choice!='y' && choice!='n');
-							
-							if(choice=='y'){
-								//	Equip Helmet (head) & update stats:
-								fHead = setGear("Helmet","Armor","Head",20,20,10,-3,0,-3,-3,0,0,0,0,0,0);
-								player = updatePlayer(player,fHead,cHead);
-								pHead = cHead;
-								cHead = fHead;
-								equip = setEquip(cHead.name,equip.chest,equip.back,equip.hands,equip.feet,equip.held);
-								
-								alert("You grabbed the helmet!");
-								
-								//	Display updated stats:
-								displayStats(player);
-								displayEquip(equip);
-							}else{
-								alert("You did not grab the helmet.");
-							}
-						}else{	//	search toolbox (t)
-							alert("You search the toolbox...\nYou find your spare truck key!");
-							
-							do{
-								choice = prompt("Do you want to grab the truck key?\nYes (y) or no (n)?");
-							}while(choice!='y' && choice!='n');
-							
-							if(choice=='y'){
-								//	Equip Helmet (head) & update stats:
-								fHead = setGear("Truck Key","Item","Held",0,0,0,0,0,0,0,0,0,0,0,0,0);
-								player = updatePlayer(player,fHeld,cHeld);
-								pHeld = cHeld;
-								cHeld = fHeld;
-								equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,equip.feet,cHeld.name);
-								
-								alert("You grabbed the truck key!");
-								
-								//	Display updated stats:
-								displayStats(player);
-								displayEquip(equip);
-							}else{
-								alert("You did not grab the truck key.");
-							}
-						}
-						
-						alert("You carefully walk out of the garage, heading for your truck.\nYou take two steps when you hear a screach coming from above!\n");
-
-						//	The battle begins:
-						alert("You look up and this hellish-looking cat leaps down onto you!");
-						foe = setFoe("Hell Cat",25,5,75,10);
-						displayFoe(foe);
-						player = attack(player,foe,equip);
-						displayStats(player);
-						
-						alert('"What the hell is going on?"\nBefore you can catch your breath,\nyou spot another hell hound!\nYou run for the truck!');
-						
-						<!--	Beginning of the 'Truck Encounter'.	-->
-						<?php include("includes/lvl1_Truck.php"); ?>					
-						<!--	End of the 'Truck Encounter'.	-->
-							
-					}else{	//	go to the laundry (l) room
-					
-						alert("You run into the laundry room,\nlocking the door behind you!");
-						
-						
-					
-					}
-					
+					<!--	The 'Yard Encounter'	-->
+					<?php include_once("includes/lvl1_Yard.php"); ?>					
+			
 				}
-
-
-/*	End of the 'Yard Route'.	*/
-
-
-					//	CHECK ABOVE
 					
 			}else if(choice=='p'){	//	Prepare (p)
 			
-				<!--	Beginning of the 'House Route'.	-->
-				<?php include("includes/lvl1_HouseRte.php"); ?>					
-				<!--	End of the 'House Route'.	-->
-				
-				<!--	Beginning of the 'Truck Encounter'.	-->
-				<?php include("includes/lvl1_Truck.php"); ?>					
-				<!--	End of the 'Truck Encounter'.	-->
+				<!--	The 'House Encounter'	-->
+				<?php include("includes/lvl1_House.php"); ?>					
 				
 			}
-/*	*/		
+			
+			<!--	The 'Truck Encounter'	-->
+			<?php include_once("includes/lvl1_Truck.php"); ?>					
+			
 		</script>
 	</body>
 </html>
