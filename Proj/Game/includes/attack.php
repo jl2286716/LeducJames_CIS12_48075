@@ -9,9 +9,10 @@
 		var pCrit = (p.crit);		//	set critical chance
 		var hit;					//	create hit variable
 		
+		//	Prompt for the beginning of the battle:
+		alert("And the battle begins...");
+
 		do{
-			//	Prompt for the beginning of the battle:
-			alert("And the battle begins...");
 		
 			//	Player Attacks:
 			if((pSpd%turn) == 0){	//	Calculate Speed
@@ -146,6 +147,12 @@
 					alert("YOU'RE ATTACK MISSED!");
 				}
 			}
+			//	Check Foe's Health
+			if((f.health)<=0){
+				alert("The "+f.name+" is DEAD!");
+				clearFoe();	//	Clear the Foe
+				break;		//	End the Battle
+			}
 			//	Foe Attacks
 			if((fSpd%turn) == 0){	//	Calculate Speed
 				if(fA<2){
@@ -165,19 +172,13 @@
 				}
 				displayStats(p);
 			}
-			//	End Turn
-			turn++;
-			//	Check Foe's Health
-			if((f.health)<=0){
-				alert("The "+f.name+" is DEAD!");
-				clearFoe();	//	Clear the Foe
-				break;		//	End the Battle
-			}
 			//	Check Player's Health
 			if((p.health)<=0){
 				alert(p.name+", you are DEAD!");
 				exit();		//	End Game
 			}
+			//	End Turn
+			turn++;
 		}while((p.health)>0 && (f.health)>0);
 		return p;
 	}

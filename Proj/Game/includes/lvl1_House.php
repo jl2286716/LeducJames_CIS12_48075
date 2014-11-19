@@ -141,7 +141,7 @@ if(choice=='k'){	//	search the kitchen (k)
 		displayStats(player);
 	}
 	
-	alert("You run out the back door when you spot a devilish dog snarling at you!/nSo, you run straight for your truck!");
+	alert("You run out the back door when you spot a devilish dog snarling at you!\nSo, you run straight for your truck!");
 	
 //	BEDROOM SEARCH WORKS FINE...
 
