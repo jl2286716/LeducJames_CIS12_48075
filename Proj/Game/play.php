@@ -38,8 +38,12 @@
 					totScr:0,
 					btlHits:0,
 					btlRnds:0,
+					btlScr:0,
+					btlKills:0,
 					lvlHits:0,
-					totHits:0
+					totHits:0,
+					lvlTurn:0,
+					totTurn:0
 					};
 				return p;
 			}
@@ -161,8 +165,12 @@
 					totScr:p.totScr,
 					btlHits:p.btlHits,
 					btlRnds:p.btlRnds,
+					btlScr:p.btlScr,
+					btlKills:p.btlKills,
 					lvlHits:p.lvlHits,
-					totHits:p.totHits
+					totHits:p.totHits,
+					lvlTurn:p.lvlLand,
+					totTurn:p.totLand
 				};
 				return p;
 			}
@@ -208,7 +216,8 @@
 				var startT = new Date(); 
 				s = {
 					name:p.name,		//	set player name
-					kills:0,			//	initialize kills
+					rKills:0,			//	initialize level kills
+					tKills:0,			//	initialize total kills
 					rTurns:0,			//	round turns	-	reinitializes in the beginning of each level
 					tTurns:0,			//	total turns	-	updates at the end of each completed battle round
 					rLand:0,			//	total attack turns	-	reinitializes in the beginning of each level
@@ -225,29 +234,50 @@
 				return s;
 			}
 			
-			//	Initialize Level Score
-			function initRndScr(){
-			
+			//	Initialize Level Scores:
+			function initRndScr(s){
+				s.rKills=0;
+				s.rTurns=0;
+				s.rLand=0;
+				s.rScr=0;
+				return s;
+			}
+			function initRndPlyr(p){
+				p.lvlKills=0;
+				p.lvlScr=0;
+				p.lvlHits=0;
+				p.lvlTurn=0;
+				return p;
 			}
 			
 			//	Update Round Score:
-			function updateRndScr(){
+			function updateRndScr(s,p){
+				s.rKills+=p.lvlKills;
+				s.rTurns+=p.lvlTurn;
+				s.rLand+=p.lvlHits;
+				s.rScr+=p.lvlScr;
+				s.accur=(s.rLand)/(s.rTurns);
+				return s;
+			}
 			
+			//	Update Total Score:
+			function updateTtlScr(s,p){
+				s.tKills+=p.totKills;
+				s.tTurns+=p.totTurn;
+				s.tLand+=p.totHits;
+				s.tScr+=p.totScr;
+				s.accur=(s.tLand)/(s.tTurns);
+				return s;
 			}
 			
 			
 			//	Display Round Score:
-			function displayRndScr(){
-			
-			}
-			
-			//	Update Total Score:
-			function updateTtlScr(){
+			function displayRndScr(s){
 			
 			}
 			
 			//	Display Total Score:
-			function displayTtlScr(){
+			function displayTtlScr(s){
 			
 			}
 			
@@ -377,6 +407,13 @@
 			<!--	The 'Truck Encounter'	-->
 			<?php include_once("includes/lvl1_Truck.php"); ?>					
 			
+			<!--	The 'Scoring' Include	-->
+			<!--?php include("includes/scoring.php");	?-->
+			
+			LevelScore = updateRndScr(LevelScore,Player);
+	//		displayRndScr(LevelScore);
+			TotalScore = updateTtlScr(TotalScore,Player);
+	//		displayTtlScr(TotalScore);
 		</script>
 	</body>
 </html>

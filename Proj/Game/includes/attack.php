@@ -2,7 +2,7 @@
 //	Attack function has access to the following objects and properties:
 	//	Player Object = p	//	Foe Object = f		//	Equip Object = e	//	Score Object = s
 		//	p.name				//	f.name				//	e.head				//	s.name
-		//	p.health			//	f.health			//	e.chest				//	s.kills
+		//	p.health			//	f.health			//	e.chest				//	s.rKills,	s.tKills
 		//	p.maxH				//	f.def				//	e.back				//	s.rTurns
 		//	p.def				//	f.spd				//	e.hands				//	s.tTurns
 		//	p.spd				//	f.pwr				//	e.feet				//	s.rLand
@@ -21,8 +21,12 @@
 		//	p.totScr
 		//	p.btlHits
 		//	p.btlRnds
+		//	p.btlScr
+		//	p.btlKills
 		//	p.lvlHits
 		//	p.totHits
+		//	p.lvlTurn
+		//	p.totTurn
 
 //	NOTE:	Incorporate score updates and reinitializations!
 
@@ -38,6 +42,12 @@
 		
 		//	Prompt for the beginning of the battle:
 		alert("And the battle begins...");
+		
+		//	Reinitialize Battle Variable Counters:
+		p.btlHits=0;
+		p.btlRnds=0;
+		p.btlScr=0;
+		p.btlKills=0;
 
 		do{
 		
@@ -165,18 +175,39 @@
 							f.health-=hit;
 						}
 					}
-					if(f.health<0){	//	check and adjust for negative value
-						f.health=0;
-					}
+					//	Update Player Score:
+					p.btlScr+=hit*100;	//	Attack Damage times 100 points
+					p.lvlScr+=hit*100;
+					p.totScr+=hit*100;
+					p.btlHits++;
+					p.lvlHits++;
+					p.totHits++;
+					p.btlRnds++;
+					p.lvlTurn++;
+					p.totTurn++;
 					displayFoe(f);
 					alert("SUCCESSFUL HIT!\nYou inflicted "+hit+" damage on the "+f.name+"!");
+					
+					//	Check Foe's health and adjust for negative value:
+					if(f.health<0){
+						f.health=0;
+					}
 				}else{
+					p.btlRnds++;
+					p.lvlTurn++;
+					p.totTurn++;
 					alert("YOU'RE ATTACK MISSED!");
 				}
 			}
 			//	Check Foe's Health
-			if((f.health)<=0){
+			if((f.health)<=0){	//	IF Foe dies:
 				alert("The "+f.name+" is DEAD!");
+				p.btlKills++;
+				p.lvlKills++;
+				p.totKills++;
+				p.btlScr+=5000;	//	5000 points per kill
+				p.lvlScr+=5000;
+				p.totScr+=5000;
 				clearFoe();	//	Clear the Foe
 				break;		//	End the Battle
 			}
