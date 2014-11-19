@@ -329,8 +329,8 @@
 //				TotalScore = initScr(TotalScore,Player);
 			var level = 0;		//	current level	-	update for each level
 			var lvlName = "";	//	current level name	-	update for each laval
-			var scrLvl = "";	//	stores the scored level name
-//				scrLvl = lvlName.toUpperCase();
+//			var scrLvl = "";	//	stores the scored level name
+//				scrLvl = lvlName.toUpperCase();	-	Do in function
 			var	locat = "";		//	initialize location	-	update for each module
 			var turns = 0;		//	initialize player attack turns
 			var landed = 0;		//	initialize attacks landed
