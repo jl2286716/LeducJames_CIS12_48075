@@ -1,4 +1,3 @@
-<script>
 do{	//	choose e || c - search livingroom
 	choice = prompt('You decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
 }while(choice!='e' && choice!='c');
@@ -88,7 +87,7 @@ if(choice=='k'){	//	search the kitchen (k)
 		
 		if(choice=='y'){
 			//	Equip Truck Key (held) & update stats:
-			fHands = setGear("Truck Key","Item","Held",0,0,0,0,0,0,0,0,0,0,0,0,0);
+			fHeld = setGear("Truck Key","Item","Held",0,0,0,0,0,0,0,0,0,0,0,0,0);
 			player = updatePlayer(player,fHeld,cHeld);
 			pHeld = cHeld;
 			cHeld = fHeld;
@@ -129,6 +128,20 @@ if(choice=='k'){	//	search the kitchen (k)
 		}
 	}
 	
+	do{
+		choice = prompt("Someone, or something, smashes in the front door and makes a bee line for you!\nDo you attack (a) or run (r)?");
+	}while(choice!='a' && choice!='r');
+	
+	if(choice=='a'){
+		//	The battle begins:
+		alert("You run head on at that son-of-a-bitch!");
+		foe = setFoe("Ghoulish",100,5,30,20);
+		displayFoe(foe);
+		player = attack(player,foe,equip);
+		displayStats(player);
+	}
+	
+	alert("You run out the back door when you spot a devilish dog snarling at you!/nSo, you run straight for your truck!");
 	
 //	BEDROOM SEARCH WORKS FINE...
 
@@ -164,7 +177,7 @@ if(choice=='k'){	//	search the kitchen (k)
 		
 		if(choice=='y'){
 			//	Equip Beanie (head) & update stats:
-			fHands = setGear("Beanie","Armor","Head",5,5,2,0,0,0,0,0,0,0,0,0,0);
+			fHead = setGear("Beanie","Armor","Head",5,5,2,0,0,0,0,0,0,0,0,0,0);
 			player = updatePlayer(player,fHead,cHead);
 			pHead = cHead;
 			cHead = fHead;
@@ -186,7 +199,7 @@ if(choice=='k'){	//	search the kitchen (k)
 		
 		if(choice=='y'){
 			//	Equip Coat (chest) & update stats:
-			fHands = setGear("Coat","Armor","Chest",10,10,5,-2,0,0,0,0,0,0,0,0,0);
+			fChest = setGear("Coat","Armor","Chest",10,10,5,-2,0,0,0,0,0,0,0,0,0);
 			player = updatePlayer(player,fChest,cChest);
 			pChest = cChest;
 			cChest = fChest;
@@ -216,9 +229,4 @@ if(choice=='k'){	//	search the kitchen (k)
 	
 	alert("You run out the backdoor!");
 	alert("You look to the right...\nClear!\nYou look to the left...\nYou spot a bloody, snarling dog with glowing red eyes forming at the mouth!");
-	
-	<!--	Beginning of the 'Truck Encounter'.	-->
-	<?php include("includes/lvl1_Truck.php"); ?>					
-	<!--	End of the 'Truck Encounter'.	-->
-	
 }

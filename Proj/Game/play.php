@@ -424,6 +424,10 @@
 							
 					}else{	//	go to the laundry (l) room
 					
+						alert("You run into the laundry room,\nlocking the door behind you!");
+						
+						
+					
 					}
 					
 				}
@@ -439,6 +443,10 @@
 				<!--	Beginning of the 'House Route'.	-->
 				<?php include("includes/lvl1_HouseRte.php"); ?>					
 				<!--	End of the 'House Route'.	-->
+				
+				<!--	Beginning of the 'Truck Encounter'.	-->
+				<?php include("includes/lvl1_Truck.php"); ?>					
+				<!--	End of the 'Truck Encounter'.	-->
 				
 			}
 /*	*/		
