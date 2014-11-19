@@ -15,35 +15,35 @@ if(choice=='s'){
 	if(choice=='y'){
 		//	Equip shovel (hands) & update stats:
 		fHands = setGear("Shovel","Weapon","Hands",0,0,0,2,20,40,75,0,0,0,0,0,0);
-		player = updatePlayer(player,fHands,cHands);
+		Player = updatePlayer(Player,fHands,cHands);
 		pHands = cHands;
 		cHands = fHands;
-		equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+		Equip = setEquip(Equip.head,Equip.chest,Equip.back,cHands.name,Equip.feet,Equip.held);
 		
 		alert("You grabbed the shovel!");
 		
 		//	Display updated stats:
-		displayStats(player);
-		displayEquip(equip);
+		displayStats(Player);
+		displayEquip(Equip);
 	}else{
 		alert("You did not grab the shovel.");
 	}
 	
 	//	The battle begins:
 	alert("The ghoulish man attacks!");
-	foe = setFoe("Ghoulish",100,5,30,20);
-	displayFoe(foe);
-	player = attack(player,foe,equip);
-	displayStats(player);
+	Foe = setFoe("Ghoulish",100,5,30,20);
+	displayFoe(Foe);
+	Player = attack(Player,Foe,Equip);
+	displayStats(Player);
 	
 }else{
 	
 	//	The battle begins:
 	alert("You turn and run back to your house,\nbut a ghoulish woman is blocking your path!\nShe attacks!");
-	foe = setFoe("Ghoulish",100,5,30,20);
-	displayFoe(foe);
-	player = attack(player,foe,equip);
-	displayStats(player);
+	Foe = setFoe("Ghoulish",100,5,30,20);
+	displayFoe(Foe);
+	Player = attack(Player,Foe,Equip);
+	displayStats(Player);
 	
 }
 
@@ -55,10 +55,10 @@ if(choice=='g'){	//	go to the garage (g)
 
 	//	The battle begins:
 	alert("You run into the garage when you hear something growling.\n You turn around and a bloodied, grim-looking hound leaps at you!");
-	foe = setFoe("Hell Hound",65,10,60,15);
-	displayFoe(foe);
-	player = attack(player,foe,equip);
-	displayStats(player);
+	Foe = setFoe("Hell Hound",65,10,60,15);
+	displayFoe(Foe);
+	Player = attack(Player,Foe,Equip);
+	displayStats(Player);
 	
 	do{	//	choose w || t
 		choice = prompt('"WHAT THE F**K WAS THAT!?"\nWhile trying to catch your breath, you start looking for supplies...\nSearch the workbench (w) or the toolbox (t)?');
@@ -74,16 +74,16 @@ if(choice=='g'){	//	go to the garage (g)
 		if(choice=='y'){
 			//	Equip Helmet (head) & update stats:
 			fHead = setGear("Helmet","Armor","Head",20,20,10,-3,0,-3,-3,0,0,0,0,0,0);
-			player = updatePlayer(player,fHead,cHead);
+			Player = updatePlayer(Player,fHead,cHead);
 			pHead = cHead;
 			cHead = fHead;
-			equip = setEquip(cHead.name,equip.chest,equip.back,equip.hands,equip.feet,equip.held);
+			Equip = setEquip(cHead.name,Equip.chest,Equip.back,Equip.hands,Equip.feet,Equip.held);
 			
 			alert("You grabbed the helmet!");
 			
 			//	Display updated stats:
-			displayStats(player);
-			displayEquip(equip);
+			displayStats(Player);
+			displayEquip(Equip);
 		}else{
 			alert("You did not grab the helmet.");
 		}
@@ -97,29 +97,29 @@ if(choice=='g'){	//	go to the garage (g)
 		if(choice=='y'){
 			//	Equip Hammer (hands) & update stats:
 			fHands = setGear("Hammer","Weapon","Hands",0,0,0,10,6,35,15,0,0,0,0,0,0);
-			player = updatePlayer(player,fHands,cHands);
+			Player = updatePlayer(Player,fHands,cHands);
 			pHands = cHands;
 			cHands = fHands;
-			equip = setEquip(equip.head,equip.chest,equip.back,cHands.name,equip.feet,equip.held);
+			Equip = setEquip(Equip.head,Equip.chest,Equip.back,cHands.name,Equip.feet,Equip.held);
 			
 			alert("You grabbed the hammer!");
 			
 			//	Display updated stats:
-			displayStats(player);
-			displayEquip(equip);
+			displayStats(Player);
+			displayEquip(Equip);
 		}else{
 			alert("You did not grab the hammer.");
 		}
 	}
 	
-	alert("You carefully walk out of the garage, heading for your truck.\nYou take two steps when you hear a screach coming from above!\n");
+	alert("You carefully walk out of the garage, heading for your truck.\nYou take two steps when you hear a screech coming from above!\n");
 
 	//	The battle begins:
 	alert("You look up and this hellish-looking cat leaps down onto you!");
-	foe = setFoe("Hell Cat",25,5,75,10);
-	displayFoe(foe);
-	player = attack(player,foe,equip);
-	displayStats(player);
+	Foe = setFoe("Hell Cat",25,5,75,10);
+	displayFoe(Foe);
+	Player = attack(Player,Foe,Equip);
+	displayStats(Player);
 	
 	alert('"What the hell is going on?"\nBefore you can catch your breath,\nyou spot another hell hound!\nYou run for the truck!');
 	
@@ -141,16 +141,16 @@ if(choice=='g'){	//	go to the garage (g)
 		if(choice=='y'){
 			//	Equip Truck Key (held) & update stats:
 			fHeld = setGear("Truck Key","Item","Held",0,0,0,0,0,0,0,0,0,0,0,0,0);
-			player = updatePlayer(player,fHeld,cHeld);
+			Player = updatePlayer(Player,fHeld,cHeld);
 			pHeld = cHeld;
 			cHeld = fHeld;
-			equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,equip.feet,cHeld.name);
+			Equip = setEquip(Equip.head,Equip.chest,Equip.back,Equip.hands,Equip.feet,cHeld.name);
 			
 			alert("You grabbed the truck key!");
 			
 			//	Display updated stats:
-			displayStats(player);
-			displayEquip(equip);
+			displayStats(Player);
+			displayEquip(Equip);
 		}else{
 			alert("You did not grab the truck key.");
 		}
@@ -164,16 +164,16 @@ if(choice=='g'){	//	go to the garage (g)
 		if(choice=='y'){
 			//	Equip Sneekers (feet) & update stats:
 			fFeet = setGear("Sneekers","Armor","Feet",10,10,5,5,0,0,0,0,0,0,0,0,0);
-			player = updatePlayer(player,fFeet,cFeet);
+			Player = updatePlayer(Player,fFeet,cFeet);
 			pFeet = cFeet;
 			cFeet = fFeet;
-			equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,cFeet.name,equip.held);
+			Equip = setEquip(Equip.head,Equip.chest,Equip.back,Equip.hands,cFeet.name,Equip.held);
 			
 			alert("You put on the sneekers!");
 			
 			//	Display updated stats:
-			displayStats(player);
-			displayEquip(equip);
+			displayStats(Player);
+			displayEquip(Equip);
 		}else{
 			alert("You did not grab the sneekers.");
 		}
@@ -183,19 +183,19 @@ if(choice=='g'){	//	go to the garage (g)
 	
 	//	The battle begins:
 	alert("It stands between you and the door...\nThere's no other way...\nYou and the hell hound lunge at eachother!");
-	foe = setFoe("Hell Hound",65,10,60,15);
-	displayFoe(foe);
-	player = attack(player,foe,equip);
-	displayStats(player);
+	Foe = setFoe("Hell Hound",65,10,60,15);
+	displayFoe(Foe);
+	Player = attack(Player,Foe,Equip);
+	displayStats(Player);
 
 	alert('"What the hell is going on?"\nAfter you calm down, you climb over the carcass of the hell hound and open the laundry room door...');
 	
 	//	The battle begins:
 	alert("You're face-to-face with a... zombie?");
-	foe = setFoe("Zombie",120,15,20,15);
-	displayFoe(foe);
-	player = attack(player,foe,equip);
-	displayStats(player);
+	Foe = setFoe("Zombie",120,15,20,15);
+	displayFoe(Foe);
+	Player = attack(Player,Foe,Equip);
+	displayStats(Player);
 
 	alert("You push the zombie to the side and exit the laundry room when you see another damn hell hound by the garage!\nIt's a clear shot to your truck, so you make a run for it!");
 }

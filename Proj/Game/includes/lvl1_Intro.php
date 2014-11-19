@@ -6,20 +6,20 @@ alert("You put on a shirt and throw on your slippers and walk into the living ro
 
 //	Equip shirt (chest) & update stats:
 fChest = setGear("Shirt","Armor","Chest",5,5,1,0,0,0,0,0,0,0,0,0,0);
-player = updatePlayer(player,fChest,cChest);
+Player = updatePlayer(Player,fChest,cChest);
 pChest = cChest;
 cChest = fChest;
-equip = setEquip(equip.head,cChest.name,equip.back,equip.hands,equip.feet,equip.held);
+Equip = setEquip(Equip.head,cChest.name,Equip.back,Equip.hands,Equip.feet,Equip.held);
 			
 //	Equip slippers (feet) & update stats:
 fFeet = setGear("Slippers","Armor","Feet",5,5,1,-5,0,0,0,0,0,0,0,0,0);
-player = updatePlayer(player,fFeet,cFeet);
+Player = updatePlayer(Player,fFeet,cFeet);
 pFeet = cFeet;
 cFeet = fFeet;
-equip = setEquip(equip.head,equip.chest,equip.back,equip.hands,cFeet.name,equip.held);
+Equip = setEquip(Equip.head,Equip.chest,Equip.back,Equip.hands,cFeet.name,Equip.held);
 
 //	Display updated stats:
-displayStats(player);
-displayEquip(equip);
+displayStats(Player);
+displayEquip(Equip);
 
 alert("You hear faint screams accompanied by the neighborhood dogs barking frantically. The screams grow nearer!");

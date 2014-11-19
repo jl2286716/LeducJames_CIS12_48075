@@ -1,5 +1,5 @@
 <script>
-	function attack(p,f,e){
+	function attack(p,f,e,s){
 		var	pA = (p.pwr)-(f.def);	//	set player attack strength
 		var fA = (f.pwr)-(p.def);	//	set foe attack strength
 		var turn = 1;				//	set turn counter

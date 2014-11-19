@@ -226,8 +226,8 @@
 		<script>
 			//	Create and initialize the player:
 			var pName = prompt("What's your name?");
-			var player = setPlayer(pName);
-			var equip = setEquip("Bare","Bare","Bare","Bare","Bare","Empty");
+			var Player = setPlayer(pName);
+			var Equip = setEquip("Bare","Bare","Bare","Bare","Bare","Empty");
 
 			//	Create & initialize gear objects	-	previous (p), current (c), found (f):
 			//	Head objects:
@@ -292,8 +292,8 @@
 			alert("Welcome to the end of the world, "+pName+"!");
 
 			//	Display stats and equipment:
-			displayStats(player);
-			displayEquip(equip);
+			displayStats(Player);
+			displayEquip(Equip);
 
 /*	End of the 'Game Sets'.	*/
 
