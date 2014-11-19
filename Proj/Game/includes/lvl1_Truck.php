@@ -18,8 +18,8 @@ if(equip.held=="Truck Key"){
 	
 	//	Random Chance:
 	cSurv = "A zombie starts banging on the driver-side window!\nAfter a couple of tries... The truck starts up and you take off up the street!";
-	cDie = "A zombie starts banging on the driver-side window!\nYou try and try, but the switch wont turn over.\nThe zombie smashes the driver-side window, grabbing you by the neck!\nA hell hound leaps through the broken passenger-side window and bites down into your face!\nYou are DEAD!";
-	randomChance(cSurv,cDie);
+	cDie = "A zombie starts banging on the driver-side window!\nYou try and try, but the switch wont turn over.\nThe zombie smashes the driver-side window, grabbing you by the neck!\nA hell hound leaps through the broken passenger-side window and bites down into your face!";
+	randomChance(player,cSurv,cDie);
 	
 	//	END THE LEVEL
 	

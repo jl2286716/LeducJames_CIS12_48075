@@ -160,14 +160,25 @@
 			<?php include("includes/attack.php"); ?>
 			<script>
 			
-			function randomChance(cS,cD){
-				var random=Math.floor((Math.random()*100)+1)
-				var chance=Math.floor((Math.random()*100)+1)
-				if(chance<=random){	//	IF you survive
-					alert(cS);
-				}else{	//	ELSE you die
-					alert(cD);
-					exit();
+			function randomChance(p,cS,cD){
+				var random=Math.floor((Math.random()*100)+1);
+				var chance=Math.floor((Math.random()*100)+1);
+				if(p.health<(p.maxH/2)){	//	IF health is less than half
+					if(chance<=random){	//	IF you survive
+						alert(cS);
+					}else{	//	ELSE you die
+						alert(cD);
+						alert("YOU ARE DEAD!");
+						exit();
+					}
+				}else{	//	ELSE give better chance of survival
+					if((chance*2)<=random){	//	IF you survive
+						alert(cS);
+					}else{	//	ELSE you die
+						alert(cD);
+						alert("YOU ARE DEAD!");
+						exit();
+					}
 				}
 			}
 			
