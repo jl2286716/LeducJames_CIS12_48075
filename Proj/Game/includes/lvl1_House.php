@@ -26,11 +26,6 @@ if(choice=='e'){	//	Search the Entertainment Center (e)
 	}else{
 		alert("You did not grab the Mag-Lite.");
 	}
-	
-	
-	
-//	THE FOLLOWING ELSE WONT EXECUTE...
-
 
 }else{	//	Search the Couch (c)
 	alert("You search the couch...\nYou find the Defender 1300!");
@@ -57,6 +52,8 @@ if(choice=='e'){	//	Search the Entertainment Center (e)
 	}
 }
 
+/*	WHY DOES THIS BATTLE BREAK	*/
+
 //	The battle begins:
 alert('Someone starts pounding on your front door!\nYou look out the window and notice your neighbor looking sick and injured, so you open the door to help her.\n"Hey!, are you alright?"\nShe lunges at you!');
 foe = setFoe("Ghoulish",100,5,30,20);
@@ -65,7 +62,7 @@ player = attack(player,foe,equip);
 displayStats(player);
 
 do{	//	choose k || b
-	choice=prompt('You try to catch your breath.\n"HOLY SHIT!"\nTime\'s running thin! Search the kitchen (k) or bedroom (b)?');
+	choice=prompt('You try to catch your breath."HOLY SHIT!"Time\'s running thin!\nSearch the kitchen (k) or bedroom (b)?');
 }while(choice!='k' && choice!='b');
 
 if(choice=='k'){	//	search the kitchen (k)
