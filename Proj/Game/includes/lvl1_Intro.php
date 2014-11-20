@@ -3,6 +3,7 @@ level++;
 lvlName = "Get the Hell Out of There!";
 scrLvl = lvlName.toUpperCase();
 locat = "In Bed";
+Player.lastLvl = level;
 Player.lastLoc = locat;
 Player.lastP = new Date();
 document.getElementById("header").innerHTML = "Level "+level+": "+lvlName;

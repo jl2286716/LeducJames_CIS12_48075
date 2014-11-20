@@ -173,6 +173,7 @@
 							f.health-=hit;
 						}
 					}
+					
 					//	Update Player Score:
 					p.btlScr+=hit*100;	//	Attack Damage times 100 points
 					p.lvlScr+=hit*100;

@@ -15,6 +15,7 @@
 		<script src=""></script>
 		<script>
 			//	Setter Functions:
+			//	Initialize Player:
 			function setPlayer(playerName){
 				var p = new Object();
 					p = {
@@ -144,34 +145,19 @@
 			
 			//	Update Functions:
 			function updatePlayer(p,f,c){
-				p = {
-					name:p.name,
-					health:p.health - c.health + f.health,
-					maxH:p.maxH - c.maxH + f.maxH,
-					def:p.def - c.def + f.def,
-					spd:p.spd - c.spd + f.spd,
-					pwr:p.pwr - c.pwr + f.pwr,
-					acc:p.acc - c.acc + f.acc,
-					crit:p.crit - c.crit + f.crit,
-					mm357:p.mm357 - c.mm357 + f.mm357,
-					mm39:p.mm39 - c.mm39 + f.mm39,
-					mm9:p.mm9 - c.mm9 + f.mm9,
-					shell:p.shell - c.shell + f.shell,
-					quiv:p.quiv - c.quiv + f.quiv,
-					arr:p.arr - c.arr + f.arr,
-					lvlKills:p.lvlKills,
-					totKills:p.totKills,
-					lvlScr:p.lvlScr,
-					totScr:p.totScr,
-					btlHits:p.btlHits,
-					btlRnds:p.btlRnds,
-					btlScr:p.btlScr,
-					btlKills:p.btlKills,
-					lvlHits:p.lvlHits,
-					totHits:p.totHits,
-					lvlTurn:p.lvlLand,
-					totTurn:p.totLand
-				};
+				p.health = p.health - c.health + f.health;
+				p.maxH = p.maxH - c.maxH + f.maxH;
+				p.def = p.def - c.def + f.def;
+				p.spd = p.spd - c.spd + f.spd;
+				p.pwr = p.pwr - c.pwr + f.pwr;
+				p.acc = p.acc - c.acc + f.acc;
+				p.crit = p.crit - c.crit + f.crit;
+				p.mm357 = p.mm357 - c.mm357 + f.mm357;
+				p.mm39 = p.mm39 - c.mm39 + f.mm39;
+				p.mm9 = p.mm9 - c.mm9 + f.mm9;
+				p.shell = p.shell - c.shell + f.shell;
+				p.quiv = p.quiv - c.quiv + f.quiv;
+				p.arr = p.arr - c.arr + f.arr;
 				return p;
 			}
 			
@@ -200,7 +186,7 @@
 						exit();
 					}
 				}else{	//	ELSE give better chance of survival
-					if((chance*2)<=random){	//	IF you survive
+					if(chance<=(random*2)){	//	IF you survive
 						alert(cS);
 					}else{	//	ELSE you die
 						alert(cD);
@@ -273,7 +259,7 @@
 			
 			//	Display Round Score:
 			function displayRndScr(s){
-
+				document.getElementById("score").style.display = "block";
 			}
 			
 			//	Display Total Score:

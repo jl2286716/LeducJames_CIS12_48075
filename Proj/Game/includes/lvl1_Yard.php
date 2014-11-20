@@ -42,6 +42,8 @@ if(choice=='s'){
 	
 }else{
 	
+	/*	BREAKS DURING THE BATTLE	*/
+	
 	//	The battle begins:
 	alert("You turn and run back to your house,\nbut a ghoulish woman is blocking your path!\nShe attacks!");
 	Foe = setFoe("Ghoulish",100,5,30,20);
