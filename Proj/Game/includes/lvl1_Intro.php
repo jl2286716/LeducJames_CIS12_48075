@@ -3,6 +3,8 @@ level++;
 lvlName = "Get the Hell Out of There!";
 scrLvl = lvlName.toUpperCase();
 locat = "In Bed";
+Player.lastLoc = locat;
+Player.lastP = new Date();
 document.getElementById("header").innerHTML = "Level "+level+": "+lvlName;
 
 alert("You put on a shirt and throw on your slippers and walk into the living room when you hear an explosion in the distance. The windows shake and the power goes out.");

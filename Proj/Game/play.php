@@ -227,7 +227,7 @@
 					tScr:0,				//	initialize the total score
 					hiLvl:0,			//	Highest Level Completed
 					lastLvl:0,			//	Last Level played
-					lastLoc:"In Bed",	//	Last Location Played
+					lastLoc:"",			//	Last Location Played
 					firstP:startT,		//	Date/Time First Played
 					lastP:startT		//	Date/Time Last Played
 				};

@@ -1,4 +1,6 @@
 locat = "Front Yard";
+Player.lastLoc = locat;
+Player.lastP = new Date();
 
 alert('You run out to help the woman, shouting,\n"Leave her alone!"');
 alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them, flips into the fleeing woman, and explodes!");
@@ -56,7 +58,9 @@ do{	//	choose g || l
 if(choice=='g'){	//	go to the garage (g)
 
 	locat = "Garage";
-
+	Player.lastLoc = locat;
+	Player.lastP = new Date();
+	
 	//	The battle begins:
 	alert("You run into the garage when you hear something growling.\n You turn around and a bloodied, grim-looking hound leaps at you!");
 	Foe = setFoe("Hell Hound",65,10,60,15);
@@ -130,7 +134,9 @@ if(choice=='g'){	//	go to the garage (g)
 }else{	//	go to the laundry (l) room
 
 	locat = "Laundry Room";
-
+	Player.lastLoc = locat;
+	Player.lastP = new Date();
+	
 	alert("You run into the laundry room,\nlocking the door behind you!");
 	
 	do{

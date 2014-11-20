@@ -1,4 +1,6 @@
 locat = "Living Room";
+Player.lastLoc = locat;
+Player.lastP = new Date();
 
 do{	//	choose e || c - search livingroom
 	choice = prompt('You decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
@@ -68,6 +70,8 @@ do{	//	choose k || b
 if(choice=='k'){	//	search the kitchen (k)
 	
 	locat = "Kitchen";
+	Player.lastLoc = locat;
+	Player.lastP = new Date();
 	
 	alert('You run into the kitchen.\nSomeone starts pounding on the front door again!\n"Yeah, yeah! I\'m not falling for that again!"');
 	
@@ -139,7 +143,9 @@ if(choice=='k'){	//	search the kitchen (k)
 }else if(choice=='b'){	//	Search the bedroom (b)
 
 	locat = "Bedroom";
-
+	Player.lastLoc = locat;
+	Player.lastP = new Date();
+	
 	alert('You run into the bedroom.\nSomeone starts pounding on the bedroom window!\n"Awe, crap!"');
 	
 	do{	//	choose d || n || c

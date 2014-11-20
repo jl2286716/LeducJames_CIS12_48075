@@ -1,4 +1,6 @@
 locat = "Truck";
+Player.lastLoc = locat;
+Player.lastP = new Date();
 
 alert("The hell hound chases you!\nYou get to your truck, but it's locked!");
 if(Equip.held=="Truck Key"){
