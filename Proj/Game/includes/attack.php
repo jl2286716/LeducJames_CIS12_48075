@@ -183,13 +183,13 @@
 					p.btlRnds++;
 					p.lvlTurn++;
 					p.totTurn++;
-					displayFoe(f);
-					alert("SUCCESSFUL HIT!\nYou inflicted "+hit+" damage on the "+f.name+"!");
 					
 					//	Check Foe's health and adjust for negative value:
 					if(f.health<0){
 						f.health=0;
 					}
+					displayFoe(f);
+					alert("SUCCESSFUL HIT!\nYou inflicted "+hit+" damage on the "+f.name+"!");
 				}else{
 					p.btlRnds++;
 					p.lvlTurn++;

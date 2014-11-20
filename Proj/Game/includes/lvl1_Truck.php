@@ -1,3 +1,5 @@
+locat = "Truck";
+
 alert("The hell hound chases you!\nYou get to your truck, but it's locked!");
 if(Equip.held=="Truck Key"){
 	alert("You unlock the truck and jump in, slamming the door behind you just in time for the hound to slam it's head into the passenger-side window...\nSmashing the window, but knocking the hound unconscious!");

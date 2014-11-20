@@ -273,7 +273,7 @@
 			
 			//	Display Round Score:
 			function displayRndScr(s){
-			
+
 			}
 			
 			//	Display Total Score:
@@ -323,17 +323,16 @@
 			var fHeld = setGear("None","None","None",0,0,0,0,0,0,0,0,0,0,0,0,0);
 			
 			//	Create and initialize other variables:
-			var foe = new Object;
+			var Foe = new Object;
 			var LevelScore = new Object;	//	Use to store the level score	-	reinitialize at the beginning of each level
 			var TotalScore = new Object;	//	Use to store the total score	-	update after each level
 //				TotalScore = initScr(TotalScore,Player);
 			var level = 0;		//	current level	-	update for each level
 			var lvlName = "";	//	current level name	-	update for each laval
-//			var scrLvl = "";	//	stores the scored level name
-//				scrLvl = lvlName.toUpperCase();	-	Do in function
+			var scrLvl = "";	//	stores the scored level name
 			var	locat = "";		//	initialize location	-	update for each module
-			var turns = 0;		//	initialize player attack turns
-			var landed = 0;		//	initialize attacks landed
+//			var turns = 0;		//	initialize player attack turns
+//			var landed = 0;		//	initialize attacks landed
 			var choice = "";	//	player's choice
 			var cSurv = "";		//	random chance survival message
 			var cDie = "";		//	random chance death message

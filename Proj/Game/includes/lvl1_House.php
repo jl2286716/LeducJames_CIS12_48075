@@ -1,3 +1,5 @@
+locat = "Living Room";
+
 do{	//	choose e || c - search livingroom
 	choice = prompt('You decide to search for supplies: \nCheck the entertainment center (e) or the couch (c)?');
 }while(choice!='e' && choice!='c');
@@ -52,8 +54,6 @@ if(choice=='e'){	//	Search the Entertainment Center (e)
 	}
 }
 
-/*	WHY DOES THIS BATTLE BREAK	*/
-
 //	The battle begins:
 alert('Someone starts pounding on your front door!\nYou look out the window and notice your neighbor looking sick and injured, so you open the door to help her.\n"Hey!, are you alright?"\nShe lunges at you!');
 Foe = setFoe("Ghoulish",100,5,30,20);
@@ -66,6 +66,9 @@ do{	//	choose k || b
 }while(choice!='k' && choice!='b');
 
 if(choice=='k'){	//	search the kitchen (k)
+	
+	locat = "Kitchen";
+	
 	alert('You run into the kitchen.\nSomeone starts pounding on the front door again!\n"Yeah, yeah! I\'m not falling for that again!"');
 	
 	do{	//	choose c || d
@@ -133,10 +136,10 @@ if(choice=='k'){	//	search the kitchen (k)
 	
 	alert("You run out the back door when you spot a devilish dog snarling at you!\nSo, you run straight for your truck!");
 	
-//	BEDROOM SEARCH WORKS FINE...
-
-
 }else if(choice=='b'){	//	Search the bedroom (b)
+
+	locat = "Bedroom";
+
 	alert('You run into the bedroom.\nSomeone starts pounding on the bedroom window!\n"Awe, crap!"');
 	
 	do{	//	choose d || n || c

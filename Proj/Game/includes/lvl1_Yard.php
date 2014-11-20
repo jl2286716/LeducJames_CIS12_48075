@@ -1,3 +1,5 @@
+locat = "Front Yard";
+
 alert('You run out to help the woman, shouting,\n"Leave her alone!"');
 alert("Both ghoulish men turn and head towards you when a truck wrecks into one of them, flips into the fleeing woman, and explodes!");
 
@@ -52,6 +54,8 @@ do{	//	choose g || l
 }while(choice!='g' && choice!='l');
 
 if(choice=='g'){	//	go to the garage (g)
+
+	locat = "Garage";
 
 	//	The battle begins:
 	alert("You run into the garage when you hear something growling.\n You turn around and a bloodied, grim-looking hound leaps at you!");
@@ -124,6 +128,8 @@ if(choice=='g'){	//	go to the garage (g)
 	alert('"What the hell is going on?"\nBefore you can catch your breath,\nyou spot another hell hound!\nYou run for the truck!');
 	
 }else{	//	go to the laundry (l) room
+
+	locat = "Laundry Room";
 
 	alert("You run into the laundry room,\nlocking the door behind you!");
 	
