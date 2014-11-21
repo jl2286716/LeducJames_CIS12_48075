@@ -28,6 +28,7 @@
 		//	p.lvlTurn
 		//	p.totTurn
 
+	// NOTE: BREAKS AFTER 14 ROUNDS (COUNTING BOTH PLAYER AND FOE PROMPTS)
 	function attack(p,f,e){
 		var	pA = p.pwr-f.def;	//	set player attack strength
 		var fA = f.pwr-p.def;	//	set foe attack strength
