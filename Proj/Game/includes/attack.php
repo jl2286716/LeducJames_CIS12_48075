@@ -29,24 +29,23 @@
 		//	p.totTurn
 
 	function attack(p,f,e){
-		var	pA = (p.pwr)-(f.def);	//	set player attack strength
-		var fA = (f.pwr)-(p.def);	//	set foe attack strength
+		var	pA = p.pwr-f.def;	//	set player attack strength
+		var fA = f.pwr-p.def;	//	set foe attack strength
 		var turn = 1;				//	set turn counter
-		var pSpd = (f.spd);			//	set player attack speed
-		var fSpd = (p.spd);			//	set foe attack speed
-		var pAcc = (p.acc);			//	set player accuracy
-		var pCrit = (p.crit);		//	set critical chance
-		var hit;					//	create hit variable
-		
-		//	Prompt for the beginning of the battle:
-		alert("And the battle begins...");
-		
+		var pSpd = f.spd;			//	set player attack speed
+		var fSpd = p.spd;			//	set foe attack speed
+		var pAcc = p.acc;			//	set player accuracy
+		var pCrit = p.crit;		//	set critical chance
+		var hit = 0;					//	create hit variable
 		//	Reinitialize Battle Variable Counters:
 		p.btlHits=0;
 		p.btlRnds=0;
 		p.btlScr=0;
 		p.btlKills=0;
-
+		
+		//	Prompt for the beginning of the battle:
+		alert("And the battle begins...");
+		
 		do{
 		
 			//	Player Attacks:
@@ -71,7 +70,12 @@
 							}
 						}else{	//	ELSE Temporarily lower attack - power 35
 							hit=pA-35;
-							f.health-=hit;
+							if(hit<2){
+								hit=2;
+								f.health-=hit;
+							}else{
+								f.health-=hit;
+							}
 						}
 					//	Check for Glock 19:
 					}else if(e.hands=="Glock 19"){
@@ -89,7 +93,12 @@
 							}
 						}else{	//	ELSE Temporarily lower attack - power 20
 							hit=pA-20;
-							f.health-=hit;
+							if(hit<2){
+								hit=2;
+								f.health-=hit;
+							}else{
+								f.health-=hit;
+							}
 						}
 					//	Check for MAC-10:
 					}else if(e.hands=="MAC-10"){
@@ -107,7 +116,12 @@
 							}
 						}else{	//	ELSE Temporarily lower attack - power 15
 							hit=pA-15;
-							f.health-=hit;
+							if(hit<2){
+								hit=2;
+								f.health-=hit;
+							}else{
+								f.health-=hit;
+							}
 						}
 					//	Check for Python:
 					}else if(e.hands=="Python"){
@@ -125,7 +139,12 @@
 							}
 						}else{	//	ELSE Temporarily lower attack - power 25
 							hit=pA-25;
-							f.health-=hit;
+							if(hit<2){
+								hit=2;
+								f.health-=hit;
+							}else{
+								f.health-=hit;
+							}
 						}
 					//	Check for AK-47:
 					}else if(e.hands=="AK-47"){
@@ -143,7 +162,12 @@
 							}
 						}else{	//	ELSE Temporarily lower attack - power 30
 							hit=pA-30;
-							f.health-=hit;
+							if(hit<2){
+								hit=2;
+								f.health-=hit;
+							}else{
+								f.health-=hit;
+							}
 						}
 					//	Check for Crossbow:
 					}else if(e.hands=="Crossbow"){
@@ -161,28 +185,44 @@
 							}
 						}else{	//	ELSE Temporarily lower attack - power 15
 							hit=pA-15;
-							f.health-=hit;
+							if(hit<2){
+								hit=2;
+								f.health-=hit;
+							}else{
+								f.health-=hit;
+							}
 						}
 					}else{	//	ESLE regular attack
 						if(pCrit>=randCrit){	//	calc crit
-							hit=pA;
-							hit*=1.5;
-							f.health-=hit;
+							if(pA<2){
+								hit=2;
+								hit*=1.5;
+								f.health-=hit;
+							}else{
+								hit=pA;
+								hit*=1.5;
+								f.health-=hit;
+							}
 						}else{
-							hit=pA;
-							f.health-=hit;
+							if(pA<2){
+								hit=2;
+								f.health-=hit;
+							}else{
+								hit=pA;
+								f.health-=hit;
+							}
 						}
 					}
 					
 					//	Update Player Score:
 					p.btlScr+=hit*100;	//	Attack Damage times 100 points
-					p.lvlScr+=hit*100;
-					p.totScr+=hit*100;
 					p.btlHits++;
-					p.lvlHits++;
-					p.totHits++;
 					p.btlRnds++;
+					p.lvlScr+=hit*100;
+					p.lvlHits++;
 					p.lvlTurn++;
+					p.totScr+=hit*100;
+					p.totHits++;
 					p.totTurn++;
 					
 					//	Check Foe's health and adjust for negative value:
@@ -202,10 +242,10 @@
 			if((f.health)<=0){	//	IF Foe dies:
 				alert("The "+f.name+" is DEAD!");
 				p.btlKills++;
-				p.lvlKills++;
-				p.totKills++;
 				p.btlScr+=5000;	//	5000 points per kill
+				p.lvlKills++;
 				p.lvlScr+=5000;
+				p.totKills++;
 				p.totScr+=5000;
 				clearFoe();	//	Clear the Foe
 				break;		//	End the Battle

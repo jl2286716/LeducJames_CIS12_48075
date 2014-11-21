@@ -335,9 +335,9 @@
 			
 			//	Output Score Table:
 			//	Display Congratulation Message:
-			document.write("<table width='100%' border='1' id='score' style='display:none'><tr><td colspan='2'><h1>CONGRATULATIONS! LEVEL "+level+": "+scrLvl+" COMPLETED!</h1></td></tr>");
+			document.write("<table width='100%' border='1' id='score' style='display:none;float:left'><tr><td colspan='2'><h1>CONGRATULATIONS! LEVEL "+level+": "+scrLvl+" COMPLETED!</h1></td></tr>");
 			//	Display score table headers:
-			document.write("<tr><td>Level "+level+" Score</td><td>Total Score</td></tr>");
+			document.write("<tr><td>Level "+level+" Score</td><td>"+pName+"'s Total Score</td></tr>");
 			//	Display level score:
 			document.write("<tr><td id='level'></td>");
 			//	Display total score:

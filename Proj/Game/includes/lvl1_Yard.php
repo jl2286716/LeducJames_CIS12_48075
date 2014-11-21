@@ -42,7 +42,7 @@ if(choice=='s'){
 	
 }else{
 	
-	/*	BREAKS DURING THE BATTLE	*/
+	/*	BREAKS AFTER 14 ROUNDS	*/
 	
 	//	The battle begins:
 	alert("You turn and run back to your house,\nbut a ghoulish woman is blocking your path!\nShe attacks!");

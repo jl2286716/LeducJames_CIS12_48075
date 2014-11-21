@@ -56,6 +56,8 @@ if(choice=='e'){	//	Search the Entertainment Center (e)
 	}
 }
 
+/*	BREAKS AFTER 14 ROUNDS	*/
+
 //	The battle begins:
 alert('Someone starts pounding on your front door!\nYou look out the window and notice your neighbor looking sick and injured, so you open the door to help her.\n"Hey!, are you alright?"\nShe lunges at you!');
 Foe = setFoe("Ghoulish",100,5,30,20);
@@ -227,5 +229,5 @@ if(choice=='k'){	//	search the kitchen (k)
 	}
 	
 	alert("You run out the backdoor!");
-	alert("You look to the right...\nClear!\nYou look to the left...\nYou spot a bloody, snarling dog with glowing red eyes forming at the mouth!");
+	alert("You look to the right...\nClear!\nYou look to the left...\nYou spot a bloody, snarling dog with glowing red eyes foaming at the mouth!");
 }
