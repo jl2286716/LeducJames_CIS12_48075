@@ -3,6 +3,8 @@ level++;
 lvlName = "Get the Hell Out of There!";
 scrLvl = lvlName.toUpperCase();
 locat = "In Bed";
+LevelScore = initRndScr(TotalScore);
+Player = initRndPlyr(Player);
 Player.lastLvl = level;
 Player.lastLoc = locat;
 Player.lastP = new Date();

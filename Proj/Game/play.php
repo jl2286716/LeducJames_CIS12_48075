@@ -259,12 +259,35 @@
 			
 			//	Display Round Score:
 			function displayRndScr(s){
-				document.getElementById("score").style.display = "block";
+				//	Display Scoreboard:
+				document.getElementById("score").style.display = "inline";
+				
+				
+				//	Create Level Score:
+				var str = "";
+					str += "Name: <b>"+s.name+"</b><br>";
+					str += "Kills:	<b>"+s.rKills+"</b><br>";
+					str += "Accuracy: <b>"+s.accur+"</b><br>";
+					str += "Score: <b>"+s.rScr+"</b><br>";
+				
+				//	Output Level Score:
+				document.getElementById("level").innerHTML = str;
 			}
 			
 			//	Display Total Score:
 			function displayTtlScr(s){
-			
+				//	Create Total Score:
+				var str = "";
+					str += "Name: <b>"+s.name+"</b><br>";
+					str += "Kills:	<b>"+s.tKills+"</b><br>";
+					str += "Accuracy: <b>"+s.accur+"</b><br>";
+					str += "Score: <b>"+s.tScr+"</b><br>";
+				
+				//	Output Total Score:
+				document.getElementById("total").innerHTML = str;
+				
+				//	Make 'Next Level' Button available:
+				document.getElementById("next").style.display = "inline";
 			}
 			
 		</script>
@@ -312,7 +335,7 @@
 			var Foe = new Object;
 			var LevelScore = new Object;	//	Use to store the level score	-	reinitialize at the beginning of each level
 			var TotalScore = new Object;	//	Use to store the total score	-	update after each level
-//				TotalScore = initScr(TotalScore,Player);
+				TotalScore = initScr(TotalScore,Player);
 			var level = 0;		//	current level	-	update for each level
 			var lvlName = "";	//	current level name	-	update for each laval
 			var scrLvl = "";	//	stores the scored level name
@@ -342,6 +365,9 @@
 			document.write("<tr><td id='level'></td>");
 			//	Display total score:
 			document.write("<td id='total'></td></tr></table>");
+			
+			//	Next Level Button:
+			document.write("<center><div id='next' style='display:none'><a href=''><button onclick=''>NEXT LEVEL</button></a></div></center>");
 			
 			//	Address the player:
 			alert("Welcome to the end of the world, "+pName+"!");
@@ -396,9 +422,9 @@
 			<!--?php include("includes/scoring.php");	?-->
 			
 			LevelScore = updateRndScr(LevelScore,Player);
-	//		displayRndScr(LevelScore);
+			displayRndScr(LevelScore);
 			TotalScore = updateTtlScr(TotalScore,Player);
-	//		displayTtlScr(TotalScore);
+			displayTtlScr(TotalScore);
 		</script>
 	</body>
 </html>
