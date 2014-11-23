@@ -267,7 +267,7 @@
 				var str = "";
 					str += "Name: <b>"+s.name+"</b><br>";
 					str += "Kills:	<b>"+s.rKills+"</b><br>";
-					str += "Accuracy: <b>"+s.accur+"</b><br>";
+					str += "Accuracy: <b>"+(s.accur*100)+"%</b><br>";
 					str += "Score: <b>"+s.rScr+"</b><br>";
 				
 				//	Output Level Score:
@@ -280,20 +280,24 @@
 				var str = "";
 					str += "Name: <b>"+s.name+"</b><br>";
 					str += "Kills:	<b>"+s.tKills+"</b><br>";
-					str += "Accuracy: <b>"+s.accur+"</b><br>";
+					str += "Accuracy: <b>"+(s.accur*100)+"%</b><br>";
 					str += "Score: <b>"+s.tScr+"</b><br>";
 				
 				//	Output Total Score:
 				document.getElementById("total").innerHTML = str;
 				
 				//	Make 'Next Level' Button available:
-				document.getElementById("next").style.display = "inline";
+				document.getElementById("next").style.display = "block";
 			}
 			
 		</script>
 	</head>
 	<body>
 		<br><br>
+		<script>
+			//	Next Level Button:
+			document.write("<br><br><center><div id='next' style='display:none'><a href=''><button onclick=''>GO TO NEXT LEVEL</button></a></div></center><br><br>");
+		</script>
 		<center><h1 id="header">Introduction</h1></center><br><br>
 		
 <!--	Let the Games Begin!	-->
@@ -355,19 +359,6 @@
 			document.write("<table width='33%' border=1 id='right'><tr><td><h2>Equipment</h2></td></tr>")
 			//	Display equipment content holder:
 			document.write("<tr><td id='equip' style='vertical-align:text-top'></td></tr></table>");
-			
-			//	Output Score Table:
-			//	Display Congratulation Message:
-			document.write("<table width='100%' border='1' id='score' style='display:none;float:left'><tr><td colspan='2'><h1>CONGRATULATIONS! LEVEL "+level+": "+scrLvl+" COMPLETED!</h1></td></tr>");
-			//	Display score table headers:
-			document.write("<tr><td>Level "+level+" Score</td><td>"+pName+"'s Total Score</td></tr>");
-			//	Display level score:
-			document.write("<tr><td id='level'></td>");
-			//	Display total score:
-			document.write("<td id='total'></td></tr></table>");
-			
-			//	Next Level Button:
-			document.write("<center><div id='next' style='display:none'><a href=''><button onclick=''>NEXT LEVEL</button></a></div></center>");
 			
 			//	Address the player:
 			alert("Welcome to the end of the world, "+pName+"!");

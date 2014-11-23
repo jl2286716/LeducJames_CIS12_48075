@@ -10,6 +10,17 @@ Player.lastLoc = locat;
 Player.lastP = new Date();
 document.getElementById("header").innerHTML = "Level "+level+": "+lvlName;
 
+			
+//	Output Score Table:
+//	Display Congratulation Message:
+document.write("<table width='auto' border='1' id='score' style='display:none;float:left'><tr><td colspan='2' width='100'><center><h1>CONGRATS!</h1><h2>LEVEL "+level+": "+scrLvl+"</h2><h2>COMPLETED!</h2></center></td></tr>");
+//	Display score table headers:
+document.write("<tr><td><center><b>Level "+level+" Score</b></center></td><td><center><b>"+pName+"'s Total Score</b></center></td></tr>");
+//	Display level score:
+document.write("<tr><td id='level'></td>");
+//	Display total score:
+document.write("<td id='total'></td></tr></table>");
+
 alert("You put on a shirt and throw on your slippers and walk into the living room when you hear an explosion in the distance. The windows shake and the power goes out.");
 
 //	Equip shirt (chest) & update stats:
