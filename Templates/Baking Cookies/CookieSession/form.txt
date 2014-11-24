@@ -1,0 +1,11 @@
+<form name="form" id="form" action="Set_Cookie.html" onsubmit="" method="get">
+	<b>FIRST NAME:</b><br>
+		<input type="text" name="First_Name" id="fName" /><br>
+	<b>LAST NAME:</b><br>
+		<input type="text" name="Last_Name" id="lName" /><br>
+	<b>PASSWORD:</b><br>
+		<input type="password" name="Password" id="passW" /><br>
+	<b>CONFIRM PASSWORD:</b><br>
+		<input type="password" name="Confirm_Password" id="cPass" /><br>
+	<input type="submit" value="SIGN UP">
+</form>

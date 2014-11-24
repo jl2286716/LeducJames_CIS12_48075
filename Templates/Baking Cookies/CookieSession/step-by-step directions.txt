@@ -1,0 +1,35 @@
+STEP 1:	Rename cookieSheet1.html to Get_Form.html.
+
+STEP 2:	Add form to Get_Form.html.
+
+STEP 3:	Rename cookieSheet2.html to Set_Cookie.html.
+
+Steps 4 through 12 should be done in Set_Cookie.html:
+
+STEP 4:	Get form info from URL.
+	var CookieObj = getFormInfo(location.href);
+	
+STEP 5:	Stringify URL object.
+	var cookieStr = JSON.stringify(CookieObj);
+
+STEP 6:	Set the cookie name.
+	var cookieName = "newCookie";
+		
+STEP 7:	Set the cookie life.
+	var days = 30;
+	var ttl = days*24*60*60*1000;
+
+STEP 8:	Set the cookie.
+	setCookie(cookieName,cookieStr,ttl);
+
+STEP 9:	Get the cookie.
+	var myCookie = getCookie(cookieName);
+
+STEP 10:Parse cookie string.
+	var GetCookie = JSON.parse(myCookie);
+
+STEP 11:Take a bite of the cookie (access a part of the cookie).
+	var property = GetCookie["First Name"];
+	
+STEP 12:Show the cookie bite (display a part of the cookie).
+	document.write("First Name = "+property);
