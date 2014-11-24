@@ -1,0 +1,45 @@
+<script>
+	//	Get form info from URL:
+	var CookieObj = getFormInfo(location.href);
+	//	TEST - Display CookieObj:
+	document.write("<br>DISPLAY FORM INFO:<br>");
+	for(var name in CookieObj){
+		document.write(name+": "+CookieObj[name]+"<br>");
+	}
+	
+	//	Stringify CookieObj object:
+	var cookieStr = JSON.stringify(CookieObj);
+	//	TEST - Display cookieStr:
+	document.write("<br>DISPLAY STRINGIFIED FORM INFO:<br>");
+	document.write(cookieStr+"<br>");
+	
+	//	Days for cookie to live:
+	var	days = 30;
+	
+	//	Calculates time to live:
+	var ttl = days*24*60*60*1000;
+	
+	//	Set cookie name:
+	var cookieName = "newCookie";
+	
+	//	Set cookie:
+	setCookie(cookieName,cookieStr,ttl);
+	
+	//	Get cookie:
+	var myCookie = getCookie(cookieName);
+	//	TEST - Display myCookie:
+	document.write("<br>DISPLAY COOKIE STRING:<br>");
+	document.write(myCookie+"<br>");
+	
+	//	Parse myCookie string:
+	var GetCookie = JSON.parse(myCookie);
+	//	Display GetCookie:
+	document.write("<br>DISPLAY COOKIE OBJECT:<br>");
+	for(var name in GetCookie){
+		document.write(name+": "+GetCookie[name]+"<br>");
+	}
+	
+	//	Get cookie parts:
+	document.write("<br>DISPLAY FIRST NAME:<br>");
+	document.write("First Name = "+GetCookie["First Name"]+"<br>");
+</script>

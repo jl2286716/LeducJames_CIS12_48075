@@ -1,0 +1,27 @@
+STEP 1:	Get form info from URL.
+		var CookieObj = getFormInfo(location.href);
+	
+STEP 2:	Stringify URL object.
+		var cookieStr = JSON.stringify(CookieObj);
+
+STEP 3:	Set the cookie name.
+		var cookieName = "newCookie";
+		
+STEP 4:	Set the cookie life.
+		var	days = 30;
+		var ttl = days*24*60*60*1000;
+
+STEP 5:	Set the cookie.
+		setCookie(cookieName,cookieStr,ttl);
+
+STEP 6:	Get the cookie.
+		var myCookie = getCookie(cookieName);
+
+STEP 7:	Parse cookie string.
+		var GetCookie = JSON.parse(myCookie);
+
+STEP 8:	Take a bite of the cookie (access a part of the cookie).
+		var property = GetCookie["First Name"];
+	
+STEP 9: Show the cookie bite (display a part of the cookie).
+		document.write("First Name = "+property);
