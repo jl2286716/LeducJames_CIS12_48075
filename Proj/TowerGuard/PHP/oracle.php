@@ -23,7 +23,7 @@
 		if(empty($_POST['fName'])){
 			echo ("<script>var tagID = document.getElementById('fName'); tagID.style.backgroundColor='#FF0000';</script>");
 			$errors[] = ("You forgot to enter your first name!");
-		}elseif(preg_match($regX,$name)){
+		}elseif(preg_match($regX,$fName)){
 			echo ("<script>var tagID = document.getElementById('fName'); tagID.style.backgroundColor='#00FF00';</script>");
 			$fn = trim($_POST['fName']);	//	$fn - 'firstname' for SQL query
 		}else{
@@ -38,7 +38,7 @@
 		if(empty($_POST['lName'])){
 			echo ("<script>var tagID = document.getElementById('lName'); tagID.style.backgroundColor='#FF0000';</script>");
 			$errors[] = ("You forgot to enter your last name!");
-		}elseif(preg_match($regX,$name)){
+		}elseif(preg_match($regX,$lName)){
 			echo ("<script>var tagID = document.getElementById('lName'); tagID.style.backgroundColor='#00FF00';</script>");
 			$ln = trim($_POST['lName']);	//	$ln - 'lastname' for SQL query
 		}else{
@@ -123,14 +123,10 @@
 
 		//	Check address 2:
 		$add2 = $_POST['add2'];
-		$regX = "/^\s*(P.O|PO|Apt|Apartment|Ste|Suite)?([.])?([\s])?(Box)?([\s])?([#])?[\s]?([A-Za-z])?([0-9]{1,8})([A-Za-z])?\s*$/";
 		if(isset($_POST['add2'])){
 			if(preg_match($regX,$add2)){
 				echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#00FF00';</script>");
 				$a2 = trim($_POST['add2']);	//	$a2 - 'address 2' for SQL query
-			}else{
-				echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#FF0000';</script>");
-				$errors[] = "Please, enter a valid PO Box, apartment, or suite number in the 'Address 2' field!";
 			}
 		}
 		
