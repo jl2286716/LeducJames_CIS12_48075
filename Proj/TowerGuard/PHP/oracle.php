@@ -108,7 +108,7 @@
 		
 		//	Check address 1:
 		$add1 = $_POST['add1'];
-		$regX = "/^\s*((([0])?[1-9])|([1][0-2]))([-\/\s])?((([0-2])?[1-9])|([3][0-1]))([-\/\s])?(([1][9][5-9][0-9])|([2][0]{2}[0-9])|([2][0][1][0-4]))\s*$/";
+		$regX = "/^\s*([1-9][0-9]*)[\s][A-Za-z0-9]{1,4}[a-z]{1,20}[\s]?([A-Za-z]{1,20})?([\s][A-Za-z]{1,20})?([A-Za-z]{2,15}([.])?)?\s*$/";
 		
 		if(empty($_POST['add1'])){
 			echo ("<script>var tagID = document.getElementById('add1'); tagID.style.backgroundColor='#FF0000';</script>");
@@ -122,7 +122,19 @@
 		}
 
 		//	Check address 2:
+		$add2 = $_POST['add2'];
+		$regX = "/^\s*(P.O|PO|Apt|Apartment|Ste|Suite)?([.])?([\s])?(Box)?([\s])?([#])?[\s]?([A-Za-z])?([0-9]{1,8})([A-Za-z])?\s*$/";
 		
+		if(empty($_POST['add2'])){
+			echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "You forgot to enter you street address in the 'Address 1' field!";
+		}elseif(preg_match($regX,$add2)){
+			echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#00FF00';</script>");
+			$p = trim($_POST['add2']);	//	$a1 - 'address 1' for SQL query
+		}else{
+			echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "Please, enter a valid street address in the 'Address 1' field!";
+		}
 		//	Check city:
 		
 		//	Check zipcode:
