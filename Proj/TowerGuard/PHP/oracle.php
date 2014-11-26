@@ -18,37 +18,37 @@
 	
 		//	Check first name:
 		$fname = $_POST['fName'];
-		$regX = "/^\s*([A-Z][a-z]{1,})(([A-Z][a-z]{1,})*)\s*$/";
+		$regX = "/^\s*([A-Z][a-z]{1,})([\'])?(([A-Z][a-z]{1,})*)\s*$/";
 		
 		if(empty($_POST['fName'])){
 			echo ("<script>var tagID = document.getElementById('fName'); tagID.style.backgroundColor='#FF0000';</script>");
-			$errors[] = ("You forgot to enter your name!");
+			$errors[] = ("You forgot to enter your first name!");
 		}elseif(preg_match($regX,$name)){
 			echo ("<script>var tagID = document.getElementById('fName'); tagID.style.backgroundColor='#00FF00';</script>");
 			$fn = trim($_POST['fName']);	//	$fn - 'firstname' for SQL query
 		}else{
 			echo ("<script>var tagID = document.getElementById('fName'); tagID.style.backgroundColor='#FF0000';</script>");
-			$errors[] = 'Please, enter a valid name!';
+			$errors[] = 'Please, enter a valid first name!';
 		}
 		
 		//	Check last name:
 		$lname = $_POST['lName'];
-		$regX = "/^\s*([A-Z][a-z]{1,})(([A-Z][a-z]{1,})*)\s*$/";
+		$regX = "/^\s*([A-Z][a-z]{1,})(['-])?(([A-Z][a-z]{1,})*)\s*$/";
 		
 		if(empty($_POST['lName'])){
 			echo ("<script>var tagID = document.getElementById('lName'); tagID.style.backgroundColor='#FF0000';</script>");
-			$errors[] = ("You forgot to enter your name!");
+			$errors[] = ("You forgot to enter your last name!");
 		}elseif(preg_match($regX,$name)){
 			echo ("<script>var tagID = document.getElementById('lName'); tagID.style.backgroundColor='#00FF00';</script>");
 			$ln = trim($_POST['lName']);	//	$ln - 'lastname' for SQL query
 		}else{
 			echo ("<script>var tagID = document.getElementById('lName'); tagID.style.backgroundColor='#FF0000';</script>");
-			$errors[] = 'Please, enter a valid name!';
+			$errors[] = 'Please, enter a valid last name!';
 		}
 		
 		//	Check email:
 		$eMail = $_POST['eMail'];
-		$regX = "/^\s*[A-Za-z0-9]{1,}[@][A-Za-z]{1,10}[\.][A-Za-z]{1,5}([\.][A-Za-z]{1,5})?\s*$/";
+		$regX = "/^\s*[A-Za-z0-9]{1,}[@][A-Za-z]{1,15}[\.][A-Za-z]{1,5}([\.][A-Za-z]{1,5})?\s*$/";
 		
 		if(empty($_POST['eMail'])){
 			echo ("<script>var tagID = document.getElementById('eMail'); tagID.style.backgroundColor='#FF0000';</script>");
@@ -90,6 +90,44 @@
 			$errors[] = 'Your passwords do not match!';
 			$errors[] = 'Please, recheck your passwords!';
 		}
+		
+		//	Check birth date:
+		$bDate = $_POST['bDate'];
+		$regX = "/^\s*((([0])?[1-9])|([1][0-2]))([-\/\s])?((([0-2])?[1-9])|([3][0-1]))([-\/\s])?(([1][9][5-9][0-9])|([2][0]{2}[0-9])|([2][0][1][0-4]))\s*$/";
+		
+		if(empty($_POST['bDate'])){
+			echo ("<script>var tagID = document.getElementById('bDate'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "You forgot to enter your birth date!";
+		}elseif(preg_match($regX,$bDate)){
+			echo ("<script>var tagID = document.getElementById('bDate'); tagID.style.backgroundColor='#00FF00';</script>");
+			$p = trim($_POST['bDate']);	//	$bd - 'birth date' for SQL query
+		}else{
+			echo ("<script>var tagID = document.getElementById('bDate'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = 'Please, enter a valid birth date!(mmddyyyy)';
+		}
+		
+		//	Check address 1:
+		$add1 = $_POST['add1'];
+		$regX = "/^\s*((([0])?[1-9])|([1][0-2]))([-\/\s])?((([0-2])?[1-9])|([3][0-1]))([-\/\s])?(([1][9][5-9][0-9])|([2][0]{2}[0-9])|([2][0][1][0-4]))\s*$/";
+		
+		if(empty($_POST['add1'])){
+			echo ("<script>var tagID = document.getElementById('add1'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "You forgot to enter you street address in the 'Address 1' field!";
+		}elseif(preg_match($regX,$add1)){
+			echo ("<script>var tagID = document.getElementById('add1'); tagID.style.backgroundColor='#00FF00';</script>");
+			$p = trim($_POST['add1']);	//	$a1 - 'address 1' for SQL query
+		}else{
+			echo ("<script>var tagID = document.getElementById('add1'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "Please, enter a valid street address in the 'Address 1' field!";
+		}
+
+		//	Check address 2:
+		
+		//	Check city:
+		
+		//	Check zipcode:
+		
+		//	Check phone number:
 		
 		if(empty($errors)){	//	IF the form is filled out properly:
 		
