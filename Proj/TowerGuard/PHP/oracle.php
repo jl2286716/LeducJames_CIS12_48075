@@ -148,6 +148,10 @@
 			echo ("<script>var tagID = document.getElementById('city'); tagID.style.backgroundColor='#FF0000';</script>");
 			$errors[] = "Please, enter a valid city!";
 		}
+		
+		//	Check state:
+		$state = $_POST['state'];
+		$s = trim($_POST['state']);	//	$s - 'state' for SQL query
 
 		//	Check zipcode:
 		$zip = $_POST['zip'];
@@ -165,6 +169,19 @@
 		}
 		
 		//	Check phone number:
+		$phone = $_POST['phone'];
+		$regX = "/^\s*([(\s])?(([2][0][1-9])|([2][1-9][0-9])|([3-8][0-9][0-9])|([9][0-8][0-9]))([-\s|)\s])?(\s)?([2-9][0-9]{2})([-\s])?([0-9]{4})\s*$/";
+		
+		if(empty($_POST['phone'])){
+			echo ("<script>var tagID = document.getElementById('phone'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "You forgot to enter your phone number!";
+		}elseif(preg_match($regX,$phone)){
+			echo ("<script>var tagID = document.getElementById('phone'); tagID.style.backgroundColor='#00FF00';</script>");
+			$p = trim($_POST['phone']);	//	$p - 'phone' for SQL query
+		}else{
+			echo ("<script>var tagID = document.getElementById('phone'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "Please, enter a valid phone number!";
+		}
 		
 		if(empty($errors)){	//	IF the form is filled out properly:
 		
@@ -212,22 +229,22 @@
 			</label><br>
 			
 			<label>Password*:<br>
-				<input type="password" name="passW" id="passW" maxlength="20"
+				<input type="password" name="passW" id="passW" maxlength="15"
 					value="<?php if(isset($_POST['passW'])) echo $_POST['passW']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>
 			</label><br>
 			
 			<label>Verify Password*:<br>
-				<input type="password" name="vPass" id="vPass" maxlength="20"
+				<input type="password" name="vPass" id="vPass" maxlength="15"
 					value="<?php if(isset($_POST['vPass'])) echo $_POST['vPass']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>
 			</label><br>
 			
 			<label>Birth Date:<br>
-				<input type="text" name="bDay" id="bDay" maxlength="10"
-					value="<?php if(isset($_POST['bDay'])) echo $_POST['bDay']; ?>"
+				<input type="text" name="bDate" id="bDate" maxlength="10"
+					value="<?php if(isset($_POST['bDate'])) echo $_POST['bDate']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>
 			</label><br>
@@ -237,14 +254,14 @@
 			<legend>Contact Information</legend>
 			
 			<label>Address 1*:<br>
-				<input type="text" name="add1" id="add1" size="10"
+				<input type="text" name="add1" id="add1"
 					value="<?php if(isset($_POST['add1'])) echo $_POST['add1']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>
 			</label><br>
 			
 			<label>Address 2:<br>
-				<input type="text" name="add2" id="add2" maxlength="10"
+				<input type="text" name="add2" id="add2"
 					value="<?php if(isset($_POST['add2'])) echo $_POST['add2']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>
@@ -317,14 +334,14 @@
 			</label><br>
 			
 			<label>Zipcode*:<br>
-				<input type="text" name="zip" id="zip" maxlength="10" size="7"
+				<input type="text" name="zip" id="zip" maxlength="10"
 					value="<?php if(isset($_POST['zip'])) echo $_POST['zip']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>
 			</label><br>
 			
 			<label>Phone Number*:<br>
-				<input type="text" name="phone" id="phone" maxlength="8" size="7"
+				<input type="text" name="phone" id="phone" maxlength="14"
 					value="<?php if(isset($_POST['phone'])) echo $_POST['phone']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>

@@ -21,6 +21,11 @@
 				}
 				echo ('</p><p>Please, try again!</p>"</script>');
 			}
+			
+			//	Post info to Server:
+			function postInfo(){
+			
+			}
 		?>
 	</head>
 	<body>
