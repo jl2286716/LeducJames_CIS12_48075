@@ -177,7 +177,7 @@
 			$errors[] = "You forgot to enter your phone number!";
 		}elseif(preg_match($regX,$phone)){
 			echo ("<script>var tagID = document.getElementById('phone'); tagID.style.backgroundColor='#00FF00';</script>");
-			$p = trim($_POST['phone']);	//	$p - 'phone' for SQL query
+			$pn = trim($_POST['phone']);	//	$pn - 'phone' for SQL query
 		}else{
 			echo ("<script>var tagID = document.getElementById('phone'); tagID.style.backgroundColor='#FF0000';</script>");
 			$errors[] = "Please, enter a valid phone number!";
@@ -187,11 +187,19 @@
 		
 			//	Register to the database:
 			//	Open ('require') the database connection:
+			require ('mysqli_connect.php');
 			//	Make the query:
+			$q = "INSERT INTO jl2286716_proj_entity_users (fName,lName,eMail,passW,bDate,add1,add2,city,state,zip,phone,rDate) VALUES ('$fn','$ln','$m',SHA1('$p'),'$bd','$a1','$a2','$c','$s','$z','$pn',NOW())";
 			//	Run the query:
-				//	IF query ran okay, "You are registered!":
-				//	ELSE "System Error!":
+			$r = @mysqli_query($dbc, $q);
+			if($r){	//	IF query ran okay, "You are registered!":
+				echo '<p>Thank you! You are now registered!</p>';
+			
+			}else{	//	ELSE "System Error!":
+				echo '<p>You could not be registered due to a system error. We apologize for any inconvenience.</p>';
+			}
 			//	Close database
+			mysqli_close($dbc);
 		
 		}else{	//	ELSE report the errors:
 			showErrors($errors);
