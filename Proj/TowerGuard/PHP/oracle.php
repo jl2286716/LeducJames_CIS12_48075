@@ -100,7 +100,7 @@
 			$errors[] = "You forgot to enter your birth date!";
 		}elseif(preg_match($regX,$bDate)){
 			echo ("<script>var tagID = document.getElementById('bDate'); tagID.style.backgroundColor='#00FF00';</script>");
-			$p = trim($_POST['bDate']);	//	$bd - 'birth date' for SQL query
+			$bd = trim($_POST['bDate']);	//	$bd - 'birth date' for SQL query
 		}else{
 			echo ("<script>var tagID = document.getElementById('bDate'); tagID.style.backgroundColor='#FF0000';</script>");
 			$errors[] = 'Please, enter a valid birth date!(mmddyyyy)';
@@ -112,10 +112,10 @@
 		
 		if(empty($_POST['add1'])){
 			echo ("<script>var tagID = document.getElementById('add1'); tagID.style.backgroundColor='#FF0000';</script>");
-			$errors[] = "You forgot to enter you street address in the 'Address 1' field!";
+			$errors[] = "You forgot to enter your street address in the 'Address 1' field!";
 		}elseif(preg_match($regX,$add1)){
 			echo ("<script>var tagID = document.getElementById('add1'); tagID.style.backgroundColor='#00FF00';</script>");
-			$p = trim($_POST['add1']);	//	$a1 - 'address 1' for SQL query
+			$a1 = trim($_POST['add1']);	//	$a1 - 'address 1' for SQL query
 		}else{
 			echo ("<script>var tagID = document.getElementById('add1'); tagID.style.backgroundColor='#FF0000';</script>");
 			$errors[] = "Please, enter a valid street address in the 'Address 1' field!";
@@ -124,20 +124,45 @@
 		//	Check address 2:
 		$add2 = $_POST['add2'];
 		$regX = "/^\s*(P.O|PO|Apt|Apartment|Ste|Suite)?([.])?([\s])?(Box)?([\s])?([#])?[\s]?([A-Za-z])?([0-9]{1,8})([A-Za-z])?\s*$/";
-		
-		if(empty($_POST['add2'])){
-			echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#FF0000';</script>");
-			$errors[] = "You forgot to enter you street address in the 'Address 1' field!";
-		}elseif(preg_match($regX,$add2)){
-			echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#00FF00';</script>");
-			$p = trim($_POST['add2']);	//	$a1 - 'address 1' for SQL query
-		}else{
-			echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#FF0000';</script>");
-			$errors[] = "Please, enter a valid street address in the 'Address 1' field!";
+		if(isset($_POST['add2'])){
+			if(preg_match($regX,$add2)){
+				echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#00FF00';</script>");
+				$a2 = trim($_POST['add2']);	//	$a2 - 'address 2' for SQL query
+			}else{
+				echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#FF0000';</script>");
+				$errors[] = "Please, enter a valid PO Box, apartment, or suite number in the 'Address 2' field!";
+			}
 		}
-		//	Check city:
 		
+		//	Check city:
+		$city = $_POST['city'];
+		$regX = "/^\s*[A-Za-z\s]+\s*$/";
+		
+		if(empty($_POST['city'])){
+			echo ("<script>var tagID = document.getElementById('city'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "You forgot to enter your city!";
+		}elseif(preg_match($regX,$city)){
+			echo ("<script>var tagID = document.getElementById('city'); tagID.style.backgroundColor='#00FF00';</script>");
+			$c = trim($_POST['city']);	//	$c - 'city' for SQL query
+		}else{
+			echo ("<script>var tagID = document.getElementById('city'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "Please, enter a valid city!";
+		}
+
 		//	Check zipcode:
+		$zip = $_POST['zip'];
+		$regX = "/^\s*\d{5}([-\s]\d{4})?\s*$/";
+		
+		if(empty($_POST['zip'])){
+			echo ("<script>var tagID = document.getElementById('zip'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "You forgot to enter your zipcode!";
+		}elseif(preg_match($regX,$zip)){
+			echo ("<script>var tagID = document.getElementById('zip'); tagID.style.backgroundColor='#00FF00';</script>");
+			$z = trim($_POST['zip']);	//	$z - 'zip' for SQL query
+		}else{
+			echo ("<script>var tagID = document.getElementById('zip'); tagID.style.backgroundColor='#FF0000';</script>");
+			$errors[] = "Please, enter a valid zipcode!";
+		}
 		
 		//	Check phone number:
 		
