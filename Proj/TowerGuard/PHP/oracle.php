@@ -17,8 +17,8 @@
 		$errors = array();
 	
 		//	Check first name:
-		$fname = $_POST['fName'];
-		$regX = "/^\s*([A-Z][a-z]{1,})([\'])?(([A-Z][a-z]{1,})*)\s*$/";
+		$fName = $_POST['fName'];
+		$regX = "/^\s*[A-Z][a-z]{1,}([A-Z][a-z]{1,})?(([-\s][A-Z][a-z]{1,})|([A-Z][a-z]{1,}))?\s*$/";
 		
 		if(empty($_POST['fName'])){
 			echo ("<script>var tagID = document.getElementById('fName'); tagID.style.backgroundColor='#FF0000';</script>");
@@ -32,8 +32,8 @@
 		}
 		
 		//	Check last name:
-		$lname = $_POST['lName'];
-		$regX = "/^\s*([A-Z][a-z]{1,})(['-])?(([A-Z][a-z]{1,})*)\s*$/";
+		$lName = $_POST['lName'];
+		$regX = "/^\s*(([A-Z][a-z]{1,})([-][A-Z][a-z]{1,})?.*(\s+[A-Z][a-z]{1,})?|([A-Z][a-z'][a-zA-Z][a-z]{1,}))\s*$/";
 		
 		if(empty($_POST['lName'])){
 			echo ("<script>var tagID = document.getElementById('lName'); tagID.style.backgroundColor='#FF0000';</script>");
@@ -108,7 +108,7 @@
 		
 		//	Check address 1:
 		$add1 = $_POST['add1'];
-		$regX = "/^\s*([1-9][0-9]*)[\s][A-Za-z0-9]{1,4}[a-z]{1,20}[\s]?([A-Za-z]{1,20})?([\s][A-Za-z]{1,20})?([A-Za-z]{2,15}([.])?)?\s*$/";
+		$regX = "/^\s*([1-9][0-9]*)[\s]([A-Za-z0-9]{1,4}[a-z]{1,20}[\s])?([A-Za-z]{1,20}[\s])?([A-Za-z]{1,20}[\s])?([A-Za-z]{2,15}([.])?)?\s*$/";
 		
 		if(empty($_POST['add1'])){
 			echo ("<script>var tagID = document.getElementById('add1'); tagID.style.backgroundColor='#FF0000';</script>");
@@ -123,11 +123,11 @@
 
 		//	Check address 2:
 		$add2 = $_POST['add2'];
-		if(isset($_POST['add2'])){
-			if(preg_match($regX,$add2)){
-				echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#00FF00';</script>");
-				$a2 = trim($_POST['add2']);	//	$a2 - 'address 2' for SQL query
-			}
+		if(empty($_POST['add2'])){
+			$a2 = "";
+		}elseif(preg_match($regX,$add2)){
+			echo ("<script>var tagID = document.getElementById('add2'); tagID.style.backgroundColor='#00FF00';</script>");
+			$a2 = trim($_POST['add2']);	//	$a2 - 'address 2' for SQL query
 		}
 		
 		//	Check city:
@@ -189,10 +189,10 @@
 			//	Run the query:
 			$r = @mysqli_query($dbc, $q);
 			if($r){	//	IF query ran okay, "You are registered!":
-				echo '<p>Thank you! You are now registered!</p>';
+				echo '<h1>Thank you! You are now registered!</h1>';
 			
 			}else{	//	ELSE "System Error!":
-				echo '<p>You could not be registered due to a system error. We apologize for any inconvenience.</p>';
+				echo '<h2 style="color:red">You could not be registered due to a system error. We apologize for any inconvenience.</h2>';
 			}
 			//	Close database
 			mysqli_close($dbc);
