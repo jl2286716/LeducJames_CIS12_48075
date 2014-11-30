@@ -84,6 +84,7 @@
 		</script>
 	</head>
 	<body>
+		<br><br><br>
 		<center>
 			<a href="index.php"><button>HOME</button></a>
 			<a href="crew.php"><button>CREW</button></a>
