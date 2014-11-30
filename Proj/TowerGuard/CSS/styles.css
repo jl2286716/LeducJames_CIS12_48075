@@ -13,30 +13,34 @@ body{
 }
 legend{
 	font-weight:bold;
-	text-transform:uppercase
+	text-transform:uppercase;
 }
 label{
-	font-variant: small-caps
+	font-variant: small-caps;
 }
 input{
-	text-align:center
+	text-align:center;
 }
 td{
-	text-align:center
+	text-align:center;
 }
 #signup{
 	background-image:url('../images/light.jpg'); 
-	background-position:center
+	background-position:center;
 }
 #left{
-	float:left
+	float:left;
 }
 #right{
-	float:right
+	float:right;
 }
-#uLog{
-	float:left
+button{
+	border: 2px solid;
+    border-radius: 25px;
+	font-weight:bold;
 }
-#aLog{
-	float:right
+#dash{
+	border: 10px inset;
+	width: 180px;
+	padding: 10px;
 }

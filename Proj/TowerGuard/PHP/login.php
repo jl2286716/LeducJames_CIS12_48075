@@ -3,26 +3,34 @@
 <center><h2>We are <i>your</i>...</h2></center>
 <center><h1>TOWER GUARD</h1></center>
 </br>
-<center><h2>"Guardians, Login!"</h2></center>
+<center><h2>Guardians, Login!</h2></center>
 <br><br>
 
-<form name="uLog" id="uLog" action="" method="" >
-	<center>GUARDIAN LOGIN</center><br>
-	EMAIL:<br>
-	<input type="text" name="logMail" id="logMail" value="" /><br>
-	PASSWORD:<br>
-	<input type="password" name="logPass" id="logPass" value="" /><br>
-	<input type="submit" value="LOGIN" /><br>
-</form>
+<center><form name="uLog" id="uLog" action="" method="" >
+	<legend><fieldset>
+		<fieldset>
+			<legend>GUARDIAN LOGIN</legend><br>
+			EMAIL:<br>
+			<input type="text" name="logMail" id="logMail" value="" /><br>
+			PASSWORD:<br>
+			<input type="password" name="logPass" id="logPass" value="" /><br><br>
+			<input type="submit" value="LOGIN" /><br>
+		</fieldset>
+	</fieldset></legend>
+</form></center>
 
-<form name="aLog" id="aLog" action="" method="" >
-	<center>ADMIN LOGIN</center><br>
-	USER:<br>
-	<input type="text" name="adminMail" id="adminMail" value="" /><br>
-	PASSWORD:<br>
-	<input type="password" name="adminPass" id="adminPass" value="" /><br>
-	<input type="submit" value="LOGIN" /><br>
-</form>
+<center><form name="aLog" id="aLog" action="dash.php" method="" >
+	<legend><fieldset>
+		<fieldset>
+			<legend>ADMIN LOGIN</legend><br>
+			USER:<br>
+			<input type="text" name="admMail" id="admMail" value="" /><br>
+			PASSWORD:<br>
+			<input type="password" name="admPass" id="admPass" value="" /><br><br>
+			<input type="submit" value="LOGIN" /><br>
+		</fieldset>
+	</fieldset></legend>
+</form></center>
 
 <br><br>
 

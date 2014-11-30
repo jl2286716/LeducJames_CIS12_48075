@@ -190,11 +190,7 @@
 			$r = @mysqli_query($dbc, $q);
 			if($r){	//	IF query ran okay, "You are registered!":
 				echo '<center><h1>Thank you! You are now registered!</h1></center>';
-				//	WHY WONT THE SCRIPTS BELOW WORK?
-				echo '<script>var tagID=document.getElementById("signup");';
-				echo 'var att=document.createAttribute("style");';
-				echo 'att.value="display:none";';
-				echo 'tagID.setAttributeNode(att);</script>';
+				echo '<center><h1>Now, <a href="login.php">LOGIN</a>!</h1></center>';
 			
 			}else{	//	ELSE "System Error!":
 				echo '<h2 style="color:red">You could not be registered due to a system error. We apologize for any inconvenience.</h2>';
