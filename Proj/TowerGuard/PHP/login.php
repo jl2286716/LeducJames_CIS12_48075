@@ -6,8 +6,9 @@
 <center><h2>Guardians, Login!</h2></center>
 <br><br>
 
+<!--	WONT LET ME MODIFY THE HEADER WITH REDIRECT... WHY?	-->
 <?php	//	check user logins:
-	if($_SEVER['REQUEST_METHOD'] == 'POST'){
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		require ('../includes/logins.php');	//	include login functions
 		require ('mysqli_connect.php');		//	include database connection
 		
@@ -40,7 +41,7 @@
 ?>
 
 
-<center><form name="uLog" id="uLog" action="" onsubmit="" method="post" >
+<center><form name="uLog" id="uLog" action="login.php" onsubmit="" method="post" >
 	<legend><fieldset>
 		<fieldset>
 			<legend>GUARDIAN LOGIN</legend><br>
@@ -53,7 +54,7 @@
 	</fieldset></legend>
 </form></center>
 
-<center><form name="aLog" id="aLog" action="dash.php" onsubmit="" method="post" >
+<center><form name="aLog" id="aLog" action="login.php" onsubmit="" method="post" >
 	<legend><fieldset>
 		<fieldset>
 			<legend>ADMIN LOGIN</legend><br>
