@@ -206,7 +206,7 @@
 
 
 <center><form name="signup" id="signup"
-	action="oracle.php" onsubmit="return validate_form()" method="post">
+	action="oracle.php" onsubmit="" method="post">
 	<legend><fieldset>
 	
 		<fieldset id="left">

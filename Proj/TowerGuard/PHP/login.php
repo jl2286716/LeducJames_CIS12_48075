@@ -57,7 +57,7 @@
 	<legend><fieldset>
 		<fieldset>
 			<legend>ADMIN LOGIN</legend><br>
-			USER:<br>
+			USERNAME:<br>
 			<input type="text" name="uName" id="uName" value="<?php if(isset($_POST['uName'])) echo $_POST['uName']; ?>" /><br>
 			PASSWORD:<br>
 			<input type="password" name="admPass" id="admPass" value="<?php if(isset($_POST['admPass'])) echo $_POST['admPass']; ?>" /><br><br>

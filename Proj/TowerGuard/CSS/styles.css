@@ -43,4 +43,5 @@ button{
 	border: 10px inset;
 	width: 180px;
 	padding: 10px;
+	float: left;
 }
