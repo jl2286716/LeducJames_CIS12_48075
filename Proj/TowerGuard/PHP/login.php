@@ -30,7 +30,7 @@
 				setcookie('admin_id',$data['admin_id']);
 				setcookie('fName',$data['fName']);
 				
-				redirect('loggedin.php');
+				redirect('dash.php');
 			}else{
 				$errors = $data;
 			}
