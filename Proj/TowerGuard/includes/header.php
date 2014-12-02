@@ -90,5 +90,11 @@
 			<a href="crew.php"><button>CREW</button></a>
 			<a href="oracle.php"><button>THE ORACLE</button></a><!--Contact Us/Sign Up -->
 			<a href="merch.php"><button>TOWER GEAR</button></a>
-			<a href="login.php"><button>LOGIN</button></a>
+			<?php
+				if((isset($_COOKIE['user_id'])) && (basename($_SERVER['PHP_SELF']) != 'logout.php')){
+					echo '<a href="logout.php"><button>LOGOUT</button></a>';
+				}else{
+					echo '<a href="login.php"><button>LOGIN</button></a>';
+				}
+			?>
 		</center>
