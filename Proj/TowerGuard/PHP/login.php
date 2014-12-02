@@ -22,8 +22,8 @@
 			list($check, $data) = checkUser($dbc, $_POST['logMail'], $_POST['logPass']);
 			
 			if($check){
-				setcookie('user_id',$data['user_id']);
-				setcookie('fName',$data['fName']);
+				setcookie('user_id',$data['user_id'],time()+3600);
+				setcookie('fName',$data['fName'],time()+3600);
 				
 				redirect('loggedin.php');
 			}else{
@@ -34,8 +34,8 @@
 			list($check, $data) = checkAdmin($dbc, $_POST['uName'], $_POST['admPass']);
 			
 			if($check){
-				setcookie('admin_id',$data['admin_id']);
-				setcookie('fName',$data['fName']);
+				setcookie('admin_id',$data['admin_id'],time()+3600);
+				setcookie('fName',$data['fName'],time()+3600);
 				
 				redirect('dash.php');
 			}else{
