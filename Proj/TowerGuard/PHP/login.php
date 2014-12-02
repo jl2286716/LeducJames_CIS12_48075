@@ -1,10 +1,15 @@
-<?php include_once("../includes/header.php"); ?>
+<?php include_once("../includes/signHead.php"); ?>
 
 <center><h2>We are <i>your</i>...</h2></center>
 <center><h1>TOWER GUARD</h1></center>
 </br>
 <center><h2>Guardians, Login!</h2></center>
-<br><br>
+
+<center>
+	<hr id="tLine" style="display:none">
+	<div id="errors" style="color:red"></div>
+	<hr id="bLine" style="display:none">
+</center>
 
 <!--	WONT LET ME MODIFY THE HEADER WITH REDIRECT... WHY?	-->
 <?php	//	check user logins:
@@ -23,6 +28,7 @@
 				redirect('loggedin.php');
 			}else{
 				$errors = $data;
+				showErrors($errors);
 			}
 		}elseif(isset($_POST['aLogSub'])){
 			list($check, $data) = checkAdmin($dbc, $_POST['uName'], $_POST['admPass']);
@@ -34,6 +40,7 @@
 				redirect('dash.php');
 			}else{
 				$errors = $data;
+				showErrors($errors);
 			}
 		}
 		mysqli_close($dbc);
