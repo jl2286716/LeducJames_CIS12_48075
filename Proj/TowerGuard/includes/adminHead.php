@@ -31,8 +31,8 @@
 			<a href="oracle.php"><button>THE ORACLE</button></a><!--Contact Us/Sign Up -->
 			<a href="merch.php"><button>TOWER GEAR</button></a>
 			<?php
-				if((isset($_COOKIE['user_id'])) && (basename($_SERVER['PHP_SELF']) != 'logout.php')){
-					echo '<a href="logout.php"><button>LOGOUT</button></a>';
+				if((isset($_COOKIE['admin_id'])) && (basename($_SERVER['PHP_SELF']) != 'adminOut.php')){
+					echo '<a href="adminOut.php"><button>LOGOUT</button></a>';
 				}else{
 					echo '<a href="login.php"><button>LOGIN</button></a>';
 				}

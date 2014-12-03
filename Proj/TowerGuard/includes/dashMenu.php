@@ -7,6 +7,6 @@
 	<center><a href="#"><button>VIEW/EDIT MERCH</button></a></center><br>
 	<center><a href="#"><button>VIEW/EDIT PHOTOS</button></a></center><br>
 	<center><a href="#"><button>VIEW/EDIT VIDEOS</button></a></center><br>
-	<center><a href="#"><button>ADD/REMOVE ADMIN</button></a></center><br>
+	<center><a href="../PHP/newAdmin.php"><button>ADD/REMOVE ADMIN</button></a></center><br>
 </div>
 <br><br>

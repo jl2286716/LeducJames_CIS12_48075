@@ -4,7 +4,7 @@
 		redirect();
 	}
 ?>
-<?php include_once("../includes/signHead.php"); ?>
+<?php include_once("../includes/adminHead.php"); ?>
 	
 <center>
 	<hr id="tLine" style="display:none">
