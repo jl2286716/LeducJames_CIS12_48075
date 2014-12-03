@@ -23,7 +23,7 @@
 	
 		echo "<center><p><b>There are currently $num registered users.</b></p></center>\n";
 		
-		echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
+		echo '<table align="center" cellspacing="3" cellpadding="3" width="75%" id="uTable">
 			<tr>
 				<td align="left"><b>Edit</b></td>
 				<td align="left"><b>Delete</b></td>
