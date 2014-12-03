@@ -28,13 +28,13 @@
 			$r = @mysqli_query($dbc,$q);
 			
 			if(mysqli_affected_rows($dbc) == 1){
-				echo '<center><p style="color:red"><b>The user has been deleted.</b></p></center>';
+				echo '<center><h2 style="color:red"><b>The user has been deleted.</b></h2></center>';
 			}else{
-				echo '<center><p style="color:red"><b>The user could not be deleted due to a system error.</b></p></center>';
+				echo '<center><h2 style="color:red"><b>The user could not be deleted due to a system error.</b></h2></center>';
 				echo '<p>'.mysqli_error($dbc).'<br>Query:'.$q.'</p>';
 			}
 		}else{
-			echo '<center><p style="color:red"><b>The user has NOT been deleted.</b></p></center>';
+			echo '<center><h2 style="color:red"><b>The user has NOT been deleted.</b></h2></center>';
 		}
 	}else{
 		$q = "SELECT CONCAT(lName, ', ', fName) FROM jl2286716_proj_entity_users WHERE user_id=$id";
@@ -43,7 +43,7 @@
 		if(mysqli_num_rows($r) == 1){
 			$row = mysqli_fetch_array($r, MYSQLI_NUM);
 			
-			echo "<h3>Name: $row[0]</h3>Are you sure you want to delete this user?";
+			echo "<h2>Name: $row[0] - <span style='color:red'>Are you sure you want to delete this user?</span></h2>";
 			
 			echo '<form action="deleteUser.php" method="post">
 					<input type="radio" name="sure" value="Yes" /> Yes

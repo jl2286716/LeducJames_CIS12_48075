@@ -83,7 +83,7 @@
 			}
 		</script>
 	</head>
-	<body>
+	<body id="backG">
 		<br><br><br>
 		<center>
 			<a href="index.php"><button>HOME</button></a>

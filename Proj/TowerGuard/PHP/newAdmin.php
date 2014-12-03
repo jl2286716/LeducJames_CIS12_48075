@@ -136,7 +136,7 @@
 ?>
 
 
-<center><form name="signup" id="signup"
+<center><form name="" id=""
 	action="newAdmin.php" onsubmit="" method="post">
 	<legend><fieldset>
 	
