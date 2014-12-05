@@ -14,20 +14,20 @@
 	
 	require ('../PHP/mysqli_connect.php');		//	include database connection
 	
-	//	paginate:
+	//	Begin pagination:
 	$display = 10;	//	number of records shown per page
 	
-	//	determine number of pages:
+	//	Determine number of pages:
 	if(isset($_GET['p']) && is_numeric($_GET['p'])){	//	already determined
 		$pages = $_GET['p'];
 	}else{	//	need to determine
-		//	count records:
+		//	Count records:
 		$q = "SELECT COUNT(user_id) FROM jl2286716_proj_entity_users";
 		$r = @mysqli_query($dbc, $q);
 		$row = @mysqli_fetch_array($r, MYSQLI_NUM);
 		$records = $row[0];
 		
-		//	calculate number of pages:
+		//	Calculate number of pages:
 		if($records > $display){	//	more than 1 page
 			$pages = ceil($records/$display);
 		}else{
@@ -35,15 +35,31 @@
 		}
 	}
 	
-	//	determine where in the database to start returning results:
+	//	Determine where in the database to start returning results:
 	if(isset($_GET['s']) && is_numeric($_GET['s'])){
 		$start = $_GET['s'];
 	}else{
 		$start = 0;
 	}
 	
-	// define the query:
-	$q = "SELECT lName, fName, eMail, rDate, user_id FROM jl2286716_proj_entity_users ORDER BY rDate ASC LIMIT $start, $display";
+	//	Determine the sort:
+	$sort = (isset($_GET['sort'])) ? $_GET['sort'] : 'dr';	//	default sort is date registered 'dr'
+	switch ($sort){	//	determine the sorting order
+		case 'ln':	$order_by = 'lName ASC';
+			break;
+		case 'fn':	$order_by = 'fName ASC';
+			break;
+		case 'em':	$order_by = 'eMail ASC';
+			break;
+		case 'dr':	$order_by = 'rDate ASC';
+			break;
+		default:	$order_by = 'rDate ASC';
+			$sort = 'dr';
+			break;
+	}
+	
+	// Define the query:
+	$q = "SELECT lName, fName, eMail, rDate, user_id FROM jl2286716_proj_entity_users ORDER BY $order_by LIMIT $start, $display";
 	$r = @mysqli_query($dbc, $q);
 	
 	$num = mysqli_num_rows($r);
@@ -56,10 +72,10 @@
 			<tr>
 				<td align="left"><b>Edit</b></td>
 				<td align="left"><b>Delete</b></td>
-				<td align="left"><b>Last Name</b></td>
-				<td align="left"><b>First Name</b></td>
-				<td align="left"><b>Email Address</b></td>
-				<td align="left"><b>Date Registered</b></td>
+				<td align="left"><b><a href="viewUser.php?sort=ln">Last Name</a></b></td>
+				<td align="left"><b><a href="viewUser.php?sort=fn">First Name</a></b></td>
+				<td align="left"><b><a href="viewUser.php?sort=em">Email Address</a></b></td>
+				<td align="left"><b><a href="viewUser.php?sort=dr">Date Registered</a></b></td>
 			</tr>
 		';
 		
@@ -89,19 +105,19 @@
 			$cPage = ($start/$display)+1;
 			
 			if($cPage != 1){	//	if not first page, create previous link
-				echo '<a href="viewUser.php?s='.($start - $display).'&p='.$pages.'">Previous</a> ';
+				echo '<a href="viewUser.php?s='.($start - $display).'&p='.$pages.'&sort='.$sort.'">Previous</a> ';
 			}
 			
 			for($i=1;$i<=$pages;$i++){	//	make all numbered pages
 				if($i != $cPage){
-					echo '<a href="viewUser.php?s='.(($display*($i-1))).'&p='.$pages.'">'.$i.'</a> ';
+					echo '<a href="viewUser.php?s='.(($display*($i-1))).'&p='.$pages.'&sort='.$sort.'">'.$i.'</a> ';
 				}else{
 					echo $i.' ';
 				}
 			}
 			
 			if($cPage != $pages){	// if not last page, create next link
-				echo '<a href="viewUser.php?s='.($start + $display).'&p='.$pages.'">Next</a>';
+				echo '<a href="viewUser.php?s='.($start + $display).'&p='.$pages.'&sort='.$sort.'">Next</a>';
 			}
 		}
 	}else{
