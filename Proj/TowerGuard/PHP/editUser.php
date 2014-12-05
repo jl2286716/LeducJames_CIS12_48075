@@ -8,6 +8,14 @@
 
 <?php include_once("../includes/dashMenu.php"); ?>
 
-
+<?php
+	if((isset($_GET['id'])) && (is_numeric($_GET['id']))){
+	
+	}elseif(){
+	
+	}else{
+	
+	}
+?>
 
 <?php include('../includes/footer.php'); ?>
