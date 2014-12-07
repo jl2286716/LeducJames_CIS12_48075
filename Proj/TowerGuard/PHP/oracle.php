@@ -265,8 +265,8 @@
 				/>
 			</label><br>
 			
-			<label>Address 2:<br>
-				<input type="text" name="add2" id="add2"
+			<label><br>
+				<input type="hidden" name="add2" id="add2"
 					value="<?php if(isset($_POST['add2'])) echo $_POST['add2']; ?>"
 					style="background-color:#FF7E00; font-weight:bold"
 				/>

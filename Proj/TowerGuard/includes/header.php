@@ -86,7 +86,7 @@
 	<body id="backG">
 		<br><br><br>
 		<center>
-			<a href="index.php"><button>HOME</button></a>
+			<a href="home.php"><button>HOME</button></a>
 			<a href="crew.php"><button>CREW</button></a>
 			<a href="oracle.php"><button>THE ORACLE</button></a><!--Contact Us/Sign Up -->
 			<a href="merch.php"><button>TOWER GEAR</button></a>
