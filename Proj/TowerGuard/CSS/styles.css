@@ -48,3 +48,10 @@ button{
 #uTable{
 	background-color: white;
 }
+#shadow{
+    text-shadow:
+    -1px -1px 0 #808080,
+    1px -1px 0 #808080,
+    -1px 1px 0 #808080,
+    1px 1px 0 #808080;  
+}
