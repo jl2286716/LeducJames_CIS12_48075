@@ -13,7 +13,7 @@
 	<a href="addType.php"><button>ADD TYPE</button></a> - Add a new merchandise category.<br>
 </div>
 <div style="padding-left:20px">
-	<a href=""><button>ADD MERCH</button></a> - Add new merchandise.<br>
+	<a href="addMerch.php"><button>ADD MERCH</button></a> - Add new merchandise.<br>
 </div>
 
 <?php include_once("../includes/footer.php"); ?>
