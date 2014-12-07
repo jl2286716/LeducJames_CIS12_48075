@@ -10,7 +10,7 @@
 <center><table width='auto' border='1'>
 	<tr>
 		<td><a href="#">
-			<img src="../images/Cover_Image.png" height="250" width="250">
+			<img src="../images/placeholder.jpg" height="250" width="250">
 		</a></td>
 		<td><a href="">
 			<img src="../images/placeholder.jpg" height="250" width="250">
