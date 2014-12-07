@@ -1,9 +1,7 @@
 <?php include_once("../includes/signHead.php"); ?>
 
-<center><h2>We are <i>your</i>...</h2></center>
-<center><h1>TOWER GUARD</h1></center>
+<center><h1 id="shadow" >GUARDIANS', LOGIN!</h1></center>
 </br>
-<center><h2>Guardians, Login!</h2></center>
 
 <center>
 	<hr id="tLine" style="display:none">

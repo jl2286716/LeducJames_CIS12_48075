@@ -1,6 +1,6 @@
 <?php include_once("../includes/signHead.php"); ?>
 	
-<center><h1>THE GUARDIANS' ORACLE</h1></center>
+<center><h1 id="shadow" >THE GUARDIANS' ORACLE</h1></center>
 </br>
 <center><h3>"We're Listening"</h3></center>
 

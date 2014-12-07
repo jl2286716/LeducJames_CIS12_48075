@@ -26,10 +26,9 @@
 	<body id="backG">
 		<br><br><br>
 		<center>
-			<a href="home.php"><button>HOME</button></a>
-			<a href="crew.php"><button>CREW</button></a>
-			<a href="oracle.php"><button>THE ORACLE</button></a><!--Contact Us/Sign Up -->
-			<a href="merch.php"><button>TOWER GEAR</button></a>
+			<a href="home.php"><button>HOME</button></a>&nbsp&nbsp
+			<a href="crew.php"><button>CREW</button></a>&nbsp&nbsp
+			<a href="merch.php"><button>GEAR</button></a>&nbsp&nbsp
 			<?php
 				if((isset($_COOKIE['user_id'])) && (basename($_SERVER['PHP_SELF']) != 'logout.php')){
 					echo '<a href="logout.php"><button>LOGOUT</button></a>';
