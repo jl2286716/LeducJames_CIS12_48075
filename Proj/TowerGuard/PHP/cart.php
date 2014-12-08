@@ -28,7 +28,39 @@
 		$r = mysqli_query($dbc, $q);
 		
 		echo '<form action="cart.php" method="post">
+			<table border = "0" width="90%" cellspacing="3" cellpadding="3" align="center">
+			<tr>
+				<td align="left" width="60%"><b>Item Name</b></td>
+				<td align="right" width="10%"><b>Price</b></td>
+				<td align="center" width="10%"><b>Qty</b></td>
+				<td align="right" width="10%"><b>Total Price</b></td>
+			</tr>
+		';
+		
+		$total = 0;	//	total cost of order
+		
+		while($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
+			$subtotal = $_SESSION['cart'][$row['merch_id']]['quantity']*$_SESSION['cart'][$row['merch_id']]['price']; 
+			$total += $subtotal;
 			
+			echo "\t<tr>
+				<td align=\"left\">{$row['item_name']}</td>
+				<td align=\"right\">\${$_SESSION['cart'][$row['merch_id']]['price']}</td>
+				<td align=\"center\"><input type=\"text\" size=\"3\" name=\"qty[{$row['merch_id']}]\" value=\"{$_SESSION['cart'][$row['merch_id']]['quantity']}\" /></td>
+				<td align=\"right\">$" . number_format($subtotal,2) . "</td>
+			</tr>\n";
+		}
+		mysqli_close($dbc);
+		
+		echo '<tr>
+			<td colspan="3" align="right"><b>Total: </b></td>
+			<td align="right">$' . number_format($total, 2) . '</td>
+		</tr></table>
+		<div align="center"><input type="submit" name="submit" value="Update My Cart" /></div>
+		</form><p align="center">Enter a quantity of 0 to remove an item.<br><br>
+		<a href="checkout.php">Checkout</a></p>';
+	}else{
+		echo '<p>Your cart is currently empty.</p>';
 	}
 ?>
 <?php include_once("../includes/footer.php"); ?>
