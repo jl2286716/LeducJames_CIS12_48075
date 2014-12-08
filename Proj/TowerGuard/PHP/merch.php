@@ -61,7 +61,7 @@
 	while($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 		echo "\t<tr>
 			<td align=\"left\"><a href=\"merch.php?aid={$row['type_id']}\">{$row['type_name']}</a></td>
-			<td align=\"left\"><a href=\"viewMerch.php?pid={$row['merch_id']}\">{$row['item_name']}</td>
+			<td align=\"left\"><a href=\"viewMerch.php?mid={$row['merch_id']}\">{$row['item_name']}</td>
 			<td align=\"left\">{$row['desc']}</td>
 			<td align=\"right\">\${$row['price']}</td>
 		</tr>\n";
