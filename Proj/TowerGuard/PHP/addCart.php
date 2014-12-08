@@ -5,7 +5,7 @@
 		$mid = $_GET['mid'];
 		
 		if(isset($_SESSION['cart'][$mid])){
-			$_SESSION['cart'][$mid]['qty']++;
+			$_SESSION['cart'][$mid]['quantity']++;
 		}else{
 			require ('mysqli_connect.php');
 			
@@ -14,7 +14,7 @@
 			if(mysqli_num_rows($r) == 1){
 				list($price) = mysqli_fetch_array($r, MYSQLI_NUM);
 				
-				$_SESSION['cart'][$mid] = array('qty' => 1, 'price' => $price);
+				$_SESSION['cart'][$mid] = array('quantity' => 1, 'price' => $price);
 			}else{
 				echo '<center>ERROR!</center>';
 			}
