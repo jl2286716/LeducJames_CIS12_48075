@@ -18,7 +18,7 @@
 		$errors = array();
 		
 		//	validate the type:
-		if(isset($_POST['type']) && filter_var($_POST['type'], FILTER_VALIDATE_INT, array('min_range' +> 1))){
+		if(isset($_POST['type']) && filter_var($_POST['type'], FILTER_VALIDATE_INT, array('min_range' => 1))){
 			$t = $_POST['type'];
 		}else{
 			$errors[] = 'Please select the item\'s type!';
@@ -39,13 +39,13 @@
 		}
 		
 		//	check for size:
-		$s = (!empty($_POST['size'])) ? trim($_POST['size'] : NULL;
+		$s = (!empty($_POST['size'])) ? trim($_POST['size']) : NULL;
 		
 		//	check for color:
-		$c = (!empty($_POST['color'])) ? trim($_POST['color'] : NULL;
+		$c = (!empty($_POST['color'])) ? trim($_POST['color']) : NULL;
 		
 		//	check for description:
-		$d = (!empty($_POST['desc'])) ? trim($_POST['desc'] : NULL;
+		$d = (!empty($_POST['desc'])) ? trim($_POST['desc']) : NULL;
 		
 		//	check for image:
 		if(is_uploaded_file($_FILES['image']['tmp_name'])){
@@ -60,18 +60,18 @@
 				$temp = $_FILES['image']['tmp_name'];
 			}
 		}else{
-			$errors[] = 'No file was uploaded.';
+			//$errors[] = 'No file was uploaded.';
 			$temp = NULL;
 		}
 		
 		if(empty($errors)){	//	IF all is well
 			$q = 'INSERT INTO jl2286716_proj_entity_merch (type_id, item_name, price, size, color, desc, image_name) VALUES (?,?,?,?,?,?,?)';
 			$stmt = mysqli_prepare($dbc, $q);
-			mysqli_stmt_bind_param($stmt, 'isdssss', $t, $in, $p, $s, $c, $d, $i);
-			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_param($stmt, 'isdssss', $t, $in, $p, $s, $c, $d, $i);	//	DOES NOT WORK
+			mysqli_stmt_execute($stmt);	//	DOES NOT WORK
 			
 			//	check results:
-			if(mysqli_stmt_affected_rows($stmt) == 1){
+			if(mysqli_stmt_affected_rows($stmt) == 1){	//	DOES NOT WORK
 				echo '<p>The item has been added!</p>';
 				
 				//	rename image:
@@ -83,7 +83,7 @@
 				echo '<p style="font-weight:bold;color:#C00">Your submission could not be processed due to a system error.</p>';
 			}
 			
-			mysqli_stmt_close($stmt);
+			mysqli_stmt_close($stmt);	//	DOES NOT WORK
 		}
 		
 		//	delete temp file upload:

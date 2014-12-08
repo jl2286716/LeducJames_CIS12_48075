@@ -57,8 +57,8 @@
 			<td align="right" width="20%"><b>Price</b></td>
 		</tr>';
 		
-	$r = mysqli_query($dbc, $q);
-	while($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
+		$r = mysqli_query($dbc, $q);
+	while($row = mysqli_fetch_array($r,MYSQLI_ASSOC)){	//	WHY DOESN'T THIS WORK?!
 		echo "\t<tr>
 			<td align=\"left\"><a href=\"merch.php?tid={$row['type_id']}\">{$row['type_name']}</a></td>
 			<td align=\"left\"><a href=\"viewMerch.php?mid={$row['merch_id']}\">{$row['item_name']}</td>
