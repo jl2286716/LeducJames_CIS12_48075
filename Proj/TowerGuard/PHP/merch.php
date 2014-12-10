@@ -46,7 +46,7 @@
 	$q = "SELECT jl2286716_proj_enum_type.type_id, type_name, item_name, price, desc, merch_id FROM jl2286716_proj_enum_type, jl2286716_proj_entity_merch WHERE jl2286716_proj_enum_type.type_id=jl2286716_proj_entity_merch.type_id ORDER BY jl2286716_proj_enum_type.type_name ASC";
 	
 	if(isset($_GET['tid']) && filter_var($_GET['tid'], FILTER_VALIDATE_INT, array('min_range' => 1))){
-		$q = "SELECT jl2286716_proj_enum_type.type_id, type_name, item_name, price, desc, merch_id FROM jl2286716_proj_enum_type, jl2286716_proj_entity_merch WHERE jl2286716_proj_enum_type.type_id=jl2286716_proj_entity_merch.type_id AND jl2286716_proj_entity_merch.type_id={$_GET['tid']} ORDER BY jl2286716_proj_entity_merch.item_name";
+		$q = "SELECT jl2286716_proj_enum_type.type_id, type_name, item_name, price, desc, merch_id FROM jl2286716_proj_enum_type, jl2286716_proj_entity_merch WHERE jl2286716_proj_enum_type.type_id=jl2286716_proj_entity_merch.type_id AND jl2286716_proj_entity_merch.type_id={$_GET['tid']} ORDER BY jl2286716_proj_entity_merch.item_name ASC";
 	}
 
 	echo '<table border="0" width="90%" cellspacing="3" cellpadding="3" align="center">
@@ -57,14 +57,19 @@
 			<td align="right" width="20%"><b>Price</b></td>
 		</tr>';
 		
-	$r = mysqli_query($dbc, $q);	//	NOT BEING CREATED PROPERLY, WHY?
-	while($row = mysqli_fetch_array($r,MYSQLI_ASSOC)){	//	$r IS NOT RETURNING A BOOLEAN, WHY?
-		echo "\t<tr>
-			<td align=\"left\"><a href=\"merch.php?tid={$row['type_id']}\">{$row['type_name']}</a></td>
-			<td align=\"left\"><a href=\"viewMerch.php?mid={$row['merch_id']}\">{$row['item_name']}</a></td>
-			<td align=\"left\">{$row['desc']}</td>
-			<td align=\"right\">\${$row['price']}</td>
-		</tr>\n";
+	$r = @mysqli_query($dbc, $q);	//	NOT BEING CREATED PROPERLY, WHY?
+	
+	if($r){
+		while($row = mysqli_fetch_array($r,MYSQLI_ASSOC)){	//	$r IS NOT RETURNING A BOOLEAN, WHY?
+			echo "\t<tr>
+				<td align=\"left\"><a href=\"merch.php?tid={$row['type_id']}\">{$row['type_name']}</a></td>
+				<td align=\"left\"><a href=\"viewMerch.php?mid={$row['merch_id']}\">{$row['item_name']}</a></td>
+				<td align=\"left\">{$row['desc']}</td>
+				<td align=\"right\">\${$row['price']}</td>
+			</tr>\n";
+		}
+	}else{
+		echo '<center><h2 style="color:red">Items cannot be viewed due to a system error.</h2></center><center><h2 style="color:red">We apologize for any inconvenience.</h2></center>';
 	}
 	echo '</table>';
 	mysqli_close($dbc);

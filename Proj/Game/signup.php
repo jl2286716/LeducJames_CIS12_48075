@@ -99,15 +99,23 @@
 				}
 				
 				if(empty($errors)){	//	IF the form is filled out properly:
-				
 					//	Register to the database:
 					//	Open ('require') the database connection:
+					require ('mysqli_connect.php');
 					//	Make the query:
+					$q = "INSERT INTO jl2286716_proj_entity_gamers (uName,uMail,uPass,rDate) VALUES ('$n,'$m',SHA1('$p'),NOW())";
 					//	Run the query:
-						//	IF query ran okay, "You are registered!":
-						//	ELSE "System Error!":
+					$r = @mysqli_query($dbc, $q);
+					if($r){	//	IF query ran okay, "You are registered!":
+						echo '<center><h1>Thank you! A new admin has been added!</h1></center>';
+						echo '<center><h1>Now, <a href="login.php">LOGIN</a>!</h1></center>';
+					
+					}else{	//	ELSE "System Error!":
+						echo '<h2 style="color:red">You could not be registered due to a system error. We apologize for any inconvenience.</h2>';
+					}
 					//	Close database
-				
+					mysqli_close($dbc);
+						
 				}else{	//	ELSE report the errors:
 					showErrors($errors);
 				}
