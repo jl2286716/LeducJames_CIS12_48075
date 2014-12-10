@@ -12,6 +12,7 @@
 <div style="padding-left:20px">
 	<a href="addType.php"><button>ADD TYPE</button></a> - Add a new merchandise category.<br>
 </div>
+<pre></pre>
 <div style="padding-left:20px">
 	<a href="addMerch.php"><button>ADD MERCH</button></a> - Add new merchandise.<br>
 </div>

@@ -66,7 +66,7 @@
 		
 		if(empty($errors)){	//	IF all is well
 			$q = 'INSERT INTO jl2286716_proj_entity_merch (type_id, item_name, price, size, color, desc, image_name) VALUES (?,?,?,?,?,?,?)';
-			$stmt = mysqli_prepare($dbc, $q);
+			$stmt = mysqli_prepare($dbc, $q);	//	THE STATEMENT ISN'T BEING PROPERLY CREATED
 			mysqli_stmt_bind_param($stmt, 'isdssss', $t, $in, $p, $s, $c, $d, $i);	//	DOES NOT WORK
 			mysqli_stmt_execute($stmt);	//	DOES NOT WORK
 			
