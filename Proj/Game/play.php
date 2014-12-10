@@ -3,9 +3,15 @@
 	Title:		Zompocalypse
 	Purpose:	A zombie game where survival is based upon choice and chance.
 	Created:	Oct 09, 2014
-	Modified:	Nov 18, 2014
-	NOTE:		Once scores are settled, update scores after each battle!
+	Modified:	Dec 09, 2014
+	NOTE:		
 -->
+<?php
+	if(!isset($_COOKIE['user'])){
+		require ('includes/logins.php');	//	include login functions
+		redirect();
+	}
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -303,9 +309,11 @@
 <!--	Let the Games Begin!	-->
 		
 <!--	Beginning of the 'Game Sets'	-	'introSets.php'	-->
+		<?php
+			echo "<script>var pName = {$_COOKIE['uName']};</script>";
+		?>
 		<script>
 			//	Create and initialize the player:
-			var pName = prompt("What's your name?");
 			var Player = setPlayer(pName);
 			var Equip = setEquip("Bare","Bare","Bare","Bare","Bare","Empty");
 

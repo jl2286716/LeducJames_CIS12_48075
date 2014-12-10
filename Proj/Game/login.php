@@ -48,10 +48,10 @@
 					list($check, $data) = checkUser($dbc, $_POST['logMail'], $_POST['logPass']);
 					
 					if($check){
-						setcookie('user_id',$data['user_id'],time()+3600);
-						setcookie('fName',$data['fName'],time()+3600);
+						setcookie('user',$data['user'],time()+3600);
+						setcookie('uName',$data['uName'],time()+3600);
 						
-						redirect('loggedin.php');
+						redirect('play.php');
 					}else{
 						$errors = $data;
 						showErrors($errors);

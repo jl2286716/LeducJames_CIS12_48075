@@ -1,5 +1,5 @@
 <?php
-	function redirect($page = '../PHP/index.php'){
+	function redirect($page = 'index.php'){
 		header("Location: $page");
 		exit();
 	}
@@ -39,7 +39,7 @@
 		if(empty($user)){
 			$errors[] = 'You forgot your username.';
 		}else{
-			$u = mysqli_real_escape_string($dbc, trim($user));
+			$a = mysqli_real_escape_string($dbc, trim($user));
 		}
 		
 		if(empty($pass)){
@@ -49,7 +49,7 @@
 		}
 		
 		if(empty($errors)){
-			$q = "SELECT admin_id, fName FROM jl2286716_proj_entity_admins WHERE uName='$u' AND passW=SHA1('$p')";
+			$q = "SELECT admin_id, fName FROM jl2286716_proj_entity_game_admins WHERE aName='$a' AND aPass=SHA1('$p')";
 			$r = @mysqli_query($dbc, $q);
 			
 			if(mysqli_num_rows($r) == 1){

@@ -41,7 +41,7 @@
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
 				//	Set cookie values:
-				$cName = "userName";				//	Set cookie name.
+				$cName = "user";				//	Set cookie name.
 				$cVal = trim($_POST['uName']);		//	Set cookie value.
 				$days = 30;							//	How many days should the cookie live?
 				$exDate = time() + (86400 * $days);	//	Set a cookie expiration date.
