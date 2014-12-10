@@ -21,7 +21,7 @@
 				echo ('tagID = document.getElementById("bLine");');
 				echo ('tagID.style.display="block";');
 				echo ('tagID = document.getElementById("errors");');
-				echo ('tagID.innerHTML = "<h2 style=\"color:red\">ERRORS!</h2><p><b>The following errors occurred:</b></p><p>');
+				echo ('tagID.innerHTML = "<h2 id=\"shadow\" style=\"color:red\">ERRORS!</h2><p><b>The following errors occurred:</b></p><p>');
 				foreach($errors as $msg){
 					echo '<b> * '.$msg.' * </b><br>\n';
 				}
@@ -41,10 +41,10 @@
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
 				//	Set cookie values:
-				$cName = "user";				//	Set cookie name.
-				$cVal = trim($_POST['uName']);		//	Set cookie value.
-				$days = 30;							//	How many days should the cookie live?
-				$exDate = time() + (86400 * $days);	//	Set a cookie expiration date.
+				//$cName = "user";				//	Set cookie name.
+				//$cVal = trim($_POST['uName']);		//	Set cookie value.
+				//$days = 30;							//	How many days should the cookie live?
+				//$exDate = time() + (86400 * $days);	//	Set a cookie expiration date.
 				
 				//	Create an empty errors array:
 				$errors = array();
@@ -108,17 +108,17 @@
 				if(empty($errors)){	//	IF the form is filled out properly:
 					//	Register to the database:
 					//	Open ('require') the database connection:
-					require ('mysqli_connect.php');
+					require ('includes/mysqli_connect.php');
 					//	Create the query:
-					$q = "INSERT INTO jl2286716_proj_entity_gamers (uName,uMail,uPass,rDate) VALUES ('$n,'$m',SHA1('$p'),NOW())";
+					$q = "INSERT INTO jl2286716_proj_entity_gamers (uName,uMail,uPass,rDate) VALUES ('$n','$m',SHA1('$p'),NOW())";
 					//	Run the query:
 					$r = @mysqli_query($dbc, $q);
 					if($r){	//	IF query ran okay, "You are registered!":
-						echo '<center><h1>Thank you! '.trim($_POST['uName']).'is ready to fight in the coming zompocalypse!</h1></center>';
+						echo '<center><h1>Thank you! '.trim($_POST['uName']).' is ready to fight in the coming zompocalypse!</h1></center>';
 						echo '<center><h1>Now, <a href="login.php">LOGIN</a> to begin the fight!</h1></center>';
 					
 					}else{	//	ELSE "System Error!":
-						echo '<h2 style="color:red">You could not be registered due to a system error. We apologize for any inconvenience.</h2>';
+						echo '<h2 id=\"shadow\" style="color:red">You could not be registered due to a system error. We apologize for any inconvenience.</h2>';
 					}
 					//	Close database connection:
 					mysqli_close($dbc);

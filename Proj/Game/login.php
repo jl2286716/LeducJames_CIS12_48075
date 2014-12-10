@@ -31,6 +31,7 @@
 	</head>
 	<body>		
 		<br><br><center><h1>LOGIN TO ENTER THE ZOMBIE APOCALYPSE!</h1></center><br><br>
+		<center><h3>Or return <a href="index.php">HOME</a>...</center>
 		
 		<center>
 			<hr id="tLine" style="display:none">
@@ -40,15 +41,15 @@
 
 		<?php	//	check user logins:
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
-				require ('../includes/function_logins.php');	//	include login functions
-				require ('mysqli_connect.php');		//	include database connection
+				require ('includes/functions_logins.php');	//	include login functions
+				require ('includes/mysqli_connect.php');		//	include database connection
 				
 				//	check logins
 				if(isset($_POST['uLogSub'])){
 					list($check, $data) = checkUser($dbc, $_POST['logMail'], $_POST['logPass']);
 					
 					if($check){
-						setcookie('user',$data['user'],time()+3600);
+						setcookie('user_id',$data['user_id'],time()+3600);
 						setcookie('uName',$data['uName'],time()+3600);
 						
 						redirect('play.php');

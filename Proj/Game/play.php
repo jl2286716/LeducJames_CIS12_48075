@@ -7,8 +7,8 @@
 	NOTE:		
 -->
 <?php
-	if(!isset($_COOKIE['user'])){
-		require ('includes/logins.php');	//	include login functions
+	if(!isset($_COOKIE['user_id'])){
+		require ('includes/functions_logins.php');	//	include login functions
 		redirect();
 	}
 ?>
@@ -309,11 +309,9 @@
 <!--	Let the Games Begin!	-->
 		
 <!--	Beginning of the 'Game Sets'	-	'introSets.php'	-->
-		<?php
-			echo "<script>var pName = {$_COOKIE['uName']};</script>";
-		?>
 		<script>
 			//	Create and initialize the player:
+			var pName = prompt("So, what should we call you?");
 			var Player = setPlayer(pName);
 			var Equip = setEquip("Bare","Bare","Bare","Bare","Bare","Empty");
 

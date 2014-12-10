@@ -28,7 +28,7 @@
 		<a href="play.php"><button>PLAY TEST</button></a>
 		<br><br><center><h1>LOGIN TO ENTER THE ZOMBIE APOCALYPSE!</h1></center><br><br>
 		<center>
-			<button onclick="clickLogin()" id="logBtn" style="display:inline">LOGIN</button>
+			<a href="login.php"><button id="logBtn" style="display:inline">LOGIN</button></a>
 			<a href="signup.php"><button id="signBtn" style="display:inline">SIGN UP</button></a>
 		</center>
 		
@@ -49,21 +49,9 @@
 					
 					if($check){
 						setcookie('user_id',$data['user_id'],time()+3600);
-						setcookie('fName',$data['fName'],time()+3600);
+						setcookie('uName',$data['uName'],time()+3600);
 						
 						redirect('loggedin.php');
-					}else{
-						$errors = $data;
-						showErrors($errors);
-					}
-				}elseif(isset($_POST['aLogSub'])){
-					list($check, $data) = checkAdmin($dbc, $_POST['uName'], $_POST['admPass']);
-					
-					if($check){
-						setcookie('admin_id',$data['admin_id'],time()+3600);
-						setcookie('fName',$data['fName'],time()+3600);
-						
-						redirect('dash.php');
 					}else{
 						$errors = $data;
 						showErrors($errors);
