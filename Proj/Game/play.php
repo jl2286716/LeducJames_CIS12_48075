@@ -6,12 +6,12 @@
 	Modified:	Dec 09, 2014
 	NOTE:		
 -->
-<?php
+<!--?php
 	if(!isset($_COOKIE['user_id'])){
 		require ('includes/functions_logins.php');	//	include login functions
 		redirect();
 	}
-?>
+?-->
 <!doctype html>
 <html lang="en">
 	<head>
