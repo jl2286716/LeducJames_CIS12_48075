@@ -41,7 +41,7 @@
 
 	if(!$row){
 		include_once("../includes/header.php");
-		echo '<div align="center">This page was accessed in error!</div>';
+		echo '<div align="center"><h2 style="color:red" id="shadow">This page was accessed in error!</h2></div>';
 	}
 ?>
 

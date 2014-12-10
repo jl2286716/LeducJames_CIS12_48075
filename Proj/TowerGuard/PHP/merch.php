@@ -42,7 +42,7 @@
 
 <?php
 	require ('mysqli_connect.php');
-	
+
 	$q = "SELECT jl2286716_proj_enum_type.type_id, type_name, item_name, price, desc, merch_id FROM jl2286716_proj_enum_type, jl2286716_proj_entity_merch WHERE jl2286716_proj_enum_type.type_id=jl2286716_proj_entity_merch.type_id ORDER BY jl2286716_proj_enum_type.type_name ASC";
 	
 	if(isset($_GET['tid']) && filter_var($_GET['tid'], FILTER_VALIDATE_INT, array('min_range' => 1))){
@@ -57,11 +57,11 @@
 			<td align="right" width="20%"><b>Price</b></td>
 		</tr>';
 		
-		$r = mysqli_query($dbc, $q);	//	NOT BEING CREATED PROPERLY
+	$r = mysqli_query($dbc, $q);	//	NOT BEING CREATED PROPERLY, WHY?
 	while($row = mysqli_fetch_array($r,MYSQLI_ASSOC)){	//	$r IS NOT RETURNING A BOOLEAN, WHY?
 		echo "\t<tr>
 			<td align=\"left\"><a href=\"merch.php?tid={$row['type_id']}\">{$row['type_name']}</a></td>
-			<td align=\"left\"><a href=\"viewMerch.php?mid={$row['merch_id']}\">{$row['item_name']}</td>
+			<td align=\"left\"><a href=\"viewMerch.php?mid={$row['merch_id']}\">{$row['item_name']}</a></td>
 			<td align=\"left\">{$row['desc']}</td>
 			<td align=\"right\">\${$row['price']}</td>
 		</tr>\n";
