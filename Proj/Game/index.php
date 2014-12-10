@@ -32,13 +32,54 @@
 			<a href="signup.php"><button id="signBtn" style="display:inline">SIGN UP</button></a>
 		</center>
 		
+		<center>
+			<hr id="tLine" style="display:none">
+			<div id="errors" style="color:red"></div>
+			<hr id="bLine" style="display:none">
+		</center>
+
+		<?php	//	check user logins:
+			if($_SERVER['REQUEST_METHOD'] == 'POST'){
+				require ('../includes/functions_logins.php');	//	include login functions
+				require ('mysqli_connect.php');					//	include database connection
+				
+				//	check logins
+				if(isset($_POST['uLogSub'])){
+					list($check, $data) = checkUser($dbc, $_POST['logMail'], $_POST['logPass']);
+					
+					if($check){
+						setcookie('user_id',$data['user_id'],time()+3600);
+						setcookie('fName',$data['fName'],time()+3600);
+						
+						redirect('loggedin.php');
+					}else{
+						$errors = $data;
+						showErrors($errors);
+					}
+				}elseif(isset($_POST['aLogSub'])){
+					list($check, $data) = checkAdmin($dbc, $_POST['uName'], $_POST['admPass']);
+					
+					if($check){
+						setcookie('admin_id',$data['admin_id'],time()+3600);
+						setcookie('fName',$data['fName'],time()+3600);
+						
+						redirect('dash.php');
+					}else{
+						$errors = $data;
+						showErrors($errors);
+					}
+				}
+				mysqli_close($dbc);
+			}
+		?>
+
 		<!--	Login Form	-->
 		<center><div id="log" style="display:none">
 			<h2>LOGIN</h2>
 			<form name="login" id="login" action="login.php" method="get">
-				<b>EMAIL:</b><br><input type="text" name="logMail" id="logMail" /><br>
-				<b>PASSWORD:</b><br><input type="password" name="logPass" id="logPass"	/><br><br>
-				<input type="submit" value="LOGIN" />
+				<b>EMAIL:</b><br><input type="text" name="logMail" id="logMail" value="<?php if(isset($_POST['logMail'])) echo $_POST['logMail']; ?>" /><br>
+				<b>PASSWORD:</b><br><input type="password" name="logPass" id="logPass" value="<?php if(isset($_POST['logPass'])) echo $_POST['logPass']; ?>"	/><br><br>
+				<input type="submit" name="uLogSub" value="LOGIN" />
 			</form>
 		</div></center>
 		

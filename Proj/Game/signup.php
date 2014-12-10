@@ -1,10 +1,10 @@
 <!--
 	Author:		James Leduc
 	Title:		Zompocalypse
-	Purpose:	A zombie game where survival is based upon choice and chance.
+	Purpose:	A zombie text-based adventure game where survival is based upon choice and chance.
 	Created:	Nov 16, 2014
-	Modified:	Nov 17, 2014
-	NOTE:		Still need to create and connect to the database with the 'connect.php'.
+	Modified:	Dec 09, 2014
+	NOTE:		
 -->
 <!doctype html>
 <html lang="en">
@@ -40,6 +40,13 @@
 		<?php	//	Validate Sign Up Form:
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
+				//	Set cookie values:
+				$cName = "userName";				//	Set cookie name.
+				$cVal = trim($_POST['uName']);		//	Set cookie value.
+				$days = 30;							//	How many days should the cookie live?
+				$exDate = time() + (86400 * $days);	//	Set a cookie expiration date.
+				
+				//	Create an empty errors array:
 				$errors = array();
 			
 				$name = $_POST['uName'];
@@ -102,18 +109,18 @@
 					//	Register to the database:
 					//	Open ('require') the database connection:
 					require ('mysqli_connect.php');
-					//	Make the query:
+					//	Create the query:
 					$q = "INSERT INTO jl2286716_proj_entity_gamers (uName,uMail,uPass,rDate) VALUES ('$n,'$m',SHA1('$p'),NOW())";
 					//	Run the query:
 					$r = @mysqli_query($dbc, $q);
 					if($r){	//	IF query ran okay, "You are registered!":
-						echo '<center><h1>Thank you! A new admin has been added!</h1></center>';
-						echo '<center><h1>Now, <a href="login.php">LOGIN</a>!</h1></center>';
+						echo '<center><h1>Thank you! '.trim($_POST['uName']).'is ready to fight in the coming zompocalypse!</h1></center>';
+						echo '<center><h1>Now, <a href="login.php">LOGIN</a> to begin the fight!</h1></center>';
 					
 					}else{	//	ELSE "System Error!":
 						echo '<h2 style="color:red">You could not be registered due to a system error. We apologize for any inconvenience.</h2>';
 					}
-					//	Close database
+					//	Close database connection:
 					mysqli_close($dbc);
 						
 				}else{	//	ELSE report the errors:
